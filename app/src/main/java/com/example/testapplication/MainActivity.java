@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
                 Intent startIntent = new Intent(getApplicationContext(), MapsActivity.class);
-                //passing infor to another activity
+                //passing info to another activity
                 startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
                 startActivity(startIntent);
             }
