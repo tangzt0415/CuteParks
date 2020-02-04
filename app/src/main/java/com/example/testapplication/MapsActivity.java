@@ -1,8 +1,8 @@
 package com.example.testapplication;
 
-import androidx.fragment.app.FragmentActivity;
-
 import android.os.Bundle;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,9 +41,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         //TBD convert postal code to v,n
-        LatLng sydney = new LatLng(1.3393289, 103.6780764);
+        LatLng bob = new LatLng(1.3393051, 103.6956375);
+        LatLng mary = new LatLng(1.390388, 103.7443142);
         mMap.setMinZoomPreference(14);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Bob's Cave"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions().position(bob).title("Bob's Cave"));
+        mMap.addMarker(new MarkerOptions().position(mary).title("mary's castle"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(bob));
     }
 }
