@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-
+//test class to send postal code to Map API to retrieve coordinates
 public class testActivity extends AppCompatActivity {
     public static int postal;
     Button click;

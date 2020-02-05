@@ -9,7 +9,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+//boundary class to fetch LongLat coordinates from oneMap API given a postalCode
+//Is a background class
 public class fetchData extends AsyncTask<Void,Void,Void> {
     private String data = "";
     @Override
