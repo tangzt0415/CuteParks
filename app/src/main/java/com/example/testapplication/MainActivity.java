@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testapplication.BoundaryClass.getCoordinateUI;
+
 public class MainActivity extends AppCompatActivity {
 
     int postalAdd;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
-                Intent startIntent = new Intent(getApplicationContext(),testActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), getCoordinateUI.class);
                 //passing infor to another activity
                 startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
                 startActivity(startIntent);

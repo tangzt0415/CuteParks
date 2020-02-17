@@ -1,4 +1,4 @@
-package com.example.testapplication;
+package com.example.testapplication.BoundaryClass;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,10 +7,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testapplication.ControlClass.getCoordinateController;
+import com.example.testapplication.R;
+
 import java.util.Objects;
 
 //test class to send postal code to Map API to retrieve coordinates
-public class testActivity extends AppCompatActivity {
+public class getCoordinateUI extends AppCompatActivity {
     public static int postal;
     Button click;
     public static TextView data;
@@ -32,7 +35,7 @@ public class testActivity extends AppCompatActivity {
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fetchData process = new fetchData();
+                getCoordinateController process = new getCoordinateController();
                 process.execute();
             }
         });
