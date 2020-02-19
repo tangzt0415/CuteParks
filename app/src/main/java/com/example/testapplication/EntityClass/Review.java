@@ -37,7 +37,7 @@ public class Review {
         this.id = id;
     }
 
-    public void setRandomId() {
+    public void setId() {
         this.id = UUID.randomUUID().toString();
     }
 
