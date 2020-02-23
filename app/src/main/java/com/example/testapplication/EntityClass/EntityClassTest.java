@@ -3,7 +3,7 @@ package com.example.testapplication.EntityClass;
 
 import java.util.ArrayList;
 
-public class StupidTests {
+public class EntityClassTest {
 
     public static void main(String[]args){
         User yl=new User("ElinWyl","Yxaw219317!");

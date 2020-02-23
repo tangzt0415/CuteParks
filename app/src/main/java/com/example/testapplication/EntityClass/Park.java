@@ -1,10 +1,12 @@
 package com.example.testapplication.EntityClass;
+import com.google.firebase.firestore.DocumentId;
 
 
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Park {
+	@DocumentId
 	private String id;
 	private String name;
 	private String description;

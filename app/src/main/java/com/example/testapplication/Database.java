@@ -8,7 +8,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static android.content.ContentValues.TAG;
 
-// https://www.callicoder.com/java-8-completablefuture-tutorial/
+// Completable Futures are used to handle async requests, explained here https://www.callicoder.com/java-8-completablefuture-tutorial/
 
 class Database {
 

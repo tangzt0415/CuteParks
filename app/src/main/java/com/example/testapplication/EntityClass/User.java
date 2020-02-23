@@ -1,8 +1,11 @@
 package com.example.testapplication.EntityClass;
 
+import com.google.firebase.firestore.DocumentId;
+
 import java.util.UUID;
 
 public class User {
+    @DocumentId
     private String id;
     private String name;
     private String password;

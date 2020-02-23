@@ -1,9 +1,12 @@
 package com.example.testapplication.EntityClass;
 
 
+import com.google.firebase.firestore.DocumentId;
+
 import java.util.UUID;
 
 public class Review {
+    @DocumentId
     private String id;
     private String userId;
     private String parkId;

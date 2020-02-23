@@ -1,7 +1,13 @@
 package com.example.testapplication.EntityClass;
 
 
+import com.google.firebase.firestore.DocumentId;
+
+import java.util.UUID;
+
 public class Favourite {
+	@DocumentId
+	private String id;
 	private String userId;
 	private String parkId;
 	private String parkName;
@@ -13,6 +19,7 @@ public class Favourite {
 	}
 	
 	public Favourite(String userId, Park park){
+		this.id = UUID.randomUUID().toString();
 		this.userId = userId;
 		this.parkId = park.getId();
 		this.parkName = park.getName();
