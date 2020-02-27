@@ -4,6 +4,10 @@ import android.os.AsyncTask;
 
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +19,12 @@ import java.net.URL;
 //Is a background class incorporating oneMap API
 public class getCoordinateController extends AsyncTask<Void,Void,Void> {
     private String data = "";
+    JSONObject locationObj;
+    JSONArray jArray;
+    public static String resultLat;
+    public static String resultLong;
+    String results;
+
     @Override
     protected Void doInBackground(Void... voids) {
 
@@ -30,17 +40,29 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
                 line = bufferedReader.readLine();
                 data = data + line;
             }
+            locationObj = new JSONObject(data);
+            jArray = locationObj.getJSONArray("results");
+            locationObj = jArray.getJSONObject(0);
+            resultLat = locationObj.getString("LATITUDE");
+            resultLong = locationObj.getString("LONGITUDE");
+            results = "Lat = " + resultLat + " Long =" + resultLong;
+
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (JSONException e){
+            e.printStackTrace();
         }
+
         return null;
     }
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        getCoordinateUI.data.setText(this.data);
+        getCoordinateUI.data.setText(results);
+
     }
 
 }
