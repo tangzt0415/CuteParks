@@ -6,39 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".FilterActivity">
 
+    <TextView
+        android:id="@+id/filterInterfaceTitle"
+        android:layout_width="239dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
+        android:text="Filter Parks"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
-        android:layout_width="278dp"
-        android:layout_height="538dp"
+        android:layout_width="336dp"
+        android:layout_height="507dp"
+        android:layout_marginTop="53dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498">
+        app:layout_constraintVertical_bias="0.245">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/searchKeywordTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Filter By Keyword"
+            android:text="Search Keyword"
+            android:textColor="#BF000000"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/filterKeywordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5pt"
-            android:ems="10"
-            android:hint="@string/enter_filter_keyword"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName" />
+            android:layout_height="match_parent"
+            android:hint="Enter Keyword ...">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Filter By Distance"
-            android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Keyword ..."
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
