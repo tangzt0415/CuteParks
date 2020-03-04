@@ -42,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
+        
+        filtertest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), FilterActivity.class);
+                startActivity(startIntent);
+            }
+        });
+        
 
     }
 }
