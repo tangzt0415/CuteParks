@@ -3,7 +3,7 @@ package Entity;
 import java.util.ArrayList;
 import java.math.*;
 
-public class StupidTests {
+public class EntityClassTest {
 
     public static void main(String[]args){
     	
