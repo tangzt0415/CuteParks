@@ -1,5 +1,6 @@
 package com.example.testapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,12 +11,20 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testapplication.ControlClass.Filter;
+
+
 public class FilterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+
+        //////////////////////////////////////////////////////////
+        //get user location from maps
+        final double UserLocationX = 103.8045;
+        final double UserLocationY = 1.33;
 
         //////////////////////////////////////////////////////////
         /////display distance input
@@ -59,21 +68,27 @@ public class FilterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //get keyword filter
                 EditText filterKeywordEditText = findViewById(R.id.filterKeywordEditText);
-                String keyword = filterKeywordEditText.getText().toString();
+                String keywordF = filterKeywordEditText.getText().toString();
 
                 //get distance filter
                 SeekBar filterDistanceSeekBar = findViewById(R.id.filterDistanceSeekBar);
                 TextView distanceTextView = findViewById(R.id.distanceTextView);
-                int distance = filterDistanceSeekBar.getProgress();
-                distanceTextView.setText("Within\n" + distance + " km");
+                int distanceF = filterDistanceSeekBar.getProgress();
+                distanceTextView.setText("Within\n" + distanceF + " km");
 
                 //get rating filter
                 RatingBar filterRatingBar = findViewById(R.id.filterRatingBar);
                 TextView ratingTextView = findViewById(R.id.ratingTextView);
-                ratingTextView.setText(filterRatingBar.getRating() + "");
+                double ratingF = filterRatingBar.getRating();
+                ratingTextView.setText(ratingF + "");
 
-                //start filtering
+                //generate filter
+                Filter filter = new Filter(keywordF, distanceF, ratingF, UserLocationX, UserLocationY);
 
+                //pass the filtered parks for display
+                Intent intent = new Intent(FilterActivity.this, DisplayParksActivity.class);
+                intent.putExtra("RESULTS",filter.filterParks());
+                startActivity(intent);
             }
         });
     }

@@ -10,14 +10,23 @@ import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.testapplication.EntityClass.Park;
+
+import java.util.ArrayList;
+
 public class DisplayParksActivity extends AppCompatActivity {
+
+    String keywordF;
+    int distanceF;
+    double ratingF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_parks);
 
-
+        ArrayList<Park> parks = new ArrayList<Park>();
+        parks = getIntent().getExtras().getParcelableArrayList("RESULTS");
 
         //////////////////////////////////////////////////////////
         //finalise keyword, distance and rating filters input
@@ -25,12 +34,11 @@ public class DisplayParksActivity extends AppCompatActivity {
         Button mapViewButton = findViewById(R.id.mapViewButton);
 
 
-        listViewButton.setOnClickListener(new View.OnClickListener()) {
+        listViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-
+                /*
                 //get keyword filter
                 EditText filterKeywordEditText = findViewById(R.id.filterKeywordEditText);
                 String keyword = filterKeywordEditText.getText().toString();
@@ -46,11 +54,10 @@ public class DisplayParksActivity extends AppCompatActivity {
                 TextView ratingTextView = findViewById(R.id.ratingTextView);
                 ratingTextView.setText(filterRatingBar.getRating() + "");
 
-
-
+                 */
 
             }
+        });
 
-        }
     }
 }
