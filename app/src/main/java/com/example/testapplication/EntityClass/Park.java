@@ -18,6 +18,7 @@ public class Park {
 	private ArrayList<Amenity> Amenities;
 	private ArrayList<Carpark> NearbyCarparks;
 	private ArrayList<Review> Reviews;
+	private double distance;
 	
 	//////////////////////////////////////////////////////////
 	//Constructors
@@ -148,5 +149,13 @@ public class Park {
 	public void addReview(Review review) {
 		this.Reviews.add(review);
 		this.setOverallRating();
+	}
+	
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
 	}
 }
