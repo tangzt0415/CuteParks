@@ -9,4 +9,10 @@
     <string name="login">Login</string>
     <string name="cuteparks">CuteParks</string>
     <string name="enter_filter_keyword">Enter Keyword</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="signup_enter_your_email">Enter Your Email</string>
+    <string name="signup_enter_your_password">Enter Your Password</string>
+    <string name="complete_signup_button">Sign Up</string>
+    <string name="signup_name_edit_text">signupNameEditText</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

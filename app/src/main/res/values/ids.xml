@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="signupNameEditText" type="id"/>
+    <item name="signupEmailEditText" type="id"/>
+    <item name="signupPasswordEditText" type="id"/>
+    <item name="completeSignupButton" type="id"/>
+    <item name="signupSubheader" type="id"/>
+    <item name="signupHeader" type="id"/>
+
+    <item name="loginEmailEditText" type="id"/>
+    <item name="loginPasswordEditText" type="id"/>
+    <item name="loginButton" type="id"/>
+    <item name="loginHeader" type="id"/>
+</resources>

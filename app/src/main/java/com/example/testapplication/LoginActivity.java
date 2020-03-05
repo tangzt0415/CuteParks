@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         Button loginButton = findViewById(R.id.loginButton);
-        final EditText emailEditText = findViewById(R.id.emailEditText);
-        final EditText passwordEditText = findViewById(R.id.passwordEditText);
+        final EditText emailEditText = findViewById(R.id.loginEmailEditText);
+        final EditText passwordEditText = findViewById(R.id.loginPasswordEditText);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -52,14 +51,15 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.requestFocus();
                 }
 
-                mAuth.createUserWithEmailAndPassword(email, password)
+                mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    startActivity(new Intent(LoginActivity.this, MapsActivity.class));
+                                    // TODO: Change to home page.
+//                                    startActivity(new Intent(LoginActivity.this, MapsActivity.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(LoginActivity.this, "Please try again.",
