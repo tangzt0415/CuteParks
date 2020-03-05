@@ -1,4 +1,4 @@
-package Entity;
+package com.example.testapplication.EntityClass;
 
 import java.util.ArrayList;
 import java.math.*;

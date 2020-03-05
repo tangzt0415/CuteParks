@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button submit = (Button)findViewById(R.id.postalBtn);
         Button test = (Button)findViewById(R.id.testButton);
-        Button filtertest = (Button) findViewById(R.id.filterTest);
+        Button filtertest = (Button)findViewById(R.id.filterTestButton);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

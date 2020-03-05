@@ -18,7 +18,7 @@ public class FilterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filter);
 
         //////////////////////////////////////////////////////////
-        //display distance input
+        /////display distance input
         SeekBar filterDistanceSeekBar = findViewById(R.id.filterDistanceSeekBar);
 
         filterDistanceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
