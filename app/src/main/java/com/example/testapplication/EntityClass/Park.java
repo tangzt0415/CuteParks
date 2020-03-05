@@ -1,9 +1,12 @@
 package com.example.testapplication.EntityClass;
 import com.google.firebase.firestore.DocumentId;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Park {
+public class Park implements Parcelable{
 	@DocumentId
 	private String id;
 	private String name;
@@ -36,8 +39,32 @@ public class Park {
 		this.NearbyCarparks = new ArrayList<Carpark>();
 		this.Reviews = new ArrayList<Review>();
 	}
-	
-	//////////////////////////////////////////////////////////
+
+    protected Park(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        description = in.readString();
+        locationX = in.readDouble();
+        locationY = in.readDouble();
+        locationAddress = in.readString();
+        website = in.readString();
+        overallRating = in.readDouble();
+        distance = in.readDouble();
+    }
+
+    public static final Creator<Park> CREATOR = new Creator<Park>() {
+        @Override
+        public Park createFromParcel(Parcel in) {
+            return new Park(in);
+        }
+
+        @Override
+        public Park[] newArray(int size) {
+            return new Park[size];
+        }
+    };
+
+    //////////////////////////////////////////////////////////
 	//Getters and setters
 	public String getId() {
 		return id;
@@ -156,4 +183,22 @@ public class Park {
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeDouble(locationX);
+        dest.writeDouble(locationY);
+        dest.writeString(locationAddress);
+        dest.writeString(website);
+        dest.writeDouble(overallRating);
+        dest.writeDouble(distance);
+    }
 }

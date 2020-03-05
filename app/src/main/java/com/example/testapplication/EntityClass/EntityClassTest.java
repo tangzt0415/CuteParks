@@ -3,6 +3,8 @@ package com.example.testapplication.EntityClass;
 import java.util.ArrayList;
 import java.math.*;
 
+import android.content.Intent;
+
 public class EntityClassTest {
 
     public static void main(String[]args){
@@ -65,7 +67,7 @@ public class EntityClassTest {
         String keywordF = "bO";
         int distanceF = 10;
         double ratingF = 3.8;
-        ArrayList <Park> FilterResults = new ArrayList<Park>();
+
         
         //Filter by Distance
         int i=0;
