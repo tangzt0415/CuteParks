@@ -6,4 +6,516 @@
     android:layout_height="match_parent"
     tools:context=".DisplayParksActivity">
 
+
+    <LinearLayout
+        android:layout_width="333dp"
+        android:layout_height="594dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.653"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/mapViewButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Map " />
+
+            <Button
+                android:id="@+id/listViewButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="List" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/parksScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="533dp">
+
+            <LinearLayout
+                android:id="@+id/ListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityTraversalAfter="@id/listViewButton"
+                android:baselineAligned="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:background="#009688"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/No"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="S/N  "
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Name"
+                        android:layout_width="180dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="Park "
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="Distance"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="Rating"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/r1"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r1No"
+                        android:layout_width="5dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r1Name"
+                        android:layout_width="180dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r1Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r1Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/r2"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r2No"
+                        android:layout_width="5dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r2Name"
+                        android:layout_width="180dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r2Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r2Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/r3"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:clickable="false"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r3No"
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r3Name"
+                        android:layout_width="180dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r3Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r3Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/r4"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r4No"
+                        android:layout_width="5dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r4Name"
+                        android:layout_width="180dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r4Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r4Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/r5"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r5No"
+                        android:layout_width="5dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r5Name"
+                        android:layout_width="180dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r5Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r5Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/r6"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r6No"
+                        android:layout_width="5dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r6Name"
+                        android:layout_width="180dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r6Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r6Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/r7"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r7No"
+                        android:layout_width="5dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r7Name"
+                        android:layout_width="180dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r7Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r7Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/r8"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r8No"
+                        android:layout_width="5dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r8Name"
+                        android:layout_width="180dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/r8Distance"
+                        android:layout_width="45dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/r8Rating"
+                        android:layout_width="30dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:gravity="center|fill"
+                        android:text=""
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="239dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="32dp"
+        android:text="Select a Park"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
