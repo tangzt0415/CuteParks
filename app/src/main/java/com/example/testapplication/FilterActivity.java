@@ -53,7 +53,7 @@ public class FilterActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 TextView ratingTextView = findViewById(R.id.ratingTextView);
-                ratingTextView.setText(rating + "");
+                ratingTextView.setText(String.format("%.1f",rating));
             }
         });
 
@@ -80,7 +80,7 @@ public class FilterActivity extends AppCompatActivity {
                 RatingBar filterRatingBar = findViewById(R.id.filterRatingBar);
                 TextView ratingTextView = findViewById(R.id.ratingTextView);
                 double ratingF = filterRatingBar.getRating();
-                ratingTextView.setText(ratingF + "");
+                ratingTextView.setText(String.format("%.1f",ratingF));
 
                 //generate filter
                 Filter filter = new Filter(keywordF, distanceF, ratingF, UserLocationX, UserLocationY);
