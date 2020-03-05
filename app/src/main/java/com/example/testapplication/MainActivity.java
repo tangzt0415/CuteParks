@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button submit = (Button)findViewById(R.id.postalBtn);
         Button test = (Button)findViewById(R.id.testButton);
+        Button filtertest = (Button) findViewById(R.id.filterTest);
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
+        
+        filtertest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), FilterActivity.class);
+                startActivity(startIntent);
+            }
+        });
+        
 
     }
 }
