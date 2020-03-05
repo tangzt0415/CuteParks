@@ -8,7 +8,7 @@ import android.content.Intent;
 public class EntityClassTest {
 
     public static void main(String[]args){
-    	
+
         User yl=new User("ElinWyl","Yxaw219317!");
         yl.setLocationX(103.8045);
         yl.setLocationY(1.33);
@@ -67,7 +67,7 @@ public class EntityClassTest {
         String keywordF = "bO";
         int distanceF = 10;
         double ratingF = 3.8;
-
+        ArrayList<Park> FilterResults = new ArrayList<Park>();
         
         //Filter by Distance
         int i=0;
@@ -153,5 +153,6 @@ public class EntityClassTest {
         }
         
        */
+
     }
 }
