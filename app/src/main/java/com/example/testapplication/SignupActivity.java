@@ -31,6 +31,7 @@ public class SignupActivity extends AppCompatActivity {
         final Database db = new Database();
 
         Button completeSignupButton = findViewById(R.id.completeSignupButton);
+        final EditText signupNameEditText = findViewById(R.id.signupNameEditText);
         final EditText signupEmailEditText = findViewById(R.id.signupEmailEditText);
         final EditText signupPasswordTextEdit = findViewById(R.id.signupPasswordEditText);
 
@@ -38,20 +39,27 @@ public class SignupActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                String name = signupNameEditText.getText().toString();
                 String email = signupEmailEditText.getText().toString();
                 String password = signupPasswordTextEdit.getText().toString();
 
-                if (email.isEmpty() && password.isEmpty()){
+                if (name.isEmpty() && email.isEmpty() && password.isEmpty()) {
                     signupEmailEditText.setError("Please key in your email address!");
                     signupEmailEditText.requestFocus();
                     signupPasswordTextEdit.setError("Please key in your password!");
                     signupPasswordTextEdit.requestFocus();
+                    return;
+                } else if (name.isEmpty()){
+                    signupNameEditText.setError("Please key in your name!");
+                    signupNameEditText.requestFocus();
                 } else if(email.isEmpty()){
                     signupEmailEditText.setError("Please key in your email address!");
                     signupEmailEditText.requestFocus();
+                    return;
                 } else if(password.isEmpty()){
                     signupPasswordTextEdit.setError("Please key in your password!");
                     signupPasswordTextEdit.requestFocus();
+                    return;
                 }
 
                 mAuth.createUserWithEmailAndPassword(email, password)
@@ -61,7 +69,8 @@ public class SignupActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     try {
-                                        String userId = db.create(new User(), "users", UUID.randomUUID().toString()).get();
+                                        User newUser = new User(task.getResult().getUser().getUid(), name, email);
+                                        String userId = db.createUser(newUser).get();
                                         // TODO: Sign in success, update UI with the signed-in user's information
 //                                        startActivity(new Intent(SignupActivity.this, MapsActivity.class));
                                     } catch (ExecutionException | InterruptedException e) {

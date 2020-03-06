@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.testapplication.ControlClass.getCoordinateController;
+import com.example.testapplication.EntityClass.Park;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -12,7 +13,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    // Retrieve all parks
+    Database db = new Database();
+    List<Park> allParks = db.loadAllParks().getNow(new ArrayList<>());
 
     private GoogleMap mMap;
 

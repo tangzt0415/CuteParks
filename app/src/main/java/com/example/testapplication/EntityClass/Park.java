@@ -13,7 +13,7 @@ public class Park {
 	private String locationAddress;
 	private String website;
 	private double overallRating;
-	private ArrayList<Amenity> Amenities;
+	private ArrayList<String> Amenities;
 	private ArrayList<Carpark> NearbyCarparks;
 	private ArrayList<Review> Reviews;
 	private double distance;
@@ -24,17 +24,17 @@ public class Park {
 	
 	}
 	
-	public Park(String name, String description, double locationX, double locationY, String locationAddress, String website) {
-		this.id = UUID.randomUUID().toString();
+	public Park(String id, String name, String description, double locationX, double locationY, String locationAddress, String website, ArrayList<String> amenities) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.locationX = locationX;
 		this.locationY = locationY;
 		this.locationAddress = locationAddress;
 		this.website = website;
-		this.Amenities = new ArrayList<Amenity>();
-		this.NearbyCarparks = new ArrayList<Carpark>();
-		this.Reviews = new ArrayList<Review>();
+		this.Amenities = amenities;
+		this.NearbyCarparks = new ArrayList<>();
+		this.Reviews = new ArrayList<>();
 	}
 	
 	//////////////////////////////////////////////////////////
@@ -112,16 +112,12 @@ public class Park {
 		}
 	}
 	
-	public ArrayList<Amenity> getAmenities() {
+	public ArrayList<String> getAmenities() {
 		return Amenities;
 	}
 
-	public void setAmenities(ArrayList<Amenity> amenities) {
+	public void setAmenities(ArrayList<String> amenities) {
 		Amenities = amenities;
-	}
-
-	public void addAmenity(Amenity amenity) {
-		this.Amenities.add(amenity);
 	}
 
 	public ArrayList<Carpark> getNearbyCarparks() {

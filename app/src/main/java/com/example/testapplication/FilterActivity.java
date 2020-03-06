@@ -1,14 +1,22 @@
 package com.example.testapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.testapplication.EntityClass.Park;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -16,6 +24,10 @@ public class FilterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+
+        // Retrieve all parks
+        Database db = new Database();
+        List<Park> allParks = db.loadAllParks().getNow(new ArrayList<>());
 
         //////////////////////////////////////////////////////////
         /////display distance input
