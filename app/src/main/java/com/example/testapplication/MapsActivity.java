@@ -10,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -50,12 +51,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        Park park[] = new Park[3];
+        LatLng coordinate[] = new LatLng[3];
+        park[0] = new Park("Jurong Central Park", "Fitness corner or stations and fitness equipment or exercise station   Grand lawn   Jogging path or running track   Playground   Restroom/Toilets with or without shower facilities   Event lawn"
+                , 103.7075606
+                , 1.337442349
+                , "Jalan Boon Lay junction with Boon Lay Way"
+                , "http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=68&Itemid=73");
+        park[1] = new Park("Kranji Resevoir Park", "Drinking fountain   Toilets   Shelters   Benches"
+                , 103.7380629
+                ,1.439122404
+                ,"Along Kranji Way"
+                ,"http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=86&Itemid=73");
+        park[2] = new Park("Choa Chu Kang Park"
+                ,"Amphitheatre   Benches   Bicycle rack   Childrens play equipment   Food and beverage area or restaurant or cafe   Fitness corner or stations and fitness equipment or exercise station   Jogging path or running track   Multi-purpose court or corner   Restroom or Toilets with or without shower facilities"
+                ,103.7471915,1.387737263,"Beside Kranji Expressway and along Choa Chu Kang Drive"
+                ,"http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=12&Itemid=73");
         // Add a marker in Sydney and move the camera
         //TBD convert postal code to v,n
         LatLng bob = new LatLng(Double.parseDouble(getCoordinateController.resultLat), Double.parseDouble(getCoordinateController.resultLong));
-        mMap.setMinZoomPreference(14);
-        mMap.addMarker(new MarkerOptions().position(bob).title("Bob's Cave"));
+        mMap.setMinZoomPreference(10);
+        mMap.addMarker(new MarkerOptions().position(bob).title("Your Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bob));
+        for(int i = 0;i < 3; i++) {
+            coordinate[i] = new LatLng(park[i].getLocationY(), park[i].getLocationX());
+            mMap.addMarker(new MarkerOptions().position(coordinate[i]).title(park[i].getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        }
     }
 }
