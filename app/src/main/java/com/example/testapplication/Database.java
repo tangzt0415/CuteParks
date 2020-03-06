@@ -108,7 +108,7 @@ class Database {
     }
 
     CompletableFuture<List<Park>> getParksWithHigherReviewThan(Double baseline) {
-        return getBetterReviewsThan(baseline).thenCompose(reviews -> {
+        return loadAllReviews().thenCompose(reviews -> {
 
             HashMap<String, Double> parkIdAndAvgRatings = getParkIdAvgRatingsFromReviews(reviews);
 
@@ -130,12 +130,25 @@ class Database {
         });
     }
 
+    CompletableFuture<List<String>> getParkIdsWithHigherReviewThan(Double baseline){
+        return loadAllReviews().thenApply(reviews -> {
+            HashMap<String, Double> parkIdAndAvgRatings = getParkIdAvgRatingsFromReviews(reviews);
+            List<String> selectedParkIds = new ArrayList<>();
+            for (String parkId: parkIdAndAvgRatings.keySet()) {
+                Double avgRating = 5.0;
+                avgRating = parkIdAndAvgRatings.get(parkId);
+                if (baseline <= avgRating){
+                    selectedParkIds.add(parkId);
+                }
+            }
+            return selectedParkIds;
+        });
+    }
 
     // Review Functions
-    CompletableFuture<List<Review>> getBetterReviewsThan(Double baseline) {
+    CompletableFuture<List<Review>> loadAllReviews() {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
-                .whereGreaterThan("rating", baseline)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
