@@ -1,5 +1,6 @@
 package com.example.testapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,11 +10,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.testapplication.ControlClass.Filter;
 import com.example.testapplication.EntityClass.Park;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class FilterActivity extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class FilterActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-        List<Park> allParks = db.loadAllParks().getNow(new ArrayList<>());
+        CompletableFuture<List<Park>> allParks = db.loadAllParks();
 
         //////////////////////////////////////////////////////////
         /////display distance input
@@ -74,13 +76,13 @@ public class FilterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //get keyword filter
                 EditText filterKeywordEditText = findViewById(R.id.filterKeywordEditText);
-                String keyword = filterKeywordEditText.getText().toString();
+                String keywordF = filterKeywordEditText.getText().toString();
 
                 //get distance filter
                 SeekBar filterDistanceSeekBar = findViewById(R.id.filterDistanceSeekBar);
                 TextView distanceTextView = findViewById(R.id.distanceTextView);
-                int distance = filterDistanceSeekBar.getProgress();
-                distanceTextView.setText("Within\n" + distance + " km");
+                int distanceF = filterDistanceSeekBar.getProgress();
+                distanceTextView.setText("Within\n" + distanceF + " km");
 
                 //get rating filter
                 RatingBar filterRatingBar = findViewById(R.id.filterRatingBar);

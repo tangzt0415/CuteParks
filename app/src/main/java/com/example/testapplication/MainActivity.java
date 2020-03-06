@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-        List<Park> allParks = db.loadAllParks().getNow(new ArrayList<>());
+        CompletableFuture<List<Park>> allParks = db.loadAllParks();
 
 
         postalcode = findViewById(R.id.postalAddress);
@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         Button submit = findViewById(R.id.postalBtn);
         Button test = findViewById(R.id.testButton);
         Button filtertest = findViewById(R.id.filterTestButton);
+
+        allParks.whenComplete( (parks, throwable) -> {
+            Log.d("SUCCESS", parks.get(0).getName());
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-        
+
         filtertest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

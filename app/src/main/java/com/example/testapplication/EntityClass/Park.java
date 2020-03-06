@@ -66,61 +66,35 @@ public class Park implements Parcelable{
 
     //////////////////////////////////////////////////////////
 	//Getters and setters
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public void setId() {
-		this.id = UUID.randomUUID().toString();
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	public String getId() { return id; }
 
-	public String getDescription() {
-		return description;
-	}
+	public void setId(String id) { this.id = id; }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+	public void setId() { this.id = UUID.randomUUID().toString(); }
 
-	public double getLocationX() {
-		return locationX;
-	}
+	public String getName() { return name; }
 
-	public void setLocationX(double locationX) {
-		this.locationX = locationX;
-	}
+	public void setName(String name) { this.name = name; }
 
-	public double getLocationY() {
-		return locationY;
-	}
+	public String getDescription() { return description; }
 
-	public void setLocationY(double locationY) {
-		this.locationY = locationY;
-	}
+	public void setDescription(String description) { this.description = description; }
 
-	public String getLocationAddress() {
-		return locationAddress;
-	}
+	public double getLocationX() { return locationX; }
 
-	public void setLocationAddress(String locationAddress) {
-		this.locationAddress = locationAddress;
-	}
+	public void setLocationX(double locationX) { this.locationX = locationX; }
 
-	public String getWebsite() {
-		return website;
-	}
+	public double getLocationY() { return locationY; }
 
-	public void setWebsite(String website) {
-		this.website = website;
-	}
+	public void setLocationY(double locationY) { this.locationY = locationY; }
+
+	public String getLocationAddress() { return locationAddress; }
+
+	public void setLocationAddress(String locationAddress) { this.locationAddress = locationAddress; }
+
+	public String getWebsite() { return website; }
+
+	public void setWebsite(String website) { this.website = website; }
 
 	public double getOverallRating() {
 		this.setOverallRating();
@@ -139,33 +113,19 @@ public class Park implements Parcelable{
 		}
 	}
 	
-	public ArrayList<String> getAmenities() {
-		return Amenities;
-	}
+	public ArrayList<String> getAmenities() { return Amenities; }
 
-	public void setAmenities(ArrayList<String> amenities) {
-		Amenities = amenities;
-	}
+	public void setAmenities(ArrayList<String> amenities) { Amenities = amenities; }
 
-	public ArrayList<Carpark> getNearbyCarparks() {
-		return NearbyCarparks;
-	}
+	public ArrayList<Carpark> getNearbyCarparks() { return NearbyCarparks; }
 
-	public void setNearbyCarparks(ArrayList<Carpark> nearbyCarparks) {
-		NearbyCarparks = nearbyCarparks;
-	}
+	public void setNearbyCarparks(ArrayList<Carpark> nearbyCarparks) { NearbyCarparks = nearbyCarparks; }
 
-	public void addCarpark(Carpark carpark) {
-		this.NearbyCarparks.add(carpark);
-	}
+	public void addCarpark(Carpark carpark) { this.NearbyCarparks.add(carpark); }
 
-	public ArrayList<Review> getReviews() {
-		return Reviews;
-	}
+	public ArrayList<Review> getReviews() { return Reviews; }
 	
-	public void setReviews(ArrayList<Review> reviews) {
-		Reviews = reviews;
-	}
+	public void setReviews(ArrayList<Review> reviews) { Reviews = reviews; }
 	
 	public void addReview(Review review) {
 		this.Reviews.add(review);
