@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
                 result.setText("Postcode: "+postalAdd);
+
+
                 Intent startIntent = new Intent(getApplicationContext(), getCoordinateUI.class);
                 //passing info to another activity
                 startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
