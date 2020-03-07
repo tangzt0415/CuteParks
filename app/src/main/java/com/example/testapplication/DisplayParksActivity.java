@@ -155,7 +155,7 @@ public class DisplayParksActivity extends AppCompatActivity {
 
         }
         /*
-        
+
         listViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

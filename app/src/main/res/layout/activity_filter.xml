@@ -83,6 +83,7 @@
                 android:clickable="true"
                 android:indeterminate="false"
                 android:max="40"
+                android:progress="40"
                 android:progressTint="#B2009688"
                 android:visibility="visible"
                 tools:visibility="visible" />
