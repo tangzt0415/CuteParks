@@ -9,17 +9,6 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/filterTestButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="FilterTest"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/postalBtn"
-        app:layout_constraintHorizontal_bias="0.912"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/postalBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

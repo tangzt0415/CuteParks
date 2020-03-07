@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 //import com.example.testapplication.BoundaryClass.getCoordinateUI;
+import com.example.testapplication.BoundaryClass.getCoordinateUI;
 import com.example.testapplication.ControlClass.getCoordinateController;
 
 import java.text.CollationElementIterator;
@@ -43,19 +44,20 @@ public class MainActivity extends AppCompatActivity {
 
         postalcode = findViewById(R.id.postalAddress);
 
-//       Button submit = findViewById(R.id.postalBtn);
+       Button submit = findViewById(R.id.postalBtn);
         Button SearchButton = findViewById(R.id.SearchButton);
 
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                postalAdd = Integer.parseInt(postalcode.getText().toString());
-//                Intent startIntent = new Intent(getApplicationContext(), MapsActivity.class);
-//                //passing info to another activity
-//                startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
-//                startActivity(startIntent);
-//            }
-//        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postalAdd = Integer.parseInt(postalcode.getText().toString());
+                result.setText("Postcode: "+postalAdd);
+                Intent startIntent = new Intent(getApplicationContext(), getCoordinateUI.class);
+                //passing info to another activity
+                startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
+                startActivity(startIntent);
+            }
+        });
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
