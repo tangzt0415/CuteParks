@@ -1,12 +1,15 @@
 package com.example.testapplication.ControlClass;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.testapplication.EntityClass.Park;
 import com.example.testapplication.EntityClass.Review;
 import com.example.testapplication.EntityClass.User;
 
 import java.util.ArrayList;
 
-public class Filter {
+public class Filter implements Parcelable {
     String keywordF;
     int distanceF;
     double ratingF;
@@ -25,6 +28,26 @@ public class Filter {
         this.UserLocationX = UserLocationX;
         this.UserLocationY = UserLocationY;
     }
+
+    protected Filter(Parcel in) {
+        keywordF = in.readString();
+        distanceF = in.readInt();
+        ratingF = in.readDouble();
+        UserLocationX = in.readDouble();
+        UserLocationY = in.readDouble();
+    }
+
+    public static final Creator<Filter> CREATOR = new Creator<Filter>() {
+        @Override
+        public Filter createFromParcel(Parcel in) {
+            return new Filter(in);
+        }
+
+        @Override
+        public Filter[] newArray(int size) {
+            return new Filter[size];
+        }
+    };
 
     //Generate Parks
     public ArrayList<Park> generateParks() {
@@ -59,8 +82,7 @@ public class Filter {
 
     //Filter Parks
     public ArrayList<Park> filterParks(){
-        ArrayList<Park> Parks= new ArrayList<Park>();
-        Parks = this.generateParks();
+        ArrayList<Park> Parks = this.generateParks();
         ArrayList <Park> FilterResults = new ArrayList<Park>();
 
         int i=0;
@@ -123,5 +145,19 @@ public class Filter {
 
     public void setUserLocationY(double userLocationY) {
         UserLocationY = userLocationY;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(keywordF);
+        dest.writeInt(distanceF);
+        dest.writeDouble(ratingF);
+        dest.writeDouble(UserLocationX);
+        dest.writeDouble(UserLocationY);
     }
 }

@@ -87,7 +87,7 @@ public class FilterActivity extends AppCompatActivity {
 
                 //pass the filtered parks for display
                 Intent intent = new Intent(FilterActivity.this, DisplayParksActivity.class);
-                intent.putExtra("RESULTS",filter.filterParks());
+                intent.putExtra("FILTER",filter);
                 startActivity(intent);
             }
         });

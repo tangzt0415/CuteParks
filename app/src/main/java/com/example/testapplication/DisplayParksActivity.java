@@ -12,6 +12,7 @@ import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.testapplication.ControlClass.Filter;
 import com.example.testapplication.EntityClass.Park;
 
 import java.util.ArrayList;
@@ -27,13 +28,12 @@ public class DisplayParksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_parks);
 
-        ArrayList<Park> parks = new ArrayList<Park>();
-        parks = getIntent().getExtras().getParcelableArrayList("RESULTS");
-
+        Filter filter = getIntent().getExtras().getParcelable("FILTER");
+        ArrayList<Park> parks = filter.filterParks();
         //////////////////////////////////////////////////////////
-        //finalise keyword, distance and rating filters input
-        Button listViewButton = findViewById(R.id.listViewButton);
-        Button mapViewButton = findViewById(R.id.mapViewButton);
+        //
+        //Button listViewButton = findViewById(R.id.listViewButton);
+        //Button mapViewButton = findViewById(R.id.mapViewButton);
 
         TextView r1No= findViewById(R.id.r1No);
         r1No.setText("1");
