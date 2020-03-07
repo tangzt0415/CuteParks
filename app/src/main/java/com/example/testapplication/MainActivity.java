@@ -6,20 +6,29 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.testapplication.BoundaryClass.getCoordinateUI;
+//import com.example.testapplication.BoundaryClass.getCoordinateUI;
+import com.example.testapplication.ControlClass.getCoordinateController;
+
+import java.text.CollationElementIterator;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
-    int postalAdd;
+    public static TextView result;
+    public static int postalAdd;
     EditText postalcode;
+    double xCoordinate;
+    double yCoordinate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView result = findViewById(R.id.result);
 
         // Retrieve all parks
         Database db = new Database();
@@ -34,39 +43,38 @@ public class MainActivity extends AppCompatActivity {
 
         postalcode = findViewById(R.id.postalAddress);
 
-        Button submit = findViewById(R.id.postalBtn);
-        Button test = findViewById(R.id.testButton);
-        Button filtertest = findViewById(R.id.filterTestButton);
+//       Button submit = findViewById(R.id.postalBtn);
+        Button SearchButton = findViewById(R.id.SearchButton);
 
-        submit.setOnClickListener(new View.OnClickListener() {
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                postalAdd = Integer.parseInt(postalcode.getText().toString());
+//                Intent startIntent = new Intent(getApplicationContext(), MapsActivity.class);
+//                //passing info to another activity
+//                startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
+//                startActivity(startIntent);
+//            }
+//        });
+        SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
-                Intent startIntent = new Intent(getApplicationContext(), MapsActivity.class);
-                //passing info to another activity
-                startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
-                startActivity(startIntent);
-            }
-        });
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                postalAdd = Integer.parseInt(postalcode.getText().toString());
-                Intent startIntent = new Intent(getApplicationContext(), getCoordinateUI.class);
-                //passing in for to another activity
-                startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
-                startActivity(startIntent);
+
+                result.setText("Postcode: "+postalAdd);
+                //getCoordinateController getCoordinates = new getCoordinateController(postalAdd);
+                xCoordinate = 103.8045;
+                yCoordinate = 1.33;
+                result.setText(String.format("X: %f, Y: %f", xCoordinate,yCoordinate));
+
+                Intent intent = new Intent(MainActivity.this, FilterActivity.class);
+                //pass x- and y-coordinates to FilterActivity
+                intent.putExtra("XCOORDINATE", xCoordinate);
+                intent.putExtra("YCOORDINATE", yCoordinate);
+                startActivity(intent);
             }
         });
 
-        filtertest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), FilterActivity.class);
-                startActivity(startIntent);
-            }
-        });
-        
 
     }
 }

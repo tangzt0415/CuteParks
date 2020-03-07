@@ -122,6 +122,9 @@ public class DisplayParksActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,9 +133,7 @@ public class DisplayParksActivity extends AppCompatActivity {
         Filter filter = getIntent().getExtras().getParcelable("FILTER");
         ArrayList<Park> parks = filter.filterParks();
         //////////////////////////////////////////////////////////
-        //
-        //Button listViewButton = findViewById(R.id.listViewButton);
-        //Button mapViewButton = findViewById(R.id.mapViewButton);
+
 
 
         //Back to Filter
@@ -201,6 +202,7 @@ public class DisplayParksActivity extends AppCompatActivity {
             TextView r6Rating = findViewById(R.id.r6Rating);
             TextView r7Rating = findViewById(R.id.r7Rating);
             TextView r8Rating = findViewById(R.id.r8Rating);
+            Button mapViewButton = findViewById(R.id.mapViewButton);
 
 
             View.OnClickListener clickListener = new View.OnClickListener() {
@@ -313,24 +315,6 @@ public class DisplayParksActivity extends AppCompatActivity {
             r8Rating.setOnClickListener(clickListener);
 
         }
-        /*
 
-        listViewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //LinearLayout ListView = findViewById(R.id.ListView);
-
-                TextView r1No= findViewById(R.id.r1No);
-                r1No.setText("1");
-                TextView r1Name= findViewById(R.id.r1Name);
-                r1Name.setText(finalParks.get(0).getName());
-                TextView r1Distance= findViewById(R.id.r1Distance);
-                r1Distance.setText(finalParks.get(0).getDistance()+"km");
-                TextView r1Rating= findViewById(R.id.r1Rating);
-                r1Rating.setText(finalParks.get(0).getOverallRating()+"");
-
-
-
-*/
     }
 }
