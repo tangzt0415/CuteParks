@@ -9,6 +9,7 @@ import com.example.testapplication.EntityClass.User;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.UUID;
 
 public class Filter implements Parcelable {
     String keywordF;
@@ -56,10 +57,10 @@ public class Filter implements Parcelable {
         User yl=new User("ElinWyl","Yxaw219317!");
 
         String UserId = yl.getId();
-        Parks.add(new Park("Singapore Botanic Gardens","park 1",103.8162506,1.311048144,"1 Cluny Road","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=33&Itemid=73"));
-        Parks.add(new Park("Woodlands Waterfront Park","park 2",103.7799362,1.452813755,"Admiralty Road West","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=90&Itemid=73"));
-        Parks.add(new Park("Tiong Bahru Park","park 3",103.8243399,1.287589986,"Bounded by Henderson Rd, Tiong Bahru Road and Lower Delta Road","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=37&Itemid=73"));
-        Parks.add(new Park("One-North Park","park 4",103.7907746,1.303491325,"The 3.3 hectare site is situated in the northern zone of one-north, near the Ministry of Education","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=25&Itemid=73"));
+        Parks.add(new Park(UUID.randomUUID().toString(), "Singapore Botanic Gardens","park 1",103.8162506,1.311048144,"1 Cluny Road","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=33&Itemid=73", new ArrayList<>()));
+        Parks.add(new Park(UUID.randomUUID().toString(), "Woodlands Waterfront Park","park 2",103.7799362,1.452813755,"Admiralty Road West","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=90&Itemid=73", new ArrayList<>()));
+        Parks.add(new Park(UUID.randomUUID().toString(), "Tiong Bahru Park","park 3",103.8243399,1.287589986,"Bounded by Henderson Rd, Tiong Bahru Road and Lower Delta Road","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=37&Itemid=73", new ArrayList<>()));
+        Parks.add(new Park(UUID.randomUUID().toString(), "One-North Park","park 4",103.7907746,1.303491325,"The 3.3 hectare site is situated in the northern zone of one-north, near the Ministry of Education","http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=25&Itemid=73", new ArrayList<>()));
 
         Parks.get(0).addReview(new Review(UserId,Parks.get(0).getId(),5,"Perfect!"));
         Parks.get(0).addReview(new Review(UserId,Parks.get(0).getId(),4,"Nice"));
