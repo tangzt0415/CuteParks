@@ -2,6 +2,7 @@ package com.example.testapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
@@ -35,15 +36,32 @@ public class DisplayParksActivity extends AppCompatActivity {
         //Button listViewButton = findViewById(R.id.listViewButton);
         //Button mapViewButton = findViewById(R.id.mapViewButton);
 
-        TextView r1No= findViewById(R.id.r1No);
-        r1No.setText("1");
-        TextView r1Name= findViewById(R.id.r1Name);
-        r1Name.setText(parks.get(0).getName());
-        TextView r1Distance= findViewById(R.id.r1Distance);
-        r1Distance.setText(parks.get(0).getDistance()+"km");
-        TextView r1Rating= findViewById(R.id.r1Rating);
-        r1Rating.setText(parks.get(0).getOverallRating()+"");
 
+        //Back to Filter
+        Button backToFilterButton = findViewById(R.id.backToFilterButton);
+        backToFilterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayParksActivity.this, FilterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //display Error message if parks is empty
+        TextView noParksTextView = findViewById(R.id.noParksTextView);
+        //display parks if parks is not empty
+        if (!parks.isEmpty()){
+            noParksTextView.setVisibility(noParksTextView.GONE);
+            TextView r1No = findViewById(R.id.r1No);
+            r1No.setText("1");
+            TextView r1Name = findViewById(R.id.r1Name);
+            r1Name.setText(parks.get(0).getName());
+            TextView r1Distance = findViewById(R.id.r1Distance);
+            r1Distance.setText(parks.get(0).getDistance() + "km");
+            TextView r1Rating = findViewById(R.id.r1Rating);
+            r1Rating.setText(parks.get(0).getOverallRating() + "");
+        }
         /*
         final ArrayList<Park> finalParks = parks;
 
