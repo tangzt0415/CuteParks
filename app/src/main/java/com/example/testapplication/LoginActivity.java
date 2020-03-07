@@ -56,17 +56,16 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     // TODO: Change to home page.
 //                                    startActivity(new Intent(LoginActivity.this, MapsActivity.class));
                                 } else {
-                                    // If sign in fails, display a message to the user.
                                     Toast.makeText(LoginActivity.this, "Please try again.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
+
 
             }
         });

@@ -8,11 +8,10 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.testapplication.ControlClass.Filter;
-
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -25,6 +24,17 @@ public class FilterActivity extends AppCompatActivity {
         //get user location from maps
         final double UserLocationX = 103.8045;
         final double UserLocationY = 1.33;
+
+        // Retrieve all parks
+        Database db = new Database();
+        db.loadAllParks().whenComplete((parks, throwable) -> {
+            if (throwable == null){
+                // Continue Here
+            } else {
+                Toast.makeText(FilterActivity.this, "Please try again.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //////////////////////////////////////////////////////////
         /////display distance input
@@ -53,7 +63,7 @@ public class FilterActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 TextView ratingTextView = findViewById(R.id.ratingTextView);
-                ratingTextView.setText(String.format("%.1f",rating));
+                ratingTextView.setText(rating + "");
             }
         });
 

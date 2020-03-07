@@ -10,7 +10,7 @@
         android:layout_width="239dp"
         android:layout_height="52dp"
         android:layout_marginTop="32dp"
-        android:text="Filter Parks"
+        android:text="@string/filter_parks"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -36,13 +36,11 @@
             style="@style/Widget.MaterialComponents.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autoText="false"
             android:clickable="false"
             android:contextClickable="false"
             android:cursorVisible="false"
-            android:editable="false"
             android:freezesText="true"
-            android:text="Search Keyword"
+            android:text="@string/search_keyword"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -64,7 +62,7 @@
             android:id="@+id/filterByDistanceTitle"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:text="Filter By Distance"
+            android:text="@string/filter_by_distance"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -100,7 +98,7 @@
             android:id="@+id/filterByRatingTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Filter By Rating"
+            android:text="@string/filter_by_rating"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -125,7 +123,7 @@
 
                 <TextView
                     android:id="@+id/ratingTextView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="56dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal|center_vertical"
@@ -140,6 +138,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#B9009688"
-            android:text="Filter" />
+            android:text="@string/filter" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

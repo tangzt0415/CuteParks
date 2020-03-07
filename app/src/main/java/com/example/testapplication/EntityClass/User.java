@@ -8,15 +8,21 @@ public class User {
     @DocumentId
     private String id;
     private String name;
+    private String email;
     private String password;
     private double locationX;
     private double locationY;
 
     //////////////////////////////////////////////////////////
     //Constructors
-    public User(){
-
-    }
+//    public User(String id, String name, String email){
+//        this.id = id;
+//        this.name = name;
+//        this.email = email;
+//        this.password = "";
+//        this.locationX = 0;
+//        this.locationY = 0;
+//    }
 
     //for new user sign-up
     public User(String name, String password){
@@ -47,17 +53,17 @@ public class User {
         this.id = id;
     }
 
-    public void setId() {
-        this.id = UUID.randomUUID().toString();
-    }
+//    public void setId() {
+//        this.id = UUID.randomUUID().toString();
+//    }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
+
+    public String getEmail() { return name; }
+
+    public void setEmail(String email) { this.name = email; }
 
 
     public String getPassword() {
