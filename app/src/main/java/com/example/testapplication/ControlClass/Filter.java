@@ -8,6 +8,7 @@ import com.example.testapplication.EntityClass.Review;
 import com.example.testapplication.EntityClass.User;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Filter implements Parcelable {
     String keywordF;
