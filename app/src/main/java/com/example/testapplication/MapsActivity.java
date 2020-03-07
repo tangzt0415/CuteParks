@@ -1,6 +1,7 @@
 package com.example.testapplication;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -21,16 +22,24 @@ import java.util.concurrent.CompletableFuture;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    // Retrieve all parks
-    Database db = new Database();
-    CompletableFuture<List<Park>> allParks = db.loadAllParks();
-
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        // Retrieve all parks
+        Database db = new Database();
+        db.loadAllParks().whenComplete((parks, throwable) -> {
+            if (throwable == null){
+                // Continue Here
+            } else {
+                Toast.makeText(MapsActivity.this, "Please try again.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);

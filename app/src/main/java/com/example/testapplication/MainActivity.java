@@ -8,31 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
-import com.example.testapplication.EntityClass.Park;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,18 +23,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-        CompletableFuture<List<Park>> allParks = db.loadAllParks();
-
+        db.loadAllParks().whenComplete((parks, throwable) -> {
+            if (throwable == null){
+                // Continue Here
+            } else {
+                Toast.makeText(MainActivity.this, "Please try again.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         postalcode = findViewById(R.id.postalAddress);
 
         Button submit = findViewById(R.id.postalBtn);
         Button test = findViewById(R.id.testButton);
         Button filtertest = findViewById(R.id.filterTestButton);
-
-        allParks.whenComplete( (parks, throwable) -> {
-            Log.d("SUCCESS", parks.get(0).getName());
-        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

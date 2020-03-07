@@ -8,15 +8,10 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapplication.ControlClass.Filter;
-import com.example.testapplication.EntityClass.Park;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -32,7 +27,14 @@ public class FilterActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-        CompletableFuture<List<Park>> allParks = db.loadAllParks();
+        db.loadAllParks().whenComplete((parks, throwable) -> {
+            if (throwable == null){
+                // Continue Here
+            } else {
+                Toast.makeText(FilterActivity.this, "Please try again.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //////////////////////////////////////////////////////////
         /////display distance input
