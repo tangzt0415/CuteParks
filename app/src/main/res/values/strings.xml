@@ -25,4 +25,7 @@
     <string name="reviewpark">reviewPark</string>
     <string name="favouritepark">favouritePark</string>
     <string name="sharepark">sharePark</string>
+    <string name="share">Share</string>
+    <string name="favourite">Favourite</string>
+    <string name="review">Review</string>
 </resources>
