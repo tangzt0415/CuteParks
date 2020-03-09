@@ -17,8 +17,8 @@ public class Park implements Parcelable{
 	private String website;
 	private double overallRating;
 	private ArrayList<String> Amenities;
-	private ArrayList<Carpark> NearbyCarparks;
-	private ArrayList<Review> Reviews;
+//	private ArrayList<Carpark> NearbyCarparks;
+//	private ArrayList<Review> Reviews;
 	private double distance;
 	
 	//////////////////////////////////////////////////////////
@@ -36,8 +36,8 @@ public class Park implements Parcelable{
 		this.locationAddress = locationAddress;
 		this.website = website;
 		this.Amenities = amenities;
-		this.NearbyCarparks = new ArrayList<>();
-		this.Reviews = new ArrayList<>();
+//		this.NearbyCarparks = new ArrayList<>();
+//		this.Reviews = new ArrayList<>();
 	}
 
     public Park(Parcel in) {
@@ -50,6 +50,7 @@ public class Park implements Parcelable{
         website = in.readString();
         overallRating = in.readDouble();
         distance = in.readDouble();
+        Amenities = in.readArrayList(null);
     }
 
     public static final Creator<Park> CREATOR = new Creator<Park>() {
@@ -96,41 +97,45 @@ public class Park implements Parcelable{
 
 	public void setWebsite(String website) { this.website = website; }
 
-	public double getOverallRating() {
-		this.setOverallRating();
-		return this.overallRating;
-	}
+	public double getOverallRating() { return overallRating;}
 
-	public void setOverallRating() {
-		int totalRating = 0;
-		int count = 0;
-		for (Review review:this.Reviews){
-			totalRating += review.getRating();
-			count ++;
-		}
-		if (count != 0) {
-			this.overallRating = (double)totalRating/count;
-		}
-	}
+    public void setOverallRating(double overallRating) { this.overallRating = overallRating; }
+
+//	public double getOverallRating() {
+//		this.setOverallRating();
+//		return this.overallRating;
+//	}
+//
+//	public void setOverallRating() {
+//		int totalRating = 0;
+//		int count = 0;
+//		for (Review review:this.Reviews){
+//			totalRating += review.getRating();
+//			count ++;
+//		}
+//		if (count != 0) {
+//			this.overallRating = (double)totalRating/count;
+//		}
+//	}
 	
 	public ArrayList<String> getAmenities() { return Amenities; }
 
 	public void setAmenities(ArrayList<String> amenities) { Amenities = amenities; }
 
-	public ArrayList<Carpark> getNearbyCarparks() { return NearbyCarparks; }
-
-	public void setNearbyCarparks(ArrayList<Carpark> nearbyCarparks) { NearbyCarparks = nearbyCarparks; }
-
-	public void addCarpark(Carpark carpark) { this.NearbyCarparks.add(carpark); }
-
-	public ArrayList<Review> getReviews() { return Reviews; }
+//	public ArrayList<Carpark> getNearbyCarparks() { return NearbyCarparks; }
+//
+//	public void setNearbyCarparks(ArrayList<Carpark> nearbyCarparks) { NearbyCarparks = nearbyCarparks; }
+//
+//	public void addCarpark(Carpark carpark) { this.NearbyCarparks.add(carpark); }
+//
+//	public ArrayList<Review> getReviews() { return Reviews; }
+//
+//	public void setReviews(ArrayList<Review> reviews) { Reviews = reviews; }
 	
-	public void setReviews(ArrayList<Review> reviews) { Reviews = reviews; }
-	
-	public void addReview(Review review) {
-		this.Reviews.add(review);
-		this.setOverallRating();
-	}
+//	public void addReview(Review review) {
+//		this.Reviews.add(review);
+//		this.setOverallRating();
+//	}
 	
 	public double getDistance() {
 		return distance;
