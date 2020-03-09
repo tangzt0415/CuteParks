@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
                 result.setText("Postcode: "+postalAdd);
+
                 getCoordinateController process = new getCoordinateController();
                 process.execute();
 

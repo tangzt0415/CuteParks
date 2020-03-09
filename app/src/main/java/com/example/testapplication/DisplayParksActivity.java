@@ -136,10 +136,8 @@ public class DisplayParksActivity extends AppCompatActivity {
         Filter filter = getIntent().getExtras().getParcelable("FILTER");
         Database db = new Database();
         db.loadAllParks().whenComplete((parks, throwable) -> {
-            if (throwable == null){
+            if (throwable == null) {
                 ArrayList<Park> Parks = filter.filterParks(new ArrayList<Park>(parks));
-
-
 
 
                 //replacing getCoordinateUI
@@ -171,15 +169,16 @@ public class DisplayParksActivity extends AppCompatActivity {
                     }
                 });
 
-
-                //display Error message if parks is empty
+                //Error message if parks is empty
                 TextView noParksTextView = findViewById(R.id.noParksTextView);
+                noParksTextView.setVisibility(noParksTextView.INVISIBLE);
 
 
                 //display parks if parks is not empty
-                if (!Parks.isEmpty()){
+                if (Parks.isEmpty()){
+                    noParksTextView.setVisibility(noParksTextView.VISIBLE);
+                } else {
 
-                    //make Error message disappear
                     noParksTextView.setVisibility(noParksTextView.GONE);
 
                     //display parks
