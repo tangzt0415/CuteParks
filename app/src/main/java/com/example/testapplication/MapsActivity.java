@@ -1,6 +1,7 @@
 package com.example.testapplication;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
@@ -11,18 +12,21 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    public static int postal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +89,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 ,"http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=12&Itemid=73"
                 , new ArrayList<>());
 
-        // Add a marker in Sydney and move the camera
-        //TBD convert postal code to v,n
+        // Add a marker for current location and move the camera
         LatLng bob = new LatLng(Double.parseDouble(getCoordinateController.resultLat), Double.parseDouble(getCoordinateController.resultLong));
         mMap.setMinZoomPreference(10);
         mMap.addMarker(new MarkerOptions().position(bob).title("Your Location"));

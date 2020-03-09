@@ -3,6 +3,7 @@ package com.example.testapplication.ControlClass;
 import android.os.AsyncTask;
 
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
+import com.example.testapplication.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +31,7 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
 
         try {
             //setup URL
-            URL url = new URL("https://developers.onemap.sg/commonapi/search?searchVal="+ getCoordinateUI.postal+"&returnGeom=Y&getAddrDetails=Y&pageNum=1");
+            URL url = new URL("https://developers.onemap.sg/commonapi/search?searchVal="+ MainActivity.postalAdd+"&returnGeom=Y&getAddrDetails=Y&pageNum=1");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream =  httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -40,6 +41,7 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
                 line = bufferedReader.readLine();
                 data = data + line;
             }
+            //calculates Lat/Long
             locationObj = new JSONObject(data);
             jArray = locationObj.getJSONArray("results");
             locationObj = jArray.getJSONObject(0);
@@ -61,7 +63,7 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        getCoordinateUI.data.setText(results);
+        getCoordinateUI.data.setText(results + "resultLat = " + resultLat + "resultLong = " +resultLong);
 
     }
 
