@@ -75,8 +75,8 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
         // Display park activities - GOT PROBLEM - Amenities list of all parks are empty(?)
         TextView parkActivities = findViewById(R.id.parkActivities);
-        ArrayList<String> activities = park.getAmenities();
 
+        ArrayList<String> activities = new ArrayList<String>(park.getAmenities());
         String parkActivitiesString = "";
         if ((activities.size() == 0)){
              parkActivitiesString = "No activities recorded.";
