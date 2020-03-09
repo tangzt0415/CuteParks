@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.testapplication.EntityClass.Park;
 import com.google.android.gms.maps.MapView;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity {
@@ -74,6 +75,23 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
                 startActivity(intent);
             }
         });
+
+        // Display park activities
+        TextView parkActivities = findViewById(R.id.parkActivities);
+        ArrayList<String> activities = park.getAmenities();
+
+        String parkActivitiesString = "";
+        if ((activities.size() == 0)){
+             parkActivitiesString = "No activities recorded.";
+        } else {
+            for (String activity:activities){
+                parkActivitiesString = parkActivitiesString + ", " + activity;
+            }
+        }
+        parkActivities.setText(activities.size()+"");
+        parkActivities.setMovementMethod(new ScrollingMovementMethod());
+
+
 
         // Share park
         ImageButton sharePark = findViewById(R.id.sharePark);

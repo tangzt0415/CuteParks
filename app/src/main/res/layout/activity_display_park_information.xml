@@ -10,6 +10,41 @@
     android:textAlignment="center"
     tools:context=".DisplayParkInformationActivity">
 
+    <TextView
+        android:id="@+id/parkActivities"
+        android:layout_width="341dp"
+        android:layout_height="90dp"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollIndicators="right"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarDefaultDelayBeforeFade="500"
+        android:scrollbarFadeDuration="300"
+        android:scrollbarSize="5dp"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitytextview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/activitytextview"
+        android:layout_width="254dp"
+        android:layout_height="24dp"
+        android:text="Activities"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.657" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -78,29 +113,30 @@
 
     <TextView
         android:id="@+id/Locationtextview"
-        android:layout_width="164dp"
-        android:layout_height="29dp"
+        android:layout_width="163dp"
+        android:layout_height="21dp"
         android:text="@string/location"
         android:textColor="#89A8A5"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.49" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/googleMap"
-        android:layout_width="129dp"
-        android:layout_height="96dp"
+        android:layout_width="93dp"
+        android:layout_height="71dp"
+        android:background="@drawable/map_icon"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Locationtextview"
-        app:layout_constraintVertical_bias="0.007" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/DescriptiontextView"
@@ -141,6 +177,104 @@
         app:layout_constraintTop_toBottomOf="@+id/DescriptiontextView"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/parkWebsite"
+        android:layout_width="341dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Websitetextview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/Websitetextview"
+        android:layout_width="254dp"
+        android:layout_height="24dp"
+        android:text="@string/website"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.869" />
+
+    <TextView
+        android:id="@+id/parkAddress"
+        android:layout_width="237dp"
+        android:layout_height="71dp"
+        android:gravity="center_vertical"
+        android:textColor="#999E9D"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toEndOf="@+id/googleMap"
+        app:layout_constraintTop_toBottomOf="@+id/Locationtextview"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/readReviewsButton"
+        android:layout_width="101dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="36dp"
+        android:text="reviews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/parkRatingBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
+
+    <TextView
+        android:id="@+id/ratingtextView"
+        android:layout_width="81dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/rating"
+        android:gravity="left|center_vertical"
+        android:text="/5.0"
+        android:textColor="#B5B5B5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <TextView
+        android:id="@+id/parkRating"
+        android:layout_width="58dp"
+        android:layout_height="33dp"
+        android:gravity="center_horizontal"
+        android:text="4.7"
+        android:textColor="#516764"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ratingtextView"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toEndOf="@+id/RatingtextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.339" />
+
+    <TextView
+        android:id="@+id/RatingtextView"
+        android:layout_width="81dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/rating"
+        android:text="@string/rating"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
+
     <RatingBar
         android:id="@+id/parkRatingBar"
         style="@style/Widget.AppCompat.RatingBar"
@@ -157,103 +291,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RatingtextView"
         app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/RatingtextView"
-        android:layout_width="81dp"
-        android:layout_height="32dp"
-        android:contentDescription="@string/rating"
-        android:text="@string/rating"
-        android:textColor="#89A8A5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
-
-    <TextView
-        android:id="@+id/ratingtextView"
-        android:layout_width="81dp"
-        android:layout_height="32dp"
-        android:contentDescription="@string/rating"
-        android:gravity="left|center_vertical"
-        android:text="/5.0"
-        android:textColor="#B5B5B5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
-
-    <TextView
-        android:id="@+id/parkRating"
-        android:layout_width="58dp"
-        android:layout_height="33dp"
-        android:gravity="center_horizontal"
-        android:text="4.7"
-        android:textColor="#516764"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ratingtextView"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/RatingtextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.323" />
-
-    <TextView
-        android:id="@+id/parkWebsite"
-        android:layout_width="346dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Websitetextview"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/Websitetextview"
-        android:layout_width="254dp"
-        android:layout_height="24dp"
-        android:text="@string/website"
-        android:textColor="#89A8A5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
-
-    <TextView
-        android:id="@+id/parkAddress"
-        android:layout_width="205dp"
-        android:layout_height="96dp"
-        android:gravity="center_vertical"
-        android:textColor="#999E9D"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.261"
-        app:layout_constraintStart_toEndOf="@+id/googleMap"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.576" />
-
-    <Button
-        android:id="@+id/readReviewsButton"
-        android:layout_width="101dp"
-        android:layout_height="41dp"
-        android:layout_marginEnd="36dp"
-        android:text="reviews"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/parkRatingBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
