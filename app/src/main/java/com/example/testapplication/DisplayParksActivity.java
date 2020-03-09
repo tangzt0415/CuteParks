@@ -135,7 +135,7 @@ public class DisplayParksActivity extends AppCompatActivity {
 
         Filter filter = getIntent().getExtras().getParcelable("FILTER");
         Database db = new Database();
-        db.loadAllParks().whenComplete((parks, throwable) -> {
+        db.loadAllParksAndUpdateOverallRatings().whenComplete((parks, throwable) -> {
             if (throwable == null) {
                 ArrayList<Park> Parks = filter.filterParks(new ArrayList<Park>(parks));
 
