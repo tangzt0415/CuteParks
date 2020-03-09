@@ -2,12 +2,14 @@ package com.example.testapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.content.Context;
 //import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,15 +26,51 @@ public class FavouritesActivity extends AppCompatActivity {
 
     public void displayFavourites(ArrayList<Park> parks) {
 
-        ///// display 1st park
-        // display park name
+        // display 1st park
         TextView f1Name = findViewById(R.id.f1Name);
         f1Name.setText(parks.get(0).getName());
 
-        // copy to clipboard
-        // remove from favourites
-        // write review
+        // display 2nd park, if available
+        if (parks.size() > 1) {
+            TextView f2Name = findViewById(R.id.f2Name);
+            f2Name.setText(parks.get(1).getName());
+        }
 
+        // display 3rd park, if available
+        if (parks.size() > 2) {
+            TextView f3Name = findViewById(R.id.f3Name);
+            f3Name.setText(parks.get(2).getName());
+        }
+
+        // display 4th park, if available
+        if (parks.size() > 3) {
+            TextView f4Name = findViewById(R.id.f4Name);
+            f4Name.setText(parks.get(3).getName());
+        }
+
+        // display 5th park, if available
+        if (parks.size() > 4) {
+            TextView f5Name = findViewById(R.id.f5Name);
+            f5Name.setText(parks.get(4).getName());
+        }
+
+        // display 6th park, if available
+        if (parks.size() > 5) {
+            TextView f6Name = findViewById(R.id.f6Name);
+            f6Name.setText(parks.get(5).getName());
+        }
+
+        // display 7th park, if available
+        if (parks.size() > 6) {
+            TextView f7Name = findViewById(R.id.f7Name);
+            f7Name.setText(parks.get(6).getName());
+        }
+
+        // display 8th park, if available
+        if (parks.size() > 7) {
+            TextView f8Name = findViewById(R.id.f8Name);
+            f8Name.setText(parks.get(7).getName());
+        }
     }
 
 
@@ -43,159 +81,234 @@ public class FavouritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favourites);
 
         ////////////////////////////////////////////
-        // if favourite list is empty
+        // All views
+        LinearLayout f1 = findViewById(R.id.f1);
+        LinearLayout f2 = findViewById(R.id.f2);
+        LinearLayout f3 = findViewById(R.id.f3);
+        LinearLayout f4 = findViewById(R.id.f4);
+        LinearLayout f5 = findViewById(R.id.f5);
+        LinearLayout f6 = findViewById(R.id.f6);
+        LinearLayout f7 = findViewById(R.id.f7);
+        LinearLayout f8 = findViewById(R.id.f8);
+        TextView f1Name = findViewById(R.id.f1Name);
+        TextView f2Name = findViewById(R.id.f2Name);
+        TextView f3Name = findViewById(R.id.f3Name);
+        TextView f4Name = findViewById(R.id.f4Name);
+        TextView f5Name = findViewById(R.id.f5Name);
+        TextView f6Name = findViewById(R.id.f6Name);
+        TextView f7Name = findViewById(R.id.f7Name);
+        TextView f8Name = findViewById(R.id.f8Name);
+        ImageButton f1ShareButton = findViewById(R.id.f1ShareButton);
+        ImageButton f2ShareButton = findViewById(R.id.f2ShareButton);
+        ImageButton f3ShareButton = findViewById(R.id.f3ShareButton);
+        ImageButton f4ShareButton = findViewById(R.id.f4ShareButton);
+        ImageButton f5ShareButton = findViewById(R.id.f5ShareButton);
+        ImageButton f6ShareButton = findViewById(R.id.f6ShareButton);
+        ImageButton f7ShareButton = findViewById(R.id.f7ShareButton);
+        ImageButton f8ShareButton = findViewById(R.id.f8ShareButton);
+        ImageButton f1FavouriteButton = findViewById(R.id.f1FavouriteButton);
+        ImageButton f2FavouriteButton = findViewById(R.id.f2FavouriteButton);
+        ImageButton f3FavouriteButton = findViewById(R.id.f3FavouriteButton);
+        ImageButton f4FavouriteButton = findViewById(R.id.f4FavouriteButton);
+        ImageButton f5FavouriteButton = findViewById(R.id.f5FavouriteButton);
+        ImageButton f6FavouriteButton = findViewById(R.id.f6FavouriteButton);
+        ImageButton f7FavouriteButton = findViewById(R.id.f7FavouriteButton);
+        ImageButton f8FavouriteButton = findViewById(R.id.f8FavouriteButton);
+        ImageButton f1ReviewButton = findViewById(R.id.f1ReviewButton);
+        ImageButton f2ReviewButton = findViewById(R.id.f2ReviewButton);
+        ImageButton f3ReviewButton = findViewById(R.id.f3ReviewButton);
+        ImageButton f4ReviewButton = findViewById(R.id.f4ReviewButton);
+        ImageButton f5ReviewButton = findViewById(R.id.f5ReviewButton);
+        ImageButton f6ReviewButton = findViewById(R.id.f6ReviewButton);
+        ImageButton f7ReviewButton = findViewById(R.id.f7ReviewButton);
+        ImageButton f8ReviewButton = findViewById(R.id.f8ReviewButton);
         TextView emptyFavListTextView = findViewById(R.id.emptyFavListTextView);
+        ////////////////////////////////////////////
+
+        // if favourite list is empty
+        if (parks.isEmpty()) {
+            // make all the 8 rows disappear, only show empty list message
+            f1.setVisibility(View.GONE);
+            f2.setVisibility(View.GONE);
+            f3.setVisibility(View.GONE);
+            f4.setVisibility(View.GONE);
+            f5.setVisibility(View.GONE);
+            f6.setVisibility(View.GONE);
+            f7.setVisibility(View.GONE);
+            f8.setVisibility(View.GONE);
+        }
 
         // if not empty
         if (!parks.isEmpty()) {
 
             // make empty list message disappear
-            emptyFavListTextView.setVisibility(emptyFavListTextView.GONE);
+            emptyFavListTextView.setVisibility(View.GONE);
 
             // display favourite parks
             this.displayFavourites(parks);
 
-            // All views
-            LinearLayout f1 = findViewById(R.id.f1);
-            LinearLayout f2 = findViewById(R.id.f2);
-            LinearLayout f3 = findViewById(R.id.f3);
-            LinearLayout f4 = findViewById(R.id.f4);
-            LinearLayout f5 = findViewById(R.id.f5);
-            LinearLayout f6 = findViewById(R.id.f6);
-            LinearLayout f7 = findViewById(R.id.f7);
-            LinearLayout f8 = findViewById(R.id.f8);
-            TextView f1Name = findViewById(R.id.f1Name);
-            TextView f2Name = findViewById(R.id.f2Name);
-            TextView f3Name = findViewById(R.id.f3Name);
-            TextView f4Name = findViewById(R.id.f4Name);
-            TextView f5Name = findViewById(R.id.f5Name);
-            TextView f6Name = findViewById(R.id.f6Name);
-            TextView f7Name = findViewById(R.id.f7Name);
-            TextView f8Name = findViewById(R.id.f8Name);
-            ImageButton f1ShareButton = findViewById(R.id.f1ShareButton);
-            ImageButton f2ShareButton = findViewById(R.id.f2ShareButton);
-            ImageButton f3ShareButton = findViewById(R.id.f3ShareButton);
-            ImageButton f4ShareButton = findViewById(R.id.f4ShareButton);
-            ImageButton f5ShareButton = findViewById(R.id.f5ShareButton);
-            ImageButton f6ShareButton = findViewById(R.id.f6ShareButton);
-            ImageButton f7ShareButton = findViewById(R.id.f7ShareButton);
-            ImageButton f8ShareButton = findViewById(R.id.f8ShareButton);
-            ImageButton f1FavouriteButton = findViewById(R.id.f1FavouriteButton);
-            ImageButton f2FavouriteButton = findViewById(R.id.f2FavouriteButton);
-            ImageButton f3FavouriteButton = findViewById(R.id.f3FavouriteButton);
-            ImageButton f4FavouriteButton = findViewById(R.id.f4FavouriteButton);
-            ImageButton f5FavouriteButton = findViewById(R.id.f5FavouriteButton);
-            ImageButton f6FavouriteButton = findViewById(R.id.f6FavouriteButton);
-            ImageButton f7FavouriteButton = findViewById(R.id.f7FavouriteButton);
-            ImageButton f8FavouriteButton = findViewById(R.id.f8FavouriteButton);
-            ImageButton f1ReviewButton = findViewById(R.id.f1ReviewButton);
-            ImageButton f2ReviewButton = findViewById(R.id.f2ReviewButton);
-            ImageButton f3ReviewButton = findViewById(R.id.f3ReviewButton);
-            ImageButton f4ReviewButton = findViewById(R.id.f4ReviewButton);
-            ImageButton f5ReviewButton = findViewById(R.id.f5ReviewButton);
-            ImageButton f6ReviewButton = findViewById(R.id.f6ReviewButton);
-            ImageButton f7ReviewButton = findViewById(R.id.f7ReviewButton);
-            ImageButton f8ReviewButton = findViewById(R.id.f8ReviewButton);
-
-
 
             ///// copy to clipboard
+
 
 
             ///// remove from favourites
             f1FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f1.setVisibility(f1.GONE);
+                    f1.setVisibility(View.GONE);
                 }
             });
             f2FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f2.setVisibility(f2.GONE);
+                    f2.setVisibility(View.GONE);
                 }
             });
             f3FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f3.setVisibility(f3.GONE);
+                    f3.setVisibility(View.GONE);
                 }
             });
             f4FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f4.setVisibility(f4.GONE);
+                    f4.setVisibility(View.GONE);
                 }
             });
             f5FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f5.setVisibility(f5.GONE);
+                    f5.setVisibility(View.GONE);
                 }
             });
             f6FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f6.setVisibility(f6.GONE);
+                    f6.setVisibility(View.GONE);
                 }
             });
             f7FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f7.setVisibility(f7.GONE);
+                    f7.setVisibility(View.GONE);
                 }
             });
             f8FavouriteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    f8.setVisibility(f8.GONE);
+                    f8.setVisibility(View.GONE);
                 }
             });
 
-            /*View.OnClickListener clickListener = new View.OnClickListener() {
+
+
+            /// select park from favourites list to view park information
+            Intent intent = new Intent(FavouritesActivity.this, DisplayParkInformationActivity.class);
+
+            f1Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(0));
+                }
+            });
+            f2Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(1));
+                }
+            });
+            f3Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(2));
+                }
+            });
+            f4Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(3));
+                }
+            });
+            f5Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(4));
+                }
+            });
+            f6Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(5));
+                }
+            });
+            f7Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(6));
+                }
+            });
+            f8Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    intent.putExtra("PARK", parks.get(7));
+                }
+            });
+
+            /*
+            View.OnClickListener clickListener = new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
+                    Intent intent = new Intent(FavouritesActivity.this, DisplayParkInformationActivity.class);
 
                     switch(v.getId()) {
-                        case R.id.f1FavouriteButton:
-                            f1.removeView();
+                        case R.id.f1Name:
+                            intent.putExtra("PARK", parks.get(0));
                             break;
-                        case R.id.f2FavouriteButton:
-                            f2.removeView();
+                        case R.id.f2Name:
+                            intent.putExtra("PARK", parks.get(1));
                             break;
-                        case R.id.f3FavouriteButton:
-                            f3.removeView();
+                        case R.id.f3Name:
+                            intent.putExtra("PARK", parks.get(2));
                             break;
-                        case R.id.f4FavouriteButton:
-                            f4.removeView();
+                        case R.id.f4Name:
+                            intent.putExtra("PARK", parks.get(3));
                             break;
-                        case R.id.f5FavouriteButton:
-                            f5.removeView();
+                        case R.id.f5Name:
+                            intent.putExtra("PARK", parks.get(4));
                             break;
-                        case R.id.f6FavouriteButton:
-                            f6.removeView();
+                        case R.id.f6Name:
+                            intent.putExtra("PARK", parks.get(5));
                             break;
-                        case R.id.f7FavouriteButton:
-                            f7.removeView();
+                        case R.id.f7Name:
+                            intent.putExtra("PARK", parks.get(6));
                             break;
-                        case R.id.f8FavouriteButton:
-                            f8.removeView();
+                        case R.id.f8Name:
+                            intent.putExtra("PARK", parks.get(7));
                             break;
-
                     }
+                    startActivity(intent);
                 }
-            }
+            };
             */
 
 
             ///// write review
 
 
-
-
         }
 
+        // home button
+        Button backToHomeBtn = findViewById(R.id.backToHomeBtn);
+        Intent intent = new Intent(FavouritesActivity.this, MainActivity.class);
+        backToHomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
 
     }
 }

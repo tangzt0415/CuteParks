@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,21 +65,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
-
                 result.setText("Postcode: "+postalAdd);
-                //getCoordinateController getCoordinates = new getCoordinateController(postalAdd);
-                xCoordinate = 103.8045;
-                yCoordinate = 1.33;
-                result.setText(String.format("X: %f, Y: %f", xCoordinate,yCoordinate));
+                getCoordinateController process = new getCoordinateController();
+                process.execute();
 
-                Intent intent = new Intent(MainActivity.this, FilterActivity.class);
+                Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
                 //pass x- and y-coordinates to FilterActivity
-                intent.putExtra("XCOORDINATE", xCoordinate);
-                intent.putExtra("YCOORDINATE", yCoordinate);
+                intent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
                 startActivity(intent);
             }
         });
 
+        ImageButton favouritesButton = findViewById(R.id.favouritesButton);
+        favouritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FavouritesActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

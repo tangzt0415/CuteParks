@@ -15,14 +15,17 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.testapplication.ControlClass.Filter;
+import com.example.testapplication.ControlClass.getCoordinateController;
 import com.example.testapplication.EntityClass.Park;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class DisplayParksActivity extends AppCompatActivity {
 
+    public static int postal;
     public void displayParks(ArrayList<Park> parks){
 
         //display 1st park
@@ -139,7 +142,24 @@ public class DisplayParksActivity extends AppCompatActivity {
 
 
 
+                //replacing getCoordinateUI
+                if (getIntent().hasExtra("com.example.testapplication.SOMETHING")) {
+                    TextView tv = (TextView) findViewById(R.id.textView2);
+                    //retrieving info
+                    postal = Objects.requireNonNull(getIntent().getExtras()).getInt("com.example.testapplication.SOMETHING");
+                    tv.setText(String.valueOf(postal));
 
+                }
+                Button mapViewButton = findViewById(R.id.mapViewButton);
+                mapViewButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getCoordinateController process = new getCoordinateController();
+                        process.execute();
+                        Intent intent = new Intent(DisplayParksActivity.this, MapsActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
                 //Back to Filter
                 Button backToFilterButton = findViewById(R.id.backToFilterButton);
@@ -208,7 +228,6 @@ public class DisplayParksActivity extends AppCompatActivity {
                     TextView r7Rating = findViewById(R.id.r7Rating);
                     TextView r8Rating = findViewById(R.id.r8Rating);
 
-                    Button mapViewButton = findViewById(R.id.mapViewButton);
 
 
 
