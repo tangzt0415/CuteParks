@@ -85,8 +85,8 @@ public class Filter implements Parcelable {
 
 
     //Filter Parks
-    public ArrayList<Park> filterParks(){
-        ArrayList<Park> Parks = this.generateParks();
+    public ArrayList<Park> filterParks(ArrayList<Park> Parks){
+//        ArrayList<Park> Parks = this.generateParks();
         ArrayList <Park> FilterResults = new ArrayList<Park>();
 
         int i=0;

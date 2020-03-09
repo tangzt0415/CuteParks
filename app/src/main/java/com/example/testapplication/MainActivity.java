@@ -12,9 +12,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
+import com.example.testapplication.ControlClass.Filter;
 import com.example.testapplication.ControlClass.getCoordinateController;
 
 import java.text.CollationElementIterator;
+import java.util.Arrays;
 import java.util.Objects;
 import com.example.testapplication.EntityClass.Park;
 
@@ -40,9 +42,17 @@ public class MainActivity extends AppCompatActivity {
                 // Continue Here
                 Log.d("DEBUG_APP", throwable.getLocalizedMessage().toString());
             } else {
-                Log.d("DEBUG_APP", "Success");
+
+                ArrayList<Park> newParks = new ArrayList<>(parks);
+                Filter filter = new Filter("", 40, 0, 103.8045, 1.33);
+                ArrayList<Park> resultingParks = filter.filterParks(newParks);
+
+                Log.d("DEBUG_APP", resultingParks.get(0).getName());
+                // Go mext pager with resultingParks
             }
         });
+
+
 
 
         postalcode = findViewById(R.id.postalAddress);

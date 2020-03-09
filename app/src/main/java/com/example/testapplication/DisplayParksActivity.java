@@ -131,7 +131,7 @@ public class DisplayParksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_parks);
 
         Filter filter = getIntent().getExtras().getParcelable("FILTER");
-        ArrayList<Park> parks = filter.filterParks();
+        ArrayList<Park> parks = filter.filterParks(filter.generateParks());
         //////////////////////////////////////////////////////////
 
 

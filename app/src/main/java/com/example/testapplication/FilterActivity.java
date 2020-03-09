@@ -12,6 +12,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapplication.ControlClass.Filter;
+import com.example.testapplication.EntityClass.Park;
+
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -27,14 +32,16 @@ public class FilterActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-        db.loadAllParks().whenComplete((parks, throwable) -> {
-            if (throwable == null){
-                // Continue Here
-            } else {
-                Toast.makeText(FilterActivity.this, "Please try again.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+//        db.loadAllParks().whenComplete((parks, throwable) -> {
+////            if (throwable == null){
+////                // Continue Here
+////            } else {
+////                Toast.makeText(FilterActivity.this, "Please try again.",
+////                        Toast.LENGTH_SHORT).show();
+////            }
+////        });
+//        CompletableFuture<List<String>> results = db.loadAllParks()
+//                .thenApply(parks -> parks.stream().map(Park::getName).collect(Collectors.toList()));
 
         //////////////////////////////////////////////////////////
         /////display distance input
