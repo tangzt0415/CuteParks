@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".FavouritesActivity"></activity>
         <activity android:name=".DisplayParksActivity" />
         <activity android:name=".DisplayParkInformationActivity" />
         <activity android:name=".SignupActivity" />

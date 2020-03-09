@@ -15,12 +15,14 @@
     <string name="complete_signup_button">Sign Up</string>
     <string name="signup_name_edit_text">signupNameEditText</string>
     <string name="sign_up">Sign Up</string>
-    <string name="filter_parks">Filter Parks</string>
-    <string name="search_keyword">Search Keyword</string>
-    <string name="filter_by_distance">Filter By Distance</string>
-    <string name="filter_by_rating">Filter By Rating</string>
-    <string name="filter">Filter</string>
-    <string name="share">Share</string>
-    <string name="favourite">Favourite</string>
-    <string name="review">Review</string>
+    <string name="description">Description</string>
+    <string name="rating">Rating</string>
+    <string name="park">Park</string>
+    <string name="park_information">Park Information</string>
+    <string name="location">Location</string>
+    <string name="address">Address</string>
+    <string name="website">Website</string>
+    <string name="reviewpark">reviewPark</string>
+    <string name="favouritepark">favouritePark</string>
+    <string name="sharepark">sharePark</string>
 </resources>
