@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
        Button submit = findViewById(R.id.postalBtn);
         Button SearchButton = findViewById(R.id.SearchButton);
-
+        //test button can be deleted sooonz
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
                 result.setText("Postcode: "+postalAdd);
+                //call background controller
                 getCoordinateController process = new getCoordinateController();
                 process.execute();
 

@@ -15,6 +15,8 @@ import com.example.testapplication.ControlClass.Filter;
 import com.example.testapplication.ControlClass.getCoordinateController;
 import com.example.testapplication.EntityClass.Park;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -82,6 +84,10 @@ public class FilterActivity extends AppCompatActivity {
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //test
+                TextView test = (TextView)findViewById(R.id.testview);
+                String text =  "x = " + getCoordinateController.resultLat + "y  = " + getCoordinateController.resultLong;
+                test.setText(text);
                 //get keyword filter
                 EditText filterKeywordEditText = findViewById(R.id.filterKeywordEditText);
                 String keywordF = filterKeywordEditText.getText().toString();
