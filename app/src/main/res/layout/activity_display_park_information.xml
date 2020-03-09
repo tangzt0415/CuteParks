@@ -11,29 +11,13 @@
     tools:context=".DisplayParkInformationActivity">
 
     <TextView
-        android:id="@+id/DescriptiontextView"
-        android:layout_width="140dp"
-        android:layout_height="33dp"
-        android:contentDescription="@android:string/fingerprint_icon_content_description"
-        android:text="@string/description"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.656"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.194" />
-
-    <TextView
         android:id="@+id/Addresstextview"
         android:layout_width="157dp"
         android:layout_height="31dp"
         android:text="@string/address"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.826"
@@ -47,34 +31,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="202dp" />
-
-    <TextView
-        android:id="@+id/Websitetextview"
-        android:layout_width="360dp"
-        android:layout_height="35dp"
-        android:text="@string/website"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.274"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.603" />
-
-    <TextView
-        android:id="@+id/parktextview"
-        android:layout_width="52dp"
-        android:layout_height="28dp"
-        android:text="@string/park"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
 
     <ImageButton
         android:id="@+id/reviewPark"
@@ -104,20 +60,6 @@
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
-    <TextView
-        android:id="@+id/Locationtextview"
-        android:layout_width="164dp"
-        android:layout_height="29dp"
-        android:text="@string/location"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386" />
-
     <ImageButton
         android:id="@+id/sharePark"
         android:layout_width="wrap_content"
@@ -133,29 +75,21 @@
         app:srcCompat="@android:drawable/ic_menu_share" />
 
     <TextView
-        android:id="@+id/ParkInformation"
-        android:layout_width="200dp"
-        android:layout_height="42dp"
-        android:text="@string/park_information"
+        android:id="@+id/parkName"
+        android:layout_width="205dp"
+        android:layout_height="56dp"
+        android:gravity="fill_horizontal|fill_vertical"
+        android:text="Jurong Central Park"
+        android:textAlignment="textStart"
         android:textColor="@color/colorPrimary"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
-
-    <TextView
-        android:id="@+id/parkDescription"
-        android:layout_width="178dp"
-        android:layout_height="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.763"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/googleMap"
@@ -163,21 +97,115 @@
         android:layout_height="96dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintVertical_bias="0.48" />
 
     <TextView
-        android:id="@+id/parkName"
-        android:layout_width="130dp"
-        android:layout_height="29dp"
+        android:id="@+id/DescriptiontextView"
+        android:layout_width="140dp"
+        android:layout_height="33dp"
+        android:contentDescription="@android:string/fingerprint_icon_content_description"
+        android:text="@string/description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/parkDescription"
+        android:layout_width="379dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="10dp"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollIndicators="right"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarDefaultDelayBeforeFade="500"
+        android:scrollbarFadeDuration="300"
+        android:scrollbarSize="5dp"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/RatingtextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DescriptiontextView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Built in 1943, Esplanade Park is one of the oldest among Singapore’s heritage parks. Redeveloped in 1991 to enhance the Civic District's identity and to create an important frontage for the Padang, Supreme Court and City Hall, Esplanade Park is a showcase for many of Singapore’s historical landmarks. Take a stroll through this iconic park and reflect on the sacrifices made by brave soldiers at the Lim Bo Seng Memorial and the Cenotaph, and marvel at the intricacies of the Victorian splendour of the distinctive blue and white Tan Kim Seng Fountain, built in 1882 to commemorate the contributions to Singapore of the famous Chinese philanthropist." />
+
+    <TextView
+        android:id="@+id/RatingtextView"
+        android:layout_width="106dp"
+        android:layout_height="31dp"
+        android:contentDescription="@string/rating"
+        android:text="@string/rating"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251" />
+
+    <TextView
+        android:id="@+id/parkRating"
+        android:layout_width="131dp"
+        android:layout_height="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312" />
+
+    <TextView
+        android:id="@+id/Locationtextview"
+        android:layout_width="164dp"
+        android:layout_height="29dp"
+        android:text="@string/location"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
+
+    <TextView
+        android:id="@+id/Websitetextview"
+        android:layout_width="360dp"
+        android:layout_height="35dp"
+        android:text="@string/website"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
+
+    <TextView
+        android:id="@+id/parkWebsite"
+        android:layout_width="362dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
 
     <TextView
         android:id="@+id/parkAddress"
@@ -189,42 +217,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.481" />
-
-    <TextView
-        android:id="@+id/parkWebsite"
-        android:layout_width="362dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
-
-    <TextView
-        android:id="@+id/RatingtextView"
-        android:layout_width="106dp"
-        android:layout_height="31dp"
-        android:contentDescription="@string/rating"
-        android:text="@string/rating"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.194" />
-
-    <TextView
-        android:id="@+id/parkRating"
-        android:layout_width="131dp"
-        android:layout_height="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
