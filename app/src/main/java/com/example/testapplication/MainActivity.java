@@ -16,7 +16,7 @@ import com.example.testapplication.ControlClass.getCoordinateController;
 public class MainActivity extends AppCompatActivity {
     public static TextView result;
     public static int postalAdd;
-    EditText postalcode;
+    public static EditText postalcode;
     double xCoordinate;
     double yCoordinate;
 
