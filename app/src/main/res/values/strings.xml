@@ -15,4 +15,17 @@
     <string name="complete_signup_button">Sign Up</string>
     <string name="signup_name_edit_text">signupNameEditText</string>
     <string name="sign_up">Sign Up</string>
+    <string name="description">Description</string>
+    <string name="address">Address</string>
+    <string name="website">Website</string>
+    <string name="park">Park:</string>
+    <string name="park_information">Park Information</string>
+    <string name="weather_forecast">Weather Forecast</string>
+    <string name="location">Location</string>
+    <string name="rating">Rating</string>
+    <string name="reviewpark">reviewPark</string>
+    <string name="sharepark">sharePark</string>
+    <string name="favouritepark">favouritePark</string>
+
+
 </resources>
