@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,17 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView result = findViewById(R.id.result);
-
-        // Retrieve all parks
-        Database db = new Database();
-        db.loadAllParks().whenComplete((parks, throwable) -> {
-            if (throwable == null){
-                // Continue Here
-            } else {
-                Toast.makeText(MainActivity.this, "Please try again.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
 
         postalcode = findViewById(R.id.postalAddress);
 

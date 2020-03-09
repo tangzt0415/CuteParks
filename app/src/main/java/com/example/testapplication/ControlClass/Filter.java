@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.util.Log;
 
 
-import com.example.testapplication.Database;
+//import com.example.testapplication.Database;
 import com.example.testapplication.EntityClass.Park;
 import com.example.testapplication.EntityClass.Review;
 import com.example.testapplication.EntityClass.User;

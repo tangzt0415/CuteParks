@@ -32,32 +32,8 @@ class Database {
     }
 
     // Park Functions
-    // Context context = getApplicationContext();
-    void pushParksToFirestore (Context context) {
-        List<Park> parks = getParksFromCSV(context);
-        WriteBatch batch = db.batch();
-        for (int i = 0; i < parks.size(); i++) {
-            Park curPark = parks.get(i);
-            DocumentReference docRef = db.collection("parks").document(curPark.getId());
-            batch.set(docRef, curPark);
-        }
 
-        batch.commit()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("SUCCESS", "Parks successfully added!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("FAILURE", "An error has occurred - parks are not added!");
-                    }
-                });
-    }
-
-    private CompletableFuture<List<Park>> loadAllParksAndUpdateOverallRatings() {
+    public CompletableFuture<List<Park>> loadAllParksAndUpdateOverallRatings() {
         CompletableFuture<List<Park>> parksFutures = loadAllParks();
         CompletableFuture<List<Review>> reviewsFutures = loadAllReviews();
 
@@ -69,7 +45,9 @@ class Database {
             for (String parkId : avgReviews.keySet()) {
                 Double curAvgRating = avgReviews.get(parkId);
                 Park park = parks.stream().filter(p -> p.getId().equals(parkId)).findFirst().orElse(null);
-//                park.setOverallRating(curAvgRating);
+                if (park != null && curAvgRating != null) {
+                    park.setOverallRating(curAvgRating);
+                }
             }
             return saveAllParks(parks);
         });
@@ -321,7 +299,7 @@ class Database {
         return future;
     }
 
-    private CompletableFuture<List<Review>> loadAllReviews() {
+    public CompletableFuture<List<Review>> loadAllReviews() {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
                 .get()
@@ -343,12 +321,12 @@ class Database {
         return future;
     }
 
-    private HashMap<String, Double> getParkIdAvgRatingsFromReviews(List<Review> reviews){
-        HashMap<String, List<Integer>> parkIdToRatings = new HashMap<>();
+    public HashMap<String, Double> getParkIdAvgRatingsFromReviews(List<Review> reviews){
+        HashMap<String, List<Double>> parkIdToRatings = new HashMap<>();
         for (Review review: reviews) {
             String reviewedParkId = review.getParkId();
-            Integer reviewedRating = review.getRating();
-            List<Integer> ratingsList = parkIdToRatings.get(reviewedParkId);
+            Double reviewedRating = review.getRating();
+            List<Double> ratingsList = parkIdToRatings.get(reviewedParkId);
 
             // if list does not exist create it
             if(ratingsList == null) {
@@ -356,17 +334,16 @@ class Database {
                 ratingsList.add(reviewedRating);
                 parkIdToRatings.put(reviewedParkId, ratingsList);
             } else {
-                // add if Car is not already in list
                 ratingsList.add(reviewedRating);
             }
         }
 
         HashMap<String, Double> parkIdToAvgRatings = new HashMap<>();
         for (String key: parkIdToRatings.keySet()) {
-            List<Integer> ratingsList = parkIdToRatings.get(key);
+            List<Double> ratingsList = parkIdToRatings.get(key);
             assert ratingsList != null;
             Double avg = 0.0;
-            for (Integer rating:ratingsList) {
+            for (Double rating:ratingsList) {
                 avg += rating;
             }
             avg /= ratingsList.size();
@@ -395,6 +372,31 @@ class Database {
                     }
                 });
         return future;
+    }
+
+    // Context context = getApplicationContext();
+    private void pushParksToFirestore (Context context) {
+        List<Park> parks = getParksFromCSV(context);
+        WriteBatch batch = db.batch();
+        for (int i = 0; i < parks.size(); i++) {
+            Park curPark = parks.get(i);
+            DocumentReference docRef = db.collection("parks").document(curPark.getId());
+            batch.set(docRef, curPark);
+        }
+
+        batch.commit()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("SUCCESS", "Parks successfully added!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("FAILURE", "An error has occurred - parks are not added!");
+                    }
+                });
     }
 
     private static List<Park> getParksFromCSV(Context context) {
@@ -438,6 +440,62 @@ class Database {
         String locationAddress = metadata[5];
 
         return new Park(UUID.randomUUID().toString(), name, "", locationX, locationY, locationAddress, website, amenities);
+    }
+
+    private void pushReviewsToFirestore (Context context) {
+        List<Review> reviews = getReviewFromCSV(context);
+        WriteBatch batch = db.batch();
+        for (int i = 0; i < reviews.size(); i++) {
+            Review curReview = reviews.get(i);
+            DocumentReference docRef = db.collection("reviews").document(curReview.getId());
+            batch.set(docRef, curReview);
+        }
+
+        batch.commit()
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("SUCCESS", "Reviews successfully added!");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("FAILURE", "An error has occurred - reviews are not added!");
+                }
+            });
+    }
+
+    private static List<Review> getReviewFromCSV(Context context) {
+        // Context context = getApplicationContext();
+
+        ArrayList<Review> reviews = new ArrayList<>();
+        try {
+            InputStreamReader is = new InputStreamReader(context.getAssets()
+                    .open("Reviews.csv"));
+            BufferedReader br = new BufferedReader(is);
+            String header = br.readLine();
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] attributes = line.split(",");
+                Review review = createReview(attributes);
+                reviews.add(review);
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        return reviews;
+    }
+
+    private static Review createReview(String[] metadata) {
+        String userId = metadata[0];
+        String parkId = metadata[1];
+        double rating = Double.parseDouble(metadata[2].replaceAll("[^\\d.]", ""));
+        String description = "";
+
+        return new Review(userId, parkId, rating, description);
     }
 
     private CompletableFuture<List<Park>> loadParksFromParkIds (List<String> parkIds) {
