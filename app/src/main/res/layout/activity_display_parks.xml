@@ -540,6 +540,7 @@
         android:text="Oops, no parks fulfill all the criteria.\n Please try something else (:"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
