@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapplication.ControlClass.Filter;
+import com.example.testapplication.EntityClass.Park;
+
+import java.util.ArrayList;
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -93,6 +96,7 @@ public class FilterActivity extends AppCompatActivity {
                 ratingTextView.setText(String.format("%.1f",ratingF));
 
                 //generate filter
+
                 Filter filter = new Filter(keywordF, distanceF, ratingF, UserLocationX, UserLocationY);
 
                 //pass the filtered parks for display

@@ -2,7 +2,6 @@ package com.example.testapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,12 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//import com.example.testapplication.BoundaryClass.getCoordinateUI;
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
 import com.example.testapplication.ControlClass.getCoordinateController;
-
-import java.text.CollationElementIterator;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     public static TextView result;
@@ -24,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     EditText postalcode;
     double xCoordinate;
     double yCoordinate;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
