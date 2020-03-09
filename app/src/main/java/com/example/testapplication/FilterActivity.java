@@ -32,16 +32,6 @@ public class FilterActivity extends FragmentActivity {
 
         }
 
-        // Retrieve all parks
-        Database db = new Database();
-        db.loadAllParks().whenComplete((parks, throwable) -> {
-            if (throwable == null){
-                // Continue Here
-            } else {
-                Toast.makeText(FilterActivity.this, "Please try again.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
 
         //////////////////////////////////////////////////////////
         /////display distance input

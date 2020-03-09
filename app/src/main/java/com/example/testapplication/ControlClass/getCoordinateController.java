@@ -63,7 +63,6 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        getCoordinateUI.data.setText(address);
     }
 
 }
