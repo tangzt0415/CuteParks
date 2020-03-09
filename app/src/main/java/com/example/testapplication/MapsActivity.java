@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         if(getIntent().hasExtra("com.example.testapplication.SOMETHING")){
             int postal = getIntent().getExtras().getInt("com.example.testapplication.SOMETHING");
-    }
+        }
     }
 
 

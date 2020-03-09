@@ -22,8 +22,8 @@ public class FilterActivity extends AppCompatActivity {
 
         //////////////////////////////////////////////////////////
         //get user location from maps
-        final double UserLocationX = 103.8045;
-        final double UserLocationY = 1.33;
+        final double UserLocationX = getIntent().getExtras().getDouble("XCOORDINATE");
+        final double UserLocationY = getIntent().getExtras().getDouble("YCOORDINATE");
 
         // Retrieve all parks
         Database db = new Database();
