@@ -8,11 +8,13 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.testapplication.ControlClass.Filter;
+import com.example.testapplication.EntityClass.Park;
 
+import java.util.ArrayList;
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -23,8 +25,19 @@ public class FilterActivity extends AppCompatActivity {
 
         //////////////////////////////////////////////////////////
         //get user location from maps
-        final double UserLocationX = 103.8045;
-        final double UserLocationY = 1.33;
+        final double UserLocationX = getIntent().getExtras().getDouble("XCOORDINATE");
+        final double UserLocationY = getIntent().getExtras().getDouble("YCOORDINATE");
+
+        // Retrieve all parks
+        Database db = new Database();
+        db.loadAllParks().whenComplete((parks, throwable) -> {
+            if (throwable == null){
+                // Continue Here
+            } else {
+                Toast.makeText(FilterActivity.this, "Please try again.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //////////////////////////////////////////////////////////
         /////display distance input
@@ -53,7 +66,7 @@ public class FilterActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 TextView ratingTextView = findViewById(R.id.ratingTextView);
-                ratingTextView.setText(String.format("%.1f",rating));
+                ratingTextView.setText(rating + "");
             }
         });
 
@@ -83,6 +96,7 @@ public class FilterActivity extends AppCompatActivity {
                 ratingTextView.setText(String.format("%.1f",ratingF));
 
                 //generate filter
+
                 Filter filter = new Filter(keywordF, distanceF, ratingF, UserLocationX, UserLocationY);
 
                 //pass the filtered parks for display

@@ -49,6 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="false"
                 android:gravity="center"
                 android:text="List" />
         </LinearLayout>
@@ -100,7 +101,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Distance"
+                        android:id="@+id/distanceSort"
                         android:layout_width="45dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -112,7 +113,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/Rating"
+                        android:id="@+id/ratingSort"
                         android:layout_width="30dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -177,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_weight="1"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:orientation="horizontal">
 
                     <TextView
@@ -225,7 +226,7 @@
                     android:id="@+id/r3"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:orientation="horizontal">
 
                     <TextView

@@ -23,7 +23,7 @@ public class getCoordinateUI extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_user_location);
 
         if (getIntent().hasExtra("com.example.testapplication.SOMETHING")) {
             TextView tv = (TextView) findViewById(R.id.textView2);
@@ -32,17 +32,11 @@ public class getCoordinateUI extends AppCompatActivity {
             tv.setText(String.valueOf(postal));
 
         }
-        click = (Button)findViewById(R.id.getCoordinate);
         data = (TextView)findViewById(R.id.displayJson);
         click2 = (Button)findViewById(R.id.setMap);
 
-        click.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getCoordinateController process = new getCoordinateController();
-                process.execute();
-            }
-        });
+
+
         click2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
