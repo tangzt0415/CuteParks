@@ -25,4 +25,12 @@
     <string name="reviewpark">reviewPark</string>
     <string name="favouritepark">favouritePark</string>
     <string name="sharepark">sharePark</string>
+    <string name="share">Share</string>
+    <string name="favourite">Favourite</string>
+    <string name="review">Review</string>
+    <string name="filter_parks">filter parks</string>
+    <string name="search_keyword">search keyword</string>
+    <string name="filter_by_distance">filter by distance</string>
+    <string name="filter_by_rating">filter by rating</string>
+    <string name="filter">Filter</string>
 </resources>

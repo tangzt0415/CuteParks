@@ -12,21 +12,24 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapplication.ControlClass.Filter;
+import com.example.testapplication.ControlClass.getCoordinateController;
 import com.example.testapplication.EntityClass.Park;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class FilterActivity extends AppCompatActivity {
+    public static int postal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+        if (getIntent().hasExtra("com.example.testapplication.SOMETHING")) {
+            //retrieving info
+            postal = Objects.requireNonNull(getIntent().getExtras()).getInt("com.example.testapplication.SOMETHING");
 
-        //////////////////////////////////////////////////////////
-        //get user location from maps
-        final double UserLocationX = getIntent().getExtras().getDouble("XCOORDINATE");
-        final double UserLocationY = getIntent().getExtras().getDouble("YCOORDINATE");
+        }
 
         // Retrieve all parks
         Database db = new Database();
@@ -97,7 +100,7 @@ public class FilterActivity extends AppCompatActivity {
 
                 //generate filter
 
-                Filter filter = new Filter(keywordF, distanceF, ratingF, UserLocationX, UserLocationY);
+                Filter filter = new Filter(keywordF, distanceF, ratingF, Double.parseDouble(getCoordinateController.resultLat), Double.parseDouble(getCoordinateController.resultLong));
 
                 //pass the filtered parks for display
                 Intent intent = new Intent(FilterActivity.this, DisplayParksActivity.class);
