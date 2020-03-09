@@ -99,7 +99,6 @@
         android:layout_width="205dp"
         android:layout_height="56dp"
         android:gravity="fill_horizontal|fill_vertical"
-        android:text="Jurong Central Park"
         android:textAlignment="textStart"
         android:textColor="@color/colorPrimary"
         android:textSize="22sp"

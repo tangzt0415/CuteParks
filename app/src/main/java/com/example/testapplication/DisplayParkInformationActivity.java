@@ -27,9 +27,6 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
         Park park = Objects.requireNonNull(getIntent().getExtras()).getParcelable("PARK");
 
-        /*TextView textView = (TextView)findViewById(R.id.textView);
-        textView.setText("AbhiAndroid"); //set text for text view */
-
         // Display park name
         TextView parkName = findViewById(R.id.parkName);
         parkName.setText(park.getName());
@@ -41,9 +38,9 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
         // Display park rating
         TextView parkRating = findViewById(R.id.parkRating);
-        parkRating.setText(String.format("%.1f",park.getOverallRating()));
+        parkRating.setText(String.format("%.1f", park.getOverallRating()));
         RatingBar parkRatingBar = findViewById(R.id.parkRatingBar);
-        parkRatingBar.setRating((float)park.getOverallRating());
+        parkRatingBar.setRating((float) park.getOverallRating());
 
         //Read Reviews
         Button readReviewsButton = findViewById(R.id.readReviewsButton);
@@ -51,7 +48,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayParkInformationActivity.this, ReadReviewActivity.class);
-                intent.putExtra("PARKID",park.getId());
+                intent.putExtra("PARKID", park.getId());
                 startActivity(intent);
             }
         });
@@ -71,12 +68,12 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayParkInformationActivity.this, MapsActivity.class);
-                intent.putExtra("PARK",park);
+                intent.putExtra("PARK", park);
                 startActivity(intent);
             }
         });
 
-        // Display park activities
+        // Display park activities - GOT PROBLEM - Amenities list of all parks are empty(?)
         TextView parkActivities = findViewById(R.id.parkActivities);
         ArrayList<String> activities = park.getAmenities();
 
@@ -88,8 +85,10 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
                 parkActivitiesString = parkActivitiesString + ", " + activity;
             }
         }
-        parkActivities.setText(activities.size()+"");
+
+        parkActivities.setText(parkActivitiesString);
         parkActivities.setMovementMethod(new ScrollingMovementMethod());
+
 
 
 
