@@ -13,6 +13,7 @@ import com.google.firebase.firestore.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -22,11 +23,11 @@ import static android.content.ContentValues.TAG;
 
 // Completable Futures are used to handle async requests, explained here https://www.callicoder.com/java-8-completablefuture-tutorial/
 
-public class Database {
+class Database {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public Database() {
+    Database() {
 
     }
 
@@ -56,28 +57,22 @@ public class Database {
                 });
     }
 
-    public CompletableFuture<List<Park>> loadAllParks(){
+    private CompletableFuture<List<Park>> loadAllParksAndUpdateOverallRatings() {
+        CompletableFuture<List<Park>> parksFutures = loadAllParks();
+        CompletableFuture<List<Review>> reviewsFutures = loadAllReviews();
 
-        final CompletableFuture<List<Park>> future = new CompletableFuture<>();
-        db.collection("parks")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            List<Park> results = new ArrayList<>();
-                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                Park documentObj = document.toObject(Park.class);
-//                                Log.d("SUCCESS", document.getId() + " => " + document.getData());
-                                results.add(documentObj);
-                            }
-                            future.complete(results);
-                        } else {
-                            future.completeExceptionally(new CustomExceptions("Firebase Error"));
-                        }
-                    }
-                });
-        return future;
+        return CompletableFuture.allOf(parksFutures, reviewsFutures).thenCompose(result -> {
+            List<Park> parks = parksFutures.join();
+            List<Review> reviews = reviewsFutures.join();
+
+            HashMap<String, Double> avgReviews = getParkIdAvgRatingsFromReviews(reviews);
+            for (String parkId : avgReviews.keySet()) {
+                Double curAvgRating = avgReviews.get(parkId);
+                Park park = parks.stream().filter(p -> p.getId().equals(parkId)).findFirst().orElse(null);
+//                park.setOverallRating(curAvgRating);
+            }
+            return saveAllParks(parks);
+        });
     }
 
     CompletableFuture<List<Boolean>> deleteAllParks(){
@@ -275,6 +270,57 @@ public class Database {
     /*
     Private Helper Methods
      */
+
+    CompletableFuture<List<Park>> loadAllParks(){
+        final CompletableFuture<List<Park>> future = new CompletableFuture<>();
+        db.collection("parks")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<Park> results = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                Park documentObj = document.toObject(Park.class);
+//                                Log.d("SUCCESS", document.getId() + " => " + document.getData());
+                                results.add(documentObj);
+                            }
+                            future.complete(results);
+                        } else {
+                            future.completeExceptionally(new CustomExceptions("Firebase Error"));
+                        }
+                    }
+                });
+        return future;
+    }
+
+    private CompletableFuture<List<Park>> saveAllParks(List<Park> parks) {
+        final CompletableFuture<List<Park>> future = new CompletableFuture<>();
+        WriteBatch batch = db.batch();
+        for (int i = 0; i < parks.size(); i++) {
+            Park curPark = parks.get(i);
+            DocumentReference docRef = db.collection("parks").document(curPark.getId());
+            batch.set(docRef, curPark);
+        }
+
+        batch.commit()
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("SUCCESS", "Parks successfully saved!");
+                    future.complete(parks);
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("FAILURE", "An error has occurred - parks are not saved!");
+                    future.completeExceptionally(e);
+                }
+            });
+        return future;
+    }
+
     private CompletableFuture<List<Review>> loadAllReviews() {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
