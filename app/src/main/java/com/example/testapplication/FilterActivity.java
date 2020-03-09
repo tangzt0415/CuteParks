@@ -11,14 +11,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import com.example.testapplication.ControlClass.Filter;
 import com.example.testapplication.ControlClass.getCoordinateController;
-import com.example.testapplication.EntityClass.Park;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
-public class FilterActivity extends AppCompatActivity {
+public class FilterActivity extends FragmentActivity {
     public static int postal;
 
     @Override
@@ -99,8 +100,9 @@ public class FilterActivity extends AppCompatActivity {
                 ratingTextView.setText(String.format("%.1f",ratingF));
 
                 //generate filter
-
-                Filter filter = new Filter(keywordF, distanceF, ratingF, Double.parseDouble(getCoordinateController.resultLat), Double.parseDouble(getCoordinateController.resultLong));
+//                getCoordinateController process = new getCoordinateController();
+//                process.execute();
+                Filter filter = new Filter(keywordF, distanceF, ratingF, Double.parseDouble(getCoordinateController.resultLong), Double.parseDouble(getCoordinateController.resultLat));
 
                 //pass the filtered parks for display
                 Intent intent = new Intent(FilterActivity.this, DisplayParksActivity.class);

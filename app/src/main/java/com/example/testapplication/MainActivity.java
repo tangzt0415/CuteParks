@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
                 result.setText("Postcode: "+postalAdd);
-                getCoordinateController process = new getCoordinateController();
-                process.execute();
 
                 Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
                 //pass x- and y-coordinates to FilterActivity
