@@ -207,7 +207,9 @@ public class DisplayParksActivity extends AppCompatActivity {
                     TextView r6Rating = findViewById(R.id.r6Rating);
                     TextView r7Rating = findViewById(R.id.r7Rating);
                     TextView r8Rating = findViewById(R.id.r8Rating);
+
                     Button mapViewButton = findViewById(R.id.mapViewButton);
+                    
 
 
                     View.OnClickListener clickListener = new View.OnClickListener() {
