@@ -14,9 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapplication.ControlClass.Filter;
 import com.example.testapplication.EntityClass.Park;
 
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -32,16 +30,14 @@ public class FilterActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-//        db.loadAllParks().whenComplete((parks, throwable) -> {
-////            if (throwable == null){
-////                // Continue Here
-////            } else {
-////                Toast.makeText(FilterActivity.this, "Please try again.",
-////                        Toast.LENGTH_SHORT).show();
-////            }
-////        });
-//        CompletableFuture<List<String>> results = db.loadAllParks()
-//                .thenApply(parks -> parks.stream().map(Park::getName).collect(Collectors.toList()));
+        db.loadAllParks().whenComplete((parks, throwable) -> {
+            if (throwable == null){
+                // Continue Here
+            } else {
+                Toast.makeText(FilterActivity.this, "Please try again.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //////////////////////////////////////////////////////////
         /////display distance input
@@ -100,6 +96,7 @@ public class FilterActivity extends AppCompatActivity {
                 ratingTextView.setText(String.format("%.1f",ratingF));
 
                 //generate filter
+
                 Filter filter = new Filter(keywordF, distanceF, ratingF, UserLocationX, UserLocationY);
 
                 //pass the filtered parks for display

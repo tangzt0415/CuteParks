@@ -22,11 +22,11 @@ import static android.content.ContentValues.TAG;
 
 // Completable Futures are used to handle async requests, explained here https://www.callicoder.com/java-8-completablefuture-tutorial/
 
-class Database {
+public class Database {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    Database() {
+    public Database() {
 
     }
 
@@ -56,7 +56,7 @@ class Database {
                 });
     }
 
-    CompletableFuture<List<Park>> loadAllParks(){
+    public CompletableFuture<List<Park>> loadAllParks(){
 
         final CompletableFuture<List<Park>> future = new CompletableFuture<>();
         db.collection("parks")

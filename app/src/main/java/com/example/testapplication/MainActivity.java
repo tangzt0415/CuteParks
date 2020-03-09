@@ -2,7 +2,6 @@ package com.example.testapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,26 +11,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
-import com.example.testapplication.ControlClass.Filter;
 import com.example.testapplication.ControlClass.getCoordinateController;
-
-import java.text.CollationElementIterator;
-import java.util.Arrays;
-import java.util.Objects;
-import com.example.testapplication.EntityClass.Park;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public static TextView result;
     public static int postalAdd;
-    EditText postalcode;
+    public static EditText postalcode;
     double xCoordinate;
     double yCoordinate;
 
-    public String testFunction() {
-        return "Hello";
-    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-        String test = "";
-
-
-
+        db.loadAllParks().whenComplete((parks, throwable) -> {
+            if (throwable == null){
+                // Continue Here
+            } else {
+                Toast.makeText(MainActivity.this, "Please try again.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         postalcode = findViewById(R.id.postalAddress);
 

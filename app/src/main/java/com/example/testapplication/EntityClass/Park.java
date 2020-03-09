@@ -40,7 +40,7 @@ public class Park implements Parcelable{
 		this.Reviews = new ArrayList<>();
 	}
 
-    protected Park(Parcel in) {
+    public Park(Parcel in) {
         id = in.readString();
         name = in.readString();
         description = in.readString();
