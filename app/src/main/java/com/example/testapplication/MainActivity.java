@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
     double xCoordinate;
     double yCoordinate;
 
+    public String testFunction() {
+        return "Hello";
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,20 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Retrieve all parks
         Database db = new Database();
-        db.loadAllParks().whenComplete((parks, throwable) -> {
-            if (throwable != null){
-                // Continue Here
-                Log.d("DEBUG_APP", throwable.getLocalizedMessage().toString());
-            } else {
-
-                ArrayList<Park> newParks = new ArrayList<>(parks);
-                Filter filter = new Filter("", 40, 0, 103.8045, 1.33);
-                ArrayList<Park> resultingParks = filter.filterParks(newParks);
-
-                Log.d("DEBUG_APP", resultingParks.get(0).getName());
-                // Go mext pager with resultingParks
-            }
-        });
+        String test = "";
 
 
 
