@@ -16,7 +16,7 @@ import java.util.Objects;
 
 //test class to send postal code to Map API to retrieve coordinates
 public class getCoordinateUI extends AppCompatActivity {
-    public static int postal;
+    public int postal;
     Button click;
     Button click2;
     public static TextView data;
