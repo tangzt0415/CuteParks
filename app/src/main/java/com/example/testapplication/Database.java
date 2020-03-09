@@ -8,7 +8,6 @@ import com.example.testapplication.EntityClass.Park;
 import com.example.testapplication.EntityClass.Review;
 import com.example.testapplication.EntityClass.User;
 import com.google.android.gms.tasks.*;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.*;
 
 import java.io.BufferedReader;
@@ -26,7 +25,6 @@ import static android.content.ContentValues.TAG;
 class Database {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     Database() {
 

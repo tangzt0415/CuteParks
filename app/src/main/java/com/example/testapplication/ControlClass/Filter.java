@@ -8,8 +8,10 @@ import com.example.testapplication.EntityClass.Review;
 import com.example.testapplication.EntityClass.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public class Filter implements Parcelable {
     String keywordF;
@@ -109,6 +111,7 @@ public class Filter implements Parcelable {
         return FilterResults;
     }
 
+
     public String getKeywordF() {
         return keywordF;
     }
@@ -163,3 +166,4 @@ public class Filter implements Parcelable {
         dest.writeDouble(UserLocationY);
     }
 }
+

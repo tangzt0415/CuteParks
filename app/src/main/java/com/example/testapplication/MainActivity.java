@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
+import com.example.testapplication.EntityClass.Park;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
         // Retrieve all parks
         Database db = new Database();
         db.loadAllParks().whenComplete((parks, throwable) -> {
-            if (throwable == null){
+            if (throwable != null){
                 // Continue Here
+                Log.d("DEBUG_APP", throwable.getLocalizedMessage().toString());
             } else {
-                Toast.makeText(MainActivity.this, "Please try again.",
-                        Toast.LENGTH_SHORT).show();
+                Log.d("DEBUG_APP", "Success");
             }
         });
+
 
         postalcode = findViewById(R.id.postalAddress);
 
