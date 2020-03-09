@@ -10,21 +10,6 @@
     android:textAlignment="center"
     tools:context=".DisplayParkInformationActivity">
 
-    <TextView
-        android:id="@+id/Addresstextview"
-        android:layout_width="157dp"
-        android:layout_height="31dp"
-        android:text="@string/address"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#89A8A5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.387" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -91,17 +76,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/googleMap"
-        android:layout_width="186dp"
-        android:layout_height="96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
-
     <TextView
         android:id="@+id/DescriptiontextView"
         android:layout_width="140dp"
@@ -120,8 +94,8 @@
 
     <TextView
         android:id="@+id/parkDescription"
-        android:layout_width="379dp"
-        android:layout_height="63dp"
+        android:layout_width="366dp"
+        android:layout_height="78dp"
         android:layout_marginBottom="10dp"
         android:overScrollMode="ifContentScrolls"
         android:scrollIndicators="right"
@@ -136,11 +110,21 @@
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/RatingtextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DescriptiontextView"
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="Built in 1943, Esplanade Park is one of the oldest among Singapore’s heritage parks. Redeveloped in 1991 to enhance the Civic District's identity and to create an important frontage for the Padang, Supreme Court and City Hall, Esplanade Park is a showcase for many of Singapore’s historical landmarks. Take a stroll through this iconic park and reflect on the sacrifices made by brave soldiers at the Lim Bo Seng Memorial and the Cenotaph, and marvel at the intricacies of the Victorian splendour of the distinctive blue and white Tan Kim Seng Fountain, built in 1882 to commemorate the contributions to Singapore of the famous Chinese philanthropist." />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/parkRating"
+        android:layout_width="131dp"
+        android:layout_height="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363" />
 
     <TextView
         android:id="@+id/RatingtextView"
@@ -155,18 +139,18 @@
         app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
-        android:id="@+id/parkRating"
-        android:layout_width="131dp"
-        android:layout_height="68dp"
+        android:id="@+id/parkWebsite"
+        android:layout_width="362dp"
+        android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintVertical_bias="0.923" />
 
     <TextView
         android:id="@+id/Locationtextview"
@@ -180,7 +164,33 @@
         app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
+        app:layout_constraintVertical_bias="0.612" />
+
+    <TextView
+        android:id="@+id/Addresstextview"
+        android:layout_width="157dp"
+        android:layout_height="31dp"
+        android:text="@string/address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.617" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/googleMap"
+        android:layout_width="186dp"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733" />
 
     <TextView
         android:id="@+id/Websitetextview"
@@ -194,18 +204,7 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <TextView
-        android:id="@+id/parkWebsite"
-        android:layout_width="362dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.686" />
+        app:layout_constraintVertical_bias="0.831" />
 
     <TextView
         android:id="@+id/parkAddress"
@@ -216,6 +215,6 @@
         app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintVertical_bias="0.734" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
