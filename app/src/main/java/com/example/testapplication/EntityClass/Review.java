@@ -10,7 +10,7 @@ public class Review {
     private String id;
     private String userId;
     private String parkId;
-    private int rating;
+    private Double rating;
     private String description;
 
 
@@ -20,7 +20,7 @@ public class Review {
 
     }
 
-    public Review(String userId, String parkId, int rating, String description) {
+    public Review(String userId, String parkId, Double rating, String description) {
         this.id = UUID.randomUUID().toString();
         this.userId = userId;
         this.parkId = parkId;
@@ -64,12 +64,12 @@ public class Review {
     }
 
 
-    public int getRating() {
+    public Double getRating() {
         return rating;
     }
 
 
-    public void setRating(int rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 

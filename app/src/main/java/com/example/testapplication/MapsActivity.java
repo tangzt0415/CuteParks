@@ -35,14 +35,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Retrieve all parks
         Database db = new Database();
-        db.loadAllParks().whenComplete((parks, throwable) -> {
-            if (throwable == null){
-                // Continue Here
-            } else {
-                Toast.makeText(MapsActivity.this, "Please try again.",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
