@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
                 result.setText("Postcode: "+postalAdd);
 
+                getCoordinateController process = new getCoordinateController();
+                process.execute();
 
                 Intent startIntent = new Intent(getApplicationContext(), getCoordinateUI.class);
                 //passing info to another activity

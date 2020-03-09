@@ -35,8 +35,6 @@ public class getCoordinateUI extends AppCompatActivity {
         data = (TextView)findViewById(R.id.displayJson);
         click2 = (Button)findViewById(R.id.setMap);
 
-        getCoordinateController process = new getCoordinateController();
-        process.execute();
 
 
         click2.setOnClickListener(new View.OnClickListener() {
