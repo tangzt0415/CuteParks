@@ -73,8 +73,7 @@ public class Filter implements Parcelable {
             if ((park.getDistance() <= this.distanceF)
                     & (park.getOverallRating() >= this.ratingF)
                     & ( (park.getName().toLowerCase().contains(this.keywordF.toLowerCase()))
-                        | (park.getLocationAddress().toLowerCase().contains(this.keywordF.toLowerCase()))
-                        | (park.getDescription().toLowerCase().contains(this.keywordF.toLowerCase())))
+                        |(park.getDescription().toLowerCase().contains(this.keywordF.toLowerCase())))
             ) {
                 FilterResults.add(park);
             }
