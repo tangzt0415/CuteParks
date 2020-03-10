@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
@@ -152,9 +153,11 @@ public class DisplayParksActivity extends AppCompatActivity {
                 mapViewButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        getCoordinateController process = new getCoordinateController();
-                        process.execute();
+                        /*getCoordinateController process = new getCoordinateController();
+                        process.execute();*/
+                        //parsing arraylist of parks to map activity
                         Intent intent = new Intent(DisplayParksActivity.this, MapsActivity.class);
+                        intent.putExtra("FILTER", filter);
                         startActivity(intent);
                     }
                 });
