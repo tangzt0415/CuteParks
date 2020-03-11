@@ -68,7 +68,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayParkInformationActivity.this, MapsActivity.class);
-                intent.putExtra("PARK", park);
+                intent.putExtra("PARKmap", park);
                 startActivity(intent);
             }
         });
