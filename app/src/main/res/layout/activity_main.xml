@@ -8,17 +8,6 @@
     android:background="#208178"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/postalBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="@string/submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.879"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <EditText
         android:id="@+id/postalAddress"
         android:layout_width="wrap_content"
@@ -93,17 +82,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postalAddress"
         app:layout_constraintVertical_bias="0.024" />
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="194dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="196dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchButton" />
 
     <ImageButton
         android:id="@+id/favouritesButton"

@@ -32,6 +32,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     public static int postal;
     ArrayList<Park> Parks = null;
+    boolean displayParkInfo = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
