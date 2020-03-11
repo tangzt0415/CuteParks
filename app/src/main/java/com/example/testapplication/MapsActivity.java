@@ -18,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -60,6 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Marker[] myMarker = new Marker[10];
+        ArrayList<Marker> Markers = new ArrayList<Marker>();
 /*        Park park[] = new Park[3];
         LatLng coordinate[] = new LatLng[3];
         park[0] = new Park(UUID.randomUUID().toString()
@@ -89,6 +92,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMinZoomPreference(10);
         mMap.addMarker(new MarkerOptions().position(bob).title("Your Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bob));
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(MapsActivity.this, DisplayParkInformationActivity.class);
+                int j;
+                for(j = 0 ; j < 8 ; j++){
+                    if(marker.equals(Markers.get(j))) {
+                        intent.putExtra("PARK", Parks.get(j));
+                        startActivity(intent);
+                    }
+                    Log.d("Marker check", "looping");
+                }
+            }
+        });
 
         // Retrieve all parks
         Filter filter = getIntent().getExtras().getParcelable("FILTER");
@@ -99,9 +116,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Parks.sort(Comparator.comparingDouble(Park::getDistance));
                 Log.d("no of parks", Integer.toString(Parks.size()));
                 LatLng coordinate[] = new LatLng[Parks.size()];
-                for(int i = 0;i < Parks.size(); i++) {
+                for(int i = 0;i < 8/*Parks.size()*/; i++) {
                     coordinate[i] = new LatLng(Parks.get(i).getLocationY(), Parks.get(i).getLocationX());
-                    mMap.addMarker(new MarkerOptions().position(coordinate[i]).title(Parks.get(i).getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    myMarker[i] = mMap.addMarker(new MarkerOptions().position(coordinate[i]).title(Parks.get(i).getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    Markers.add(myMarker[i]);
+                    Log.d("markers size", Integer.toString(Markers.size()));
                 }
 /*                LatLng test = new LatLng(Parks.get(1).getLocationY(),Parks.get(1).getLocationX());
                 mMap.addMarker(new MarkerOptions().position(test).title(Parks.get(1).getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));*/
