@@ -137,8 +137,8 @@ public class DisplayParksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_parks);
-        ColorStateList darkColor = ColorStateList.valueOf(Color.parseColor("#425C59"));
-        ColorStateList lightColor = ColorStateList.valueOf(Color.parseColor("#D2E5E3"));
+        final ColorStateList darkColor = ColorStateList.valueOf(Color.parseColor("#425C59"));
+        final ColorStateList lightColor = ColorStateList.valueOf(Color.parseColor("#D2E5E3"));
 
         //select list by default
         Button mapViewButton = findViewById(R.id.mapViewButton);
@@ -173,8 +173,6 @@ public class DisplayParksActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         //changing button display
                         Button listViewButton = findViewById(R.id.listViewButton);
-                        ColorStateList darkColor = ColorStateList.valueOf(Color.parseColor("#425C59"));
-                        ColorStateList lightColor = ColorStateList.valueOf(Color.parseColor("#D2E5E3"));
 
                         mapViewButton.setBackgroundTintList(darkColor);
                         mapViewButton.setTextColor(Color.WHITE);
