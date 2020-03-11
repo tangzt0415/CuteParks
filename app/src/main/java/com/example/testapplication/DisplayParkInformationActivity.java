@@ -69,6 +69,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayParkInformationActivity.this, MapsActivity.class);
                 intent.putExtra("PARK", park);
+                intent.putExtra("DISPLAY1PARK", true);
                 startActivity(intent);
             }
         });

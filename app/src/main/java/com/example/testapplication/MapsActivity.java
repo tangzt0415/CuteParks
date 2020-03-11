@@ -62,29 +62,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-/*        Park park[] = new Park[3];
-        LatLng coordinate[] = new LatLng[3];
-        park[0] = new Park(UUID.randomUUID().toString()
-                ,"Jurong Central Park", "Fitness corner or stations and fitness equipment or exercise station   Grand lawn   Jogging path or running track   Playground   Restroom/Toilets with or without shower facilities   Event lawn"
-                , 103.7075606
-                , 1.337442349
-                , "Jalan Boon Lay junction with Boon Lay Way"
-                , "http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=68&Itemid=73"
-                , new ArrayList<>());
-        park[1] = new Park(UUID.randomUUID().toString()
-                ,"Kranji Resevoir Park", "Drinking fountain   Toilets   Shelters   Benches"
-                , 103.7380629
-                ,1.439122404
-                ,"Along Kranji Way"
-                ,
-                "http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=86&Itemid=73"
-                , new ArrayList<>());
-        park[2] = new Park(UUID.randomUUID().toString()
-                ,"Choa Chu Kang Park"
-                ,"Amphitheatre   Benches   Bicycle rack   Childrens play equipment   Food and beverage area or restaurant or cafe   Fitness corner or stations and fitness equipment or exercise station   Jogging path or running track   Multi-purpose court or corner   Restroom or Toilets with or without shower facilities"
-                ,103.7471915,1.387737263,"Beside Kranji Expressway and along Choa Chu Kang Drive"
-                ,"http://www.nparks.gov.sg/cms/index.php?option=com_visitorsguide&task=parks&id=12&Itemid=73"
-                , new ArrayList<>());*/
 
         // Add a marker for current location and move the camera
         LatLng bob = new LatLng(Double.parseDouble(getCoordinateController.resultLat), Double.parseDouble(getCoordinateController.resultLong));
@@ -92,27 +69,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(bob).title("Your Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bob));
 
-        // Retrieve all parks
-        Filter filter = getIntent().getExtras().getParcelable("FILTER");
-        Database db = new Database();
-        db.loadAllParksAndUpdateOverallRatings().whenComplete((parks, throwable) ->{
-            if(throwable == null){
-                Parks = filter.filterParks(new ArrayList<Park>(parks));
-                Parks.sort(Comparator.comparingDouble(Park::getDistance));
-                Log.d("no of parks", Integer.toString(Parks.size()));
-                LatLng coordinate[] = new LatLng[Parks.size()];
-                for(int i = 0;i < Parks.size(); i++) {
-                    coordinate[i] = new LatLng(Parks.get(i).getLocationY(), Parks.get(i).getLocationX());
-                    mMap.addMarker(new MarkerOptions().position(coordinate[i]).title(Parks.get(i).getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-                }
-/*                LatLng test = new LatLng(Parks.get(1).getLocationY(),Parks.get(1).getLocationX());
-                mMap.addMarker(new MarkerOptions().position(test).title(Parks.get(1).getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));*/
-                Log.d("marker","marker added");
-            }else{
-                Log.d("DEBUG_APP", "An error has occured");
-            }
-        });
+        displayParkInfo = getIntent().getExtras().getBoolean("DISPLAY1PARK");
+        if (getIntent().getSelector()){
+            //display 1 selected park only
+            Park park = new Park(Objects.requireNonNull(getIntent().getExtras().getParcelable("PARK")));
+            LatLng coordinate = new LatLng(park.getLocationY(), park.getLocationX());
+            mMap.addMarker(new MarkerOptions().position(coordinate).title(park.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        } else {
+            //display all filtered parks
 
+            // Retrieve all parks
+            Filter filter = getIntent().getExtras().getParcelable("FILTER");
+            Database db = new Database();
+            db.loadAllParksAndUpdateOverallRatings().whenComplete((parks, throwable) -> {
+                if (throwable == null) {
+                    Parks = filter.filterParks(new ArrayList<Park>(parks));
+                    Parks.sort(Comparator.comparingDouble(Park::getDistance));
+                    Log.d("no of parks", Integer.toString(Parks.size()));
+                    LatLng coordinate[] = new LatLng[Parks.size()];
+                    for (int i = 0; i < Parks.size(); i++) {
+                        coordinate[i] = new LatLng(Parks.get(i).getLocationY(), Parks.get(i).getLocationX());
+                        mMap.addMarker(new MarkerOptions().position(coordinate[i]).title(Parks.get(i).getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    }
+                    Log.d("marker", "marker added");
+                } else {
+                    Log.d("DEBUG_APP", "An error has occured");
+                }
+
+            });
+        }
 
     }
 }
