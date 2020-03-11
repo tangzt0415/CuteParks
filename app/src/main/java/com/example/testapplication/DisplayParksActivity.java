@@ -3,6 +3,9 @@ package com.example.testapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.BlendMode;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -28,6 +31,7 @@ public class DisplayParksActivity extends AppCompatActivity {
 
     public static int postal;
     public void displayParks(ArrayList<Park> parks){
+
 
         //display 1st park
         TextView r1No = findViewById(R.id.r1No);
@@ -133,6 +137,20 @@ public class DisplayParksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_parks);
+        ColorStateList darkColor = ColorStateList.valueOf(Color.parseColor("#425C59"));
+        ColorStateList lightColor = ColorStateList.valueOf(Color.parseColor("#D2E5E3"));
+
+        //select list by default
+        Button mapViewButton = findViewById(R.id.mapViewButton);
+        Button listViewButton = findViewById(R.id.listViewButton);
+        mapViewButton.setBackgroundTintList(lightColor);
+        mapViewButton.setTextColor(Color.BLACK);
+        listViewButton.setTextColor(Color.WHITE);
+        listViewButton.setBackgroundTintList(darkColor);
+
+
+
+
 
         Filter filter = getIntent().getExtras().getParcelable("FILTER");
         Database db = new Database();
@@ -149,16 +167,29 @@ public class DisplayParksActivity extends AppCompatActivity {
                     tv.setText(String.valueOf(postal));
 
                 }
-                Button mapViewButton = findViewById(R.id.mapViewButton);
+
                 mapViewButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        /*getCoordinateController process = new getCoordinateController();
-                        process.execute();*/
+                        //changing button display
+                        Button listViewButton = findViewById(R.id.listViewButton);
+                        ColorStateList darkColor = ColorStateList.valueOf(Color.parseColor("#425C59"));
+                        ColorStateList lightColor = ColorStateList.valueOf(Color.parseColor("#D2E5E3"));
+
+                        mapViewButton.setBackgroundTintList(darkColor);
+                        mapViewButton.setTextColor(Color.WHITE);
+                        listViewButton.setTextColor(Color.BLACK);
+                        listViewButton.setBackgroundTintList(lightColor);
+
                         //parsing arraylist of parks to map activity
                         Intent intent = new Intent(DisplayParksActivity.this, MapsActivity.class);
                         intent.putExtra("FILTER", filter);
                         startActivity(intent);
+
+                        mapViewButton.setBackgroundTintList(lightColor);
+                        mapViewButton.setTextColor(Color.BLACK);
+                        listViewButton.setTextColor(Color.WHITE);
+                        listViewButton.setBackgroundTintList(darkColor);
                     }
                 });
 

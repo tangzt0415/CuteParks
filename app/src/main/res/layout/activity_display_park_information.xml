@@ -76,33 +76,6 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <TextView
-        android:id="@+id/Locationtextview"
-        android:layout_width="163dp"
-        android:layout_height="21dp"
-        android:text="@string/location"
-        android:textColor="#89A8A5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/googleMap"
-        android:layout_width="93dp"
-        android:layout_height="71dp"
-        android:background="@drawable/map_icon"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Locationtextview"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
         android:id="@+id/DescriptiontextView"
         android:layout_width="140dp"
         android:layout_height="33dp"
@@ -175,69 +148,37 @@
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toEndOf="@+id/googleMap"
         app:layout_constraintTop_toBottomOf="@+id/Locationtextview"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/readReviewsButton"
-        android:layout_width="101dp"
-        android:layout_height="41dp"
-        android:layout_marginEnd="36dp"
-        android:text="reviews"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/parkRatingBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
-
     <TextView
-        android:id="@+id/ratingtextView"
-        android:layout_width="81dp"
-        android:layout_height="32dp"
-        android:contentDescription="@string/rating"
-        android:gravity="left|center_vertical"
-        android:text="/5.0"
-        android:textColor="#B5B5B5"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
-
-    <TextView
-        android:id="@+id/parkRating"
-        android:layout_width="58dp"
-        android:layout_height="33dp"
-        android:gravity="center_horizontal"
-        android:text="4.7"
-        android:textColor="#516764"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ratingtextView"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toEndOf="@+id/RatingtextView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
-
-    <TextView
-        android:id="@+id/RatingtextView"
-        android:layout_width="81dp"
-        android:layout_height="32dp"
-        android:contentDescription="@string/rating"
-        android:text="@string/rating"
+        android:id="@+id/Locationtextview"
+        android:layout_width="163dp"
+        android:layout_height="21dp"
+        android:text="@string/location"
         android:textColor="#89A8A5"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.141"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34" />
+        app:layout_constraintVertical_bias="0.449" />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/googleMap"
+        android:layout_width="93dp"
+        android:layout_height="71dp"
+        android:background="@drawable/map_icon"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Locationtextview"
+        app:layout_constraintVertical_bias="0.0" />
 
     <RatingBar
         android:id="@+id/parkRatingBar"
@@ -256,72 +197,126 @@
         app:layout_constraintTop_toBottomOf="@+id/RatingtextView"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/parkImage1"
-        android:layout_width="202dp"
-        android:layout_height="114dp"
+    <TextView
+        android:id="@+id/parkRating"
+        android:layout_width="58dp"
+        android:layout_height="33dp"
+        android:gravity="center_horizontal"
+        android:text="4.7"
+        android:textColor="#516764"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ratingtextView"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toEndOf="@+id/RatingtextView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318" />
+
+    <TextView
+        android:id="@+id/RatingtextView"
+        android:layout_width="81dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/rating"
+        android:text="@string/rating"
+        android:textColor="#89A8A5"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792"
+        app:layout_constraintVertical_bias="0.319" />
+
+    <Button
+        android:id="@+id/readReviewsButton"
+        android:layout_width="101dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="36dp"
+        android:text="reviews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/parkRatingBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379" />
+
+    <TextView
+        android:id="@+id/ratingtextView"
+        android:layout_width="81dp"
+        android:layout_height="32dp"
+        android:contentDescription="@string/rating"
+        android:gravity="left|center_vertical"
+        android:text="/5.0"
+        android:textColor="#B5B5B5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.319" />
+
+    <ImageView
+        android:id="@+id/parkImage1"
+        android:layout_width="235dp"
+        android:layout_height="131dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766"
         app:srcCompat="@drawable/park_icon3" />
 
     <ImageView
         android:id="@+id/playgroundImage"
-        android:layout_width="61dp"
-        android:layout_height="43dp"
+        android:layout_width="70dp"
+        android:layout_height="49dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintHorizontal_bias="0.639"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.736"
+        app:layout_constraintVertical_bias="0.717"
         app:srcCompat="@drawable/playground_icon" />
 
     <ImageView
         android:id="@+id/parkImage2"
-        android:layout_width="116dp"
-        android:layout_height="87dp"
+        android:layout_width="122dp"
+        android:layout_height="95dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759"
+        app:layout_constraintVertical_bias="0.731"
         app:srcCompat="@drawable/park_icon2" />
 
     <ImageView
         android:id="@+id/cyclingImange"
-        android:layout_width="44dp"
-        android:layout_height="39dp"
+        android:layout_width="51dp"
+        android:layout_height="47dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.588"
+        app:layout_constraintHorizontal_bias="0.683"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813"
+        app:layout_constraintVertical_bias="0.786"
         app:srcCompat="@drawable/cycling_icon" />
 
     <ImageView
         android:id="@+id/runningImage"
-        android:layout_width="63dp"
-        android:layout_height="61dp"
+        android:layout_width="70dp"
+        android:layout_height="65dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintHorizontal_bias="0.847"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795"
+        app:layout_constraintVertical_bias="0.77"
         app:srcCompat="@drawable/running_icon" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/BbqImage"
@@ -329,10 +324,10 @@
         android:layout_height="37dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756"
+        app:layout_constraintVertical_bias="0.801"
         app:srcCompat="@drawable/barbeque_icon" />
 
     <TextView
@@ -347,13 +342,13 @@
         app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657" />
+        app:layout_constraintVertical_bias="0.608" />
 
     <TextView
         android:id="@+id/parkActivities"
-        android:layout_width="340dp"
-        android:layout_height="113dp"
-        android:background="#9CFFFFFF"
+        android:layout_width="343dp"
+        android:layout_height="140dp"
+        android:background="#B2FFFFFF"
         android:overScrollMode="ifContentScrolls"
         android:scrollIndicators="right"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
@@ -367,7 +362,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activitytextview"
         app:layout_constraintVertical_bias="0.0" />

@@ -41,17 +41,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimaryLight"
                 android:gravity="center"
-                android:text="Map " />
+                android:text="Map "
+                android:textColor="#000000" />
 
             <Button
                 android:id="@+id/listViewButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="#425C59"
                 android:clickable="false"
                 android:gravity="center"
-                android:text="List" />
+                android:text="List"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
         <ScrollView
