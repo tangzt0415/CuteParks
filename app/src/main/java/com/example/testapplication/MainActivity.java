@@ -27,33 +27,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView result = findViewById(R.id.result);
 
         postalcode = findViewById(R.id.postalAddress);
 
-       Button submit = findViewById(R.id.postalBtn);
         Button SearchButton = findViewById(R.id.SearchButton);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                postalAdd = Integer.parseInt(postalcode.getText().toString());
-                result.setText("Postcode: "+postalAdd);
 
-                getCoordinateController process = new getCoordinateController();
-                process.execute();
-
-                Intent startIntent = new Intent(getApplicationContext(), getCoordinateUI.class);
-                //passing info to another activity
-                startIntent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
-                startActivity(startIntent);
-            }
-        });
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 postalAdd = Integer.parseInt(postalcode.getText().toString());
-                result.setText("Postcode: "+postalAdd);
 
                 getCoordinateController process = new getCoordinateController();
                 process.execute();
