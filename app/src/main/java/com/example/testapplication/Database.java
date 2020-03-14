@@ -2,6 +2,7 @@ package com.example.testapplication;
 import android.content.Context;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.testapplication.EntityClass.Favourite;
 import com.example.testapplication.EntityClass.Park;
@@ -9,11 +10,12 @@ import com.example.testapplication.EntityClass.Review;
 import com.example.testapplication.EntityClass.User;
 import com.google.android.gms.tasks.*;
 import com.google.firebase.firestore.*;
+import com.google.firebase.firestore.EventListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
+import java.sql.Ref;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -53,7 +55,7 @@ class Database {
         });
     }
 
-    CompletableFuture<List<Boolean>> deleteAllParks(){
+    CompletableFuture<List<Boolean>> deleteAllParks() {
         return loadAllParks().thenCompose(parks -> {
             List<CompletableFuture<Boolean>> deletedParks = parks
                     .stream()
@@ -69,7 +71,7 @@ class Database {
         });
     }
 
-    CompletableFuture<Park> loadPark(String id){
+    CompletableFuture<Park> loadPark(String id) {
         final CompletableFuture<Park> future = new CompletableFuture<>();
         DocumentReference docRef = db.collection("parks").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -95,7 +97,7 @@ class Database {
     }
 
     // Review Functions
-    CompletableFuture<List<Review>> loadReviewsByParkId (String parkId) {
+    CompletableFuture<List<Review>> loadReviewsByParkId(String parkId) {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
                 .whereEqualTo("parkId", parkId)
@@ -118,7 +120,7 @@ class Database {
         return future;
     }
 
-    CompletableFuture<String> createReview (Review review){
+    CompletableFuture<String> createReview(Review review) {
         final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("reviews").document(review.getId())
                 .set(review)
@@ -139,7 +141,7 @@ class Database {
         return future;
     }
 
-    CompletableFuture<String> updateReview (Review review){
+    CompletableFuture<String> updateReview(Review review) {
         final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("reviews").document(review.getId())
                 .set(review)
@@ -160,7 +162,7 @@ class Database {
         return future;
     }
 
-    CompletableFuture<Boolean> deleteReview (String reviewId) {
+    CompletableFuture<Boolean> deleteReview(String reviewId) {
         final CompletableFuture<Boolean> future = new CompletableFuture<>();
         db.collection("reviews").document(reviewId)
                 .delete()
@@ -182,7 +184,7 @@ class Database {
     }
 
     // Favourite Functions
-    CompletableFuture<List<Favourite>> loadFavouritesByUserId (String uid) {
+    CompletableFuture<List<Favourite>> loadFavouritesByUserId(String uid) {
         final CompletableFuture<List<Favourite>> future = new CompletableFuture<>();
         db.collection("favourites")
                 .whereEqualTo("userId", uid)
@@ -205,7 +207,7 @@ class Database {
         return future;
     }
 
-    CompletableFuture<Boolean> deleteFavourite (String favouriteId) {
+    CompletableFuture<Boolean> deleteFavourite(String favouriteId) {
         final CompletableFuture<Boolean> future = new CompletableFuture<>();
         db.collection("favourites").document(favouriteId)
                 .delete()
@@ -226,29 +228,29 @@ class Database {
         return future;
     }
 
-    CompletableFuture<String> createFavourite (Favourite favourite){
+    CompletableFuture<String> createFavourite(Favourite favourite) {
         final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("favourites").document(favourite.getId())
-            .set(favourite)
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "DocumentSnapshot successfully written!");
-                    future.complete(favourite.getId());
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "Error writing document", e);
-                    future.completeExceptionally(e);
-                }
-            });
+                .set(favourite)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully written!");
+                        future.complete(favourite.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                        future.completeExceptionally(e);
+                    }
+                });
         return future;
     }
 
     // User Functions
-    CompletableFuture<String> createUser(User user){
+    CompletableFuture<String> createUser(User user) {
         final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("users").document(user.getId())
                 .set(user)
@@ -273,7 +275,7 @@ class Database {
     Private Helper Methods
      */
 
-    private CompletableFuture<List<Park>> loadAllParks(){
+    private CompletableFuture<List<Park>> loadAllParks() {
         final CompletableFuture<List<Park>> future = new CompletableFuture<>();
         db.collection("parks")
                 .get()
@@ -296,14 +298,14 @@ class Database {
         return future;
     }
 
-    private CompletableFuture<List<String>> getParkIdsWithHigherReviewThan(Double baseline){
+    private CompletableFuture<List<String>> getParkIdsWithHigherReviewThan(Double baseline) {
         return loadAllReviews().thenApply(reviews -> {
             HashMap<String, Double> parkIdAndAvgRatings = getParkIdAvgRatingsFromReviews(reviews);
             List<String> selectedParkIds = new ArrayList<>();
-            for (String parkId: parkIdAndAvgRatings.keySet()) {
+            for (String parkId : parkIdAndAvgRatings.keySet()) {
                 Double avgRating = 5.0;
                 avgRating = parkIdAndAvgRatings.get(parkId);
-                if (baseline <= avgRating){
+                if (baseline <= avgRating) {
                     selectedParkIds.add(parkId);
                 }
             }
@@ -317,10 +319,10 @@ class Database {
             HashMap<String, Double> parkIdAndAvgRatings = getParkIdAvgRatingsFromReviews(reviews);
 
             List<CompletableFuture<Park>> selectedParksFutures = new ArrayList<>();
-            for (String parkId: parkIdAndAvgRatings.keySet()) {
+            for (String parkId : parkIdAndAvgRatings.keySet()) {
                 Double avgRating = 5.0;
                 avgRating = parkIdAndAvgRatings.get(parkId);
-                if (baseline <= avgRating){
+                if (baseline <= avgRating) {
                     selectedParksFutures.add(loadPark(parkId));
                 }
             }
@@ -344,20 +346,20 @@ class Database {
         }
 
         batch.commit()
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d("SUCCESS", "Parks successfully saved!");
-                    future.complete(parks);
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d("FAILURE", "An error has occurred - parks are not saved!");
-                    future.completeExceptionally(e);
-                }
-            });
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("SUCCESS", "Parks successfully saved!");
+                        future.complete(parks);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("FAILURE", "An error has occurred - parks are not saved!");
+                        future.completeExceptionally(e);
+                    }
+                });
         return future;
     }
 
@@ -383,15 +385,15 @@ class Database {
         return future;
     }
 
-    public HashMap<String, Double> getParkIdAvgRatingsFromReviews(List<Review> reviews){
+    public HashMap<String, Double> getParkIdAvgRatingsFromReviews(List<Review> reviews) {
         HashMap<String, List<Double>> parkIdToRatings = new HashMap<>();
-        for (Review review: reviews) {
+        for (Review review : reviews) {
             String reviewedParkId = review.getParkId();
             Double reviewedRating = review.getRating();
             List<Double> ratingsList = parkIdToRatings.get(reviewedParkId);
 
             // if list does not exist create it
-            if(ratingsList == null) {
+            if (ratingsList == null) {
                 ratingsList = new ArrayList<>();
                 ratingsList.add(reviewedRating);
                 parkIdToRatings.put(reviewedParkId, ratingsList);
@@ -401,11 +403,11 @@ class Database {
         }
 
         HashMap<String, Double> parkIdToAvgRatings = new HashMap<>();
-        for (String key: parkIdToRatings.keySet()) {
+        for (String key : parkIdToRatings.keySet()) {
             List<Double> ratingsList = parkIdToRatings.get(key);
             assert ratingsList != null;
             Double avg = 0.0;
-            for (Double rating:ratingsList) {
+            for (Double rating : ratingsList) {
                 avg += rating;
             }
             avg /= ratingsList.size();
@@ -415,7 +417,7 @@ class Database {
         return parkIdToAvgRatings;
     }
 
-    private CompletableFuture<Boolean> deletePark (String parkId) {
+    private CompletableFuture<Boolean> deletePark(String parkId) {
         final CompletableFuture<Boolean> future = new CompletableFuture<>();
         db.collection("parks").document(parkId)
                 .delete()
@@ -436,9 +438,9 @@ class Database {
         return future;
     }
 
-    private CompletableFuture<List<Park>> loadParksFromParkIds (List<String> parkIds) {
+    private CompletableFuture<List<Park>> loadParksFromParkIds(List<String> parkIds) {
         List<CompletableFuture<Park>> futures = new ArrayList<>();
-        for (String parkId: parkIds) {
+        for (String parkId : parkIds) {
             futures.add(loadPark(parkId));
         }
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
@@ -447,7 +449,7 @@ class Database {
                         .collect(Collectors.toList()));
     }
 
-    private CompletableFuture<List<Review>> loadReviewsByUserId (String uid) {
+    private CompletableFuture<List<Review>> loadReviewsByUserId(String uid) {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
                 .whereEqualTo("userId", uid)
@@ -471,7 +473,7 @@ class Database {
     }
 
     // Context context = getApplicationContext();
-    private void pushParksToFirestore (Context context) {
+    private void pushParksToFirestore(Context context) {
         List<Park> parks = getParksFromCSV(context);
         WriteBatch batch = db.batch();
         for (int i = 0; i < parks.size(); i++) {
@@ -525,9 +527,10 @@ class Database {
         double locationY = Double.parseDouble(metadata[2].replaceAll("[^\\d.]", ""));
 
         String amenities_raw = metadata[3];
-        ArrayList<String> amenities = new ArrayList<>() ;;
-        if (!amenities_raw.contains("Null")){
-            amenities = Arrays.stream(metadata[3].split(" "))
+        ArrayList<String> amenities = new ArrayList<>();
+        ;
+        if (!amenities_raw.contains("Null")) {
+            amenities = Arrays.stream(metadata[3].split("  "))
                     .map(String::toLowerCase).collect(Collectors.toCollection(ArrayList::new));
             amenities.removeAll(Arrays.asList("and", "or", ""));
         }
@@ -538,7 +541,7 @@ class Database {
         return new Park(UUID.randomUUID().toString(), name, "", locationX, locationY, locationAddress, website, amenities);
     }
 
-    private void pushReviewsToFirestore (Context context) {
+    private void pushReviewsToFirestore(Context context) {
         List<Review> reviews = getReviewFromCSV(context);
         WriteBatch batch = db.batch();
         for (int i = 0; i < reviews.size(); i++) {
@@ -548,18 +551,18 @@ class Database {
         }
 
         batch.commit()
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d("SUCCESS", "Reviews successfully added!");
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d("FAILURE", "An error has occurred - reviews are not added!");
-                }
-            });
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("SUCCESS", "Reviews successfully added!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("FAILURE", "An error has occurred - reviews are not added!");
+                    }
+                });
     }
 
     private static List<Review> getReviewFromCSV(Context context) {

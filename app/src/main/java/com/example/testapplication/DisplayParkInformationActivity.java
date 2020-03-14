@@ -68,7 +68,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayParkInformationActivity.this, MapsActivity.class);
-                intent.putExtra("PARK", park);
+                intent.putExtra("PARKmap", park);
                 startActivity(intent);
             }
         });
@@ -76,23 +76,31 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
         // Display park activities - GOT PROBLEM - Amenities list of all parks are empty(?)
         TextView parkActivities = findViewById(R.id.parkActivities);
 
-        ArrayList<String> activities = new ArrayList<String>(park.getAmenities());
-        String parkActivitiesString = "";
-        if ((activities.size() == 0)){
-             parkActivitiesString = "No activities recorded.";
-        } else {
-            for (String activity:activities){
-                parkActivitiesString = parkActivitiesString + ", " + activity;
-            }
-        }
-
-        parkActivities.setText(parkActivitiesString);
-        parkActivities.setMovementMethod(new ScrollingMovementMethod());
+        Database db = new Database();
+        db.loadPark(park.getId()).whenComplete((park1, throwable) -> {
+                    if (throwable == null) {
+                        ArrayList<String> activities = new ArrayList<String>(park1.getAmenities());
 
 
+                        String parkActivitiesString = "";
+                        if ((activities.size() == 0)) {
+                            parkActivitiesString = "No activities recorded.";
+                        } else {
+                            int i = 0;
+                            for (String activity : activities) {
+                                i++;
+                                parkActivitiesString = parkActivitiesString + i + ". "
+                                        + activity.substring(0,1).toUpperCase() + activity.substring(1) + "\n";
+                            }
+                        }
+                        String textToDisplay = parkActivitiesString;
+                        parkActivities.setText(parkActivitiesString);
+                        parkActivities.setMovementMethod(new ScrollingMovementMethod());
+                    }
+        });
 
 
-        // Share park
+     // Share park
         ImageButton sharePark = findViewById(R.id.sharePark);
 
         // Favourite park
