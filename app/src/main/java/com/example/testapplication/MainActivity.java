@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.testapplication.BoundaryClass.getCoordinateUI;
 import com.example.testapplication.ControlClass.getCoordinateController;
-import com.example.testapplication.EntityClass.Park;
 
 public class MainActivity extends AppCompatActivity {
     public static TextView result;
@@ -31,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Database db = new Database();
-        db.loadAllParksAndUpdateOverallRatings().whenComplete(((parks, throwable) -> {
-            if (throwable == null) {
-                // Your code here
+        db.loadAllParksReviewsAndUpdateUserName().whenComplete((parks, error) -> {
+            if (error != null) {
+                Log.d("DEBUG_APP", "An error has occurred");
             } else {
-                Log.d("DEBUG_APP", "An error has occured");
+                Log.d("DEBUG_APP", "Successfully updated parks reviews usernames");
             }
-        }));
+        });
 
         postalcode = findViewById(R.id.postalAddress);
 

@@ -55,6 +55,14 @@ class Database {
         });
     }
 
+    CompletableFuture<Void> loadAllParksReviewsAndUpdateUserName() {
+        return loadAllParks().thenCompose(parks -> CompletableFuture
+                .allOf(parks
+                        .stream()
+                        .map(park -> loadAllReviewsAndUpdateUserName(park.getId()))
+                        .toArray(CompletableFuture[]::new)));
+    }
+
     CompletableFuture<List<Boolean>> deleteAllParks() {
         return loadAllParks().thenCompose(parks -> {
             List<CompletableFuture<Boolean>> deletedParks = parks
@@ -97,6 +105,31 @@ class Database {
     }
 
     // Review Functions
+    CompletableFuture<List<Review>> loadAllReviewsAndUpdateUserName(String parkId) {
+        CompletableFuture<List<Review>> reviewFutures = loadReviewsByParkId(parkId);
+
+        return reviewFutures.thenCompose(reviews -> {
+            List<CompletableFuture<Review>>  updatedReviews = reviews.stream()
+                    .map(this::updateReviewUserName)
+                    .collect(Collectors.toList());
+            CompletableFuture<Void> done = CompletableFuture
+                    .allOf(updatedReviews.toArray(new CompletableFuture[0]));
+            return done.thenApply(v -> updatedReviews
+                    .stream()
+                    .map(CompletionStage::toCompletableFuture)
+                    .map(CompletableFuture::join)
+                    .collect(Collectors.toList()));
+        });
+    }
+
+    private CompletableFuture<Review> updateReviewUserName (Review review) {
+        return loadUserByUserId(review.getUserId()).thenCompose(user -> {
+            Log.d("DEBUG_APP", user.toString());
+            review.setUserName(user.getName());
+            return updateReview(review);
+        });
+    }
+
     CompletableFuture<List<Review>> loadReviewsByParkId(String parkId) {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
@@ -141,15 +174,15 @@ class Database {
         return future;
     }
 
-    CompletableFuture<String> updateReview(Review review) {
-        final CompletableFuture<String> future = new CompletableFuture<>();
+    CompletableFuture<Review> updateReview(Review review) {
+        final CompletableFuture<Review> future = new CompletableFuture<>();
         db.collection("reviews").document(review.getId())
                 .set(review)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully written!");
-                        future.complete(review.getId());
+                        future.complete(review);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -268,6 +301,31 @@ class Database {
                         future.completeExceptionally(e);
                     }
                 });
+        return future;
+    }
+
+    CompletableFuture<User> loadUserByUserId(String userId) {
+        final CompletableFuture<User> future = new CompletableFuture<>();
+        DocumentReference docRef = db.collection("users").document(userId);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        Log.d("SUCCESS", "DocumentSnapshot data: " + document.getData());
+                        future.complete(document.toObject(User.class));
+                    } else {
+                        Log.d("ERROR", "No such document");
+                        future.completeExceptionally(new CustomExceptions("No such document"));
+                    }
+                } else {
+                    Log.d("ERROR", "get failed with ", task.getException());
+                    future.completeExceptionally(task.getException());
+                }
+            }
+        });
         return future;
     }
 
@@ -551,18 +609,18 @@ class Database {
         }
 
         batch.commit()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("SUCCESS", "Reviews successfully added!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("FAILURE", "An error has occurred - reviews are not added!");
-                    }
-                });
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d("SUCCESS", "Reviews successfully added!");
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("FAILURE", "An error has occurred - reviews are not added!");
+                }
+            });
     }
 
     private static List<Review> getReviewFromCSV(Context context) {
@@ -594,7 +652,8 @@ class Database {
         double rating = Double.parseDouble(metadata[2].replaceAll("[^\\d.]", ""));
         String description = "";
 
-        return new Review(userId, parkId, rating, description);
+        return new Review(UUID.randomUUID().toString(), "Chiah Soon", userId, parkId, rating, description);
     }
+
 
 }

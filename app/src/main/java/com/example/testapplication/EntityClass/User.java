@@ -24,6 +24,11 @@ public class User {
 //        this.locationY = 0;
 //    }
 
+    public User() {
+
+    }
+
+
     //for new user sign-up
     public User(String name, String password){
         this.id = UUID.randomUUID().toString();
@@ -34,9 +39,10 @@ public class User {
     }
 
     //for existing user log-in
-    public User(String id, String name, String password){
+    public User(String id, String name, String password, String email){
         this.id = id;
         this.name = name;
+        this.email = email;
         this.password = password;
         this.locationX = 0;
         this.locationY = 0;
@@ -63,7 +69,7 @@ public class User {
 
     public String getEmail() { return name; }
 
-    public void setEmail(String email) { this.name = email; }
+    public void setEmail(String email) { this.email = email; }
 
 
     public String getPassword() {
