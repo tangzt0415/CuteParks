@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,37 +29,33 @@ public class LoginActivity extends AppCompatActivity {
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         Button loginButton = findViewById(R.id.loginButton);
-        final EditText emailEditText = findViewById(R.id.loginEmailEditText);
-        final EditText passwordEditText = findViewById(R.id.loginPasswordEditText);
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                String email = emailEditText.getText().toString();
+                EditText usernameEditText = findViewById(R.id.usernameEditText);
+                EditText passwordEditText = findViewById(R.id.passwordEditText);
+                String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                if (email.isEmpty() && password.isEmpty()){
-                    emailEditText.setError("Please key in your email address!");
-                    emailEditText.requestFocus();
-                    passwordEditText.setError("Please key in your password!");
-                    passwordEditText.requestFocus();
-                } else if(email.isEmpty()){
-                    emailEditText.setError("Please key in your email address!");
-                    emailEditText.requestFocus();
+                if (username.isEmpty()){
+                    usernameEditText.setHintTextColor(Color.RED);
+                    usernameEditText.requestFocus();
                 } else if(password.isEmpty()){
-                    passwordEditText.setError("Please key in your password!");
+                    passwordEditText.setHintTextColor(Color.RED);
                     passwordEditText.requestFocus();
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
+                mAuth.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     // TODO: Change to home page.
-//                                    startActivity(new Intent(LoginActivity.this, MapsActivity.class));
+                                    //startActivity(new Intent(LoginActivity.this, MapsActivity.class));
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Please try again.",
                                             Toast.LENGTH_SHORT).show();

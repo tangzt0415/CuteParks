@@ -24,6 +24,7 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
     JSONArray jArray;
     public static String resultLat;
     public static String resultLong;
+    public static int Found;
     String address;
 
     @Override
@@ -43,11 +44,13 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
             }
             //calculates Lat/Long
             locationObj = new JSONObject(data);
+            Found = locationObj.getInt("found");
             jArray = locationObj.getJSONArray("results");
             locationObj = jArray.getJSONObject(0);
             resultLat = locationObj.getString("LATITUDE");
             resultLong = locationObj.getString("LONGITUDE");
             address = locationObj.getString("ADDRESS");
+
 
 
         } catch (MalformedURLException e) {
