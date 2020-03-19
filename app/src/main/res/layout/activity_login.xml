@@ -21,24 +21,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20pt"
-            android:text="@string/cuteparks"
+            android:text="Log-In"
             android:textAlignment="center"
             android:textSize="20pt"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/loginEmailTextEdit"
+            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5pt"
             android:autofillHints=""
             android:ems="10"
-            android:hint="@string/email"
+            android:hint="Username"
             android:inputType="textEmailAddress"
             tools:targetApi="o" />
 
         <EditText
-            android:id="@+id/loginPasswordEditText"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20pt"
