@@ -22,4 +22,19 @@
     <item name="ratingTextView" type="id"/>
     <item name="filterButton" type="id"/>
 
+    <item name="readReviewsTitle" type="id"/>
+    <item name="readReviewsRecyclerView" type="id"/>
+    <item name="reviewItemRatingBar" type="id"/>
+    <item name="reviewItemName" type="id"/>
+    <item name="reviewItemDescription" type="id"/>
+
+    <item name="addReviewTitle" type="id"/>
+    <item name="addReviewRatingTitle" type="id"/>
+    <item name="addReviewReviewTitle" type="id"/>
+    <item name="addReviewRatingBar" type="id"/>
+    <item name="addReviewReviewTextView" type="id"/>
+    <item name="addReviewBackButton" type="id"/>
+    <item name="addReviewSaveButton" type="id"/>
+    <item name="reviewItemRatingValue" type="id"/>
+
 </resources>

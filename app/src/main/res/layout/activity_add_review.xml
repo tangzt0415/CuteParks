@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".AddReviewActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="417dp"
+        android:layout_height="595dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/addReviewTitle"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:text="Add A Review"
+            android:layout_marginEnd="20dp"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/addReviewRatingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/rating"
+            android:textSize="24sp"
+            android:layout_marginEnd="20dp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/addReviewRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:stepSize="0.1"
+            android:layout_marginEnd="20dp"
+            android:numStars="5" />
+
+        <TextView
+            android:id="@+id/addReviewReviewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/review"
+            android:textSize="24sp"
+            android:layout_marginEnd="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/addReviewReviewTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:minLines="1"
+            android:inputType="textMultiLine"
+            android:hint="Enter your review of this park" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="401dp"
+        android:layout_height="75dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <Button
+            android:id="@+id/addReviewBackButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_arrow_back_black_24dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_marginLeft="20dp"
+            android:text="Back" />
+
+        <Button
+            android:id="@+id/addReviewSaveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="Save Review" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

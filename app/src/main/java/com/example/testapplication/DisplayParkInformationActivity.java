@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.testapplication.EntityClass.Park;
+import com.example.testapplication.EntityClass.Review;
 import com.google.android.gms.maps.MapView;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_park_information);
+        Database db = new Database();
 
         Park park = Objects.requireNonNull(getIntent().getExtras()).getParcelable("PARK");
 
@@ -48,8 +50,11 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayParkInformationActivity.this, ReadReviewActivity.class);
-                intent.putExtra("PARKID", park.getId());
-                startActivity(intent);
+                db.loadAllReviewsAndUpdateUserName(park.getId()).whenComplete((reviews, error) -> {
+                    ArrayList<Review> reviewsArrayList = new ArrayList<>(reviews);
+                    intent.putParcelableArrayListExtra("REVIEWS", reviewsArrayList);
+                    startActivity(intent);
+                });
             }
         });
 
@@ -76,7 +81,6 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
         // Display park activities - GOT PROBLEM - Amenities list of all parks are empty(?)
         TextView parkActivities = findViewById(R.id.parkActivities);
 
-        Database db = new Database();
         db.loadPark(park.getId()).whenComplete((park1, throwable) -> {
                     if (throwable == null) {
                         ArrayList<String> activities = new ArrayList<String>(park1.getAmenities());
@@ -108,5 +112,14 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
         // Review park
         ImageButton reviewPark = findViewById(R.id.reviewPark);
+        reviewPark.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DisplayParkInformationActivity.this, AddReviewActivity.class);
+                intent.putExtra("parkId", park.getId());
+                startActivity(intent);
+            }
+        });
     }
 }

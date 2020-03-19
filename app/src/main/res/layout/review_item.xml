@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+
+        <TextView
+            android:id="@+id/reviewItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reviewer Name"
+            android:textStyle="bold"
+            android:textSize="25dp"/>
+
+        <RatingBar
+            android:id="@+id/reviewItemRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reviewItemName"
+            android:layout_marginBottom="8dp"
+            android:numStars="5"
+            android:isIndicator="true"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/reviewItemRatingValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:layout_toEndOf="@id/reviewItemRatingBar"
+            android:layout_below="@id/reviewItemName"
+            android:layout_above="@id/reviewItemDescription"
+            android:textSize="20dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/reviewItemDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reviewItemRatingBar"
+            android:padding="5dp"
+            android:background="@android:color/transparent"
+            android:text="Review Description"
+            android:singleLine="false" />
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

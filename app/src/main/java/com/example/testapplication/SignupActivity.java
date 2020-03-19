@@ -69,7 +69,7 @@ public class SignupActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     try {
-                                        User newUser = new User(task.getResult().getUser().getUid(), name, email, password);
+                                        User newUser = new User(task.getResult().getUser().getUid(), name, password, email);
                                         String userId = db.createUser(newUser).get();
                                         // TODO: Sign in success, update UI with the signed-in user's information
 //                                        startActivity(new Intent(SignupActivity.this, MapsActivity.class));

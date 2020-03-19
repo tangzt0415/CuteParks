@@ -2,6 +2,7 @@ package com.example.testapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.testapplication.BoundaryClass.getCoordinateUI;
 import com.example.testapplication.ControlClass.getCoordinateController;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,10 +28,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Database db = new Database();
+        db.loadAllParksReviewsAndUpdateUserName().whenComplete((parks, error) -> {
+            if (error != null) {
+                Log.d("DEBUG_APP", "An error has occurred");
+            } else {
+                Log.d("DEBUG_APP", "Successfully updated parks reviews usernames");
+            }
+        });
+
         postalcode = findViewById(R.id.postalAddress);
 
         Button SearchButton = findViewById(R.id.SearchButton);
-
 
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
