@@ -15,32 +15,32 @@ public class User {
 
     //////////////////////////////////////////////////////////
     //Constructors
-//    public User(String id, String name, String email){
-//        this.id = id;
+    public User(String id, String name, String email, String password){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.locationX = 0;
+        this.locationY = 0;
+    }
+//
+//    //for new user sign-up
+//    public User(String name, String password){
+//        this.id = UUID.randomUUID().toString();
 //        this.name = name;
-//        this.email = email;
-//        this.password = "";
+//        this.password = password;
 //        this.locationX = 0;
 //        this.locationY = 0;
 //    }
-
-    //for new user sign-up
-    public User(String name, String password){
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.password = password;
-        this.locationX = 0;
-        this.locationY = 0;
-    }
-
-    //for existing user log-in
-    public User(String id, String name, String password){
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.locationX = 0;
-        this.locationY = 0;
-    }
+//
+//    //for existing user log-in
+//    public User(String id, String name, String password){
+//        this.id = id;
+//        this.name = name;
+//        this.password = password;
+//        this.locationX = 0;
+//        this.locationY = 0;
+//    }
 
 
     //////////////////////////////////////////////////////////
