@@ -87,22 +87,12 @@
 
 
         <Button
-            android:id="@+id/addReviewBackButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawableStart="@drawable/ic_arrow_back_black_24dp"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_marginLeft="20dp"
-            android:text="Back" />
-
-        <Button
             android:id="@+id/addReviewSaveButton"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginRight="20dp"
-            android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
             style="?android:attr/buttonBarButtonStyle"
             android:text="Save Review" />
 

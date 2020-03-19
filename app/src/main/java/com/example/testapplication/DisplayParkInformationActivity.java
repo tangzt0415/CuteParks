@@ -12,7 +12,10 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.testapplication.EntityClass.Favourite;
+import com.google.firebase.auth.FirebaseAuth;
 import com.example.testapplication.EntityClass.Park;
 import com.example.testapplication.EntityClass.Review;
 import com.google.android.gms.maps.MapView;
@@ -26,7 +29,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_park_information);
         Database db = new Database();
-
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         Park park = Objects.requireNonNull(getIntent().getExtras()).getParcelable("PARK");
 
         // Display park name
@@ -55,6 +58,17 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
                     intent.putParcelableArrayListExtra("REVIEWS", reviewsArrayList);
                     startActivity(intent);
                 });
+
+//                if (mAuth.getCurrentUser() != null) {
+//                    Intent intent = new Intent(DisplayParkInformationActivity.this, ReadReviewActivity.class);
+//                    db.loadAllReviewsAndUpdateUserName(park.getId()).whenComplete((reviews, error) -> {
+//                        ArrayList<Review> reviewsArrayList = new ArrayList<>(reviews);
+//                        intent.putParcelableArrayListExtra("REVIEWS", reviewsArrayList);
+//                        startActivity(intent);
+//                    });
+//                } else {
+//                    Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
@@ -109,6 +123,25 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
         // Favourite park
         ImageButton favouritePark = findViewById(R.id.favouritePark);
+        favouritePark.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                if (mAuth.getCurrentUser() != null) {
+                    String uid = mAuth.getCurrentUser().getUid();
+                    Favourite fav = new Favourite(uid, park);
+                    db.createFavourite(fav).whenComplete((favouriteId, error) -> {
+                        if (error == null) {
+                            Toast.makeText(DisplayParkInformationActivity.this, "An error has occurred and this park is not favourited!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(DisplayParkInformationActivity.this, "You have successfully favourited this park!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else{
+                    Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         // Review park
         ImageButton reviewPark = findViewById(R.id.reviewPark);
@@ -116,9 +149,13 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DisplayParkInformationActivity.this, AddReviewActivity.class);
-                intent.putExtra("parkId", park.getId());
-                startActivity(intent);
+                if (mAuth.getCurrentUser() != null) {
+                    Intent intent = new Intent(DisplayParkInformationActivity.this, AddReviewActivity.class);
+                    intent.putExtra("parkId", park.getId());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

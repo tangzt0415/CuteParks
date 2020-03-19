@@ -21,6 +21,8 @@
     <item name="filterRatingBar" type="id"/>
     <item name="ratingTextView" type="id"/>
     <item name="filterButton" type="id"/>
+    <item name="filterLoginButton" type="id"/>
+    <item name="filterSignupButton" type="id"/>
 
     <item name="readReviewsTitle" type="id"/>
     <item name="readReviewsRecyclerView" type="id"/>
