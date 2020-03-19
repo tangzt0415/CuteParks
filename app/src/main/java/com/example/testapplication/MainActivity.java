@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,19 +41,22 @@ public class MainActivity extends AppCompatActivity {
         postalcode = findViewById(R.id.postalAddress);
 
         Button SearchButton = findViewById(R.id.SearchButton);
-
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                postalAdd = Integer.parseInt(postalcode.getText().toString());
+                if (postalcode.length() != 6) {
+                    Toast.makeText(getApplicationContext(), "PostalCode is 6 digits only", Toast.LENGTH_SHORT).show();
+                }
+                else if(postalcode.length() == 6) {
+                    postalAdd = Integer.parseInt(postalcode.getText().toString());
+                    getCoordinateController process = new getCoordinateController();
+                    process.execute();
 
-                getCoordinateController process = new getCoordinateController();
-                process.execute();
-
-                Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
-                //pass x- and y-coordinates to FilterActivity
-                intent.putExtra("com.example.testapplication.SOMETHING",postalAdd);
-                startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), FilterActivity.class);
+                    //pass x- and y-coordinates to FilterActivity
+                    intent.putExtra("com.example.testapplication.SOMETHING", postalAdd);
+                    startActivity(intent);
+                }
             }
         });
 

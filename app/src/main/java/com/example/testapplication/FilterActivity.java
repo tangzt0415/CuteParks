@@ -73,31 +73,36 @@ public class FilterActivity extends FragmentActivity {
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get keyword filter
-                EditText filterKeywordEditText = findViewById(R.id.filterKeywordEditText);
-                String keywordF = filterKeywordEditText.getText().toString();
+                if(getCoordinateController.Found == 0){
+                    Toast.makeText(getApplicationContext(), "Invalid Postal Code", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    //get keyword filter
+                    EditText filterKeywordEditText = findViewById(R.id.filterKeywordEditText);
+                    String keywordF = filterKeywordEditText.getText().toString();
 
-                //get distance filter
-                SeekBar filterDistanceSeekBar = findViewById(R.id.filterDistanceSeekBar);
-                TextView distanceTextView = findViewById(R.id.distanceTextView);
-                int distanceF = filterDistanceSeekBar.getProgress();
-                distanceTextView.setText("Within\n" + distanceF + " km");
+                    //get distance filter
+                    SeekBar filterDistanceSeekBar = findViewById(R.id.filterDistanceSeekBar);
+                    TextView distanceTextView = findViewById(R.id.distanceTextView);
+                    int distanceF = filterDistanceSeekBar.getProgress();
+                    distanceTextView.setText("Within\n" + distanceF + " km");
 
-                //get rating filter
-                RatingBar filterRatingBar = findViewById(R.id.filterRatingBar);
-                TextView ratingTextView = findViewById(R.id.ratingTextView);
-                double ratingF = filterRatingBar.getRating();
-                ratingTextView.setText(String.format("%.1f",ratingF));
+                    //get rating filter
+                    RatingBar filterRatingBar = findViewById(R.id.filterRatingBar);
+                    TextView ratingTextView = findViewById(R.id.ratingTextView);
+                    double ratingF = filterRatingBar.getRating();
+                    ratingTextView.setText(String.format("%.1f", ratingF));
 
-                //generate filter
+                    //generate filter
 //                getCoordinateController process = new getCoordinateController();
 //                process.execute();
-                Filter filter = new Filter(keywordF, distanceF, ratingF, Double.parseDouble(getCoordinateController.resultLong), Double.parseDouble(getCoordinateController.resultLat));
+                    Filter filter = new Filter(keywordF, distanceF, ratingF, Double.parseDouble(getCoordinateController.resultLong), Double.parseDouble(getCoordinateController.resultLat));
 
-                //pass the filtered parks for display
-                Intent intent = new Intent(FilterActivity.this, DisplayParksActivity.class);
-                intent.putExtra("FILTER",filter);
-                startActivity(intent);
+                    //pass the filtered parks for display
+                    Intent intent = new Intent(FilterActivity.this, DisplayParksActivity.class);
+                    intent.putExtra("FILTER", filter);
+                    startActivity(intent);
+                }
             }
         });
     }

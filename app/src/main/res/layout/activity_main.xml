@@ -17,7 +17,7 @@
         android:cursorVisible="true"
         android:ems="10"
         android:hint="@string/enter_postal_code"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textColor="#D9E6E5"
         android:textSize="22sp"
         android:textStyle="bold"
