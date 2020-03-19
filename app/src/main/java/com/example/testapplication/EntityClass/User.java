@@ -23,6 +23,7 @@ public class User {
         this.locationX = 0;
         this.locationY = 0;
     }
+    public User(){};
 //
 //    //for new user sign-up
 //    public User(String name, String password){
