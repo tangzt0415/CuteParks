@@ -32,7 +32,7 @@ public class AddReviewActivity extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         Database db = new Database();
 
-        Button backButton = findViewById(R.id.addReviewBackButton);
+//        Button backButton = findViewById(R.id.addReviewBackButton);
         Button saveButton = findViewById(R.id.addReviewSaveButton);
         RatingBar ratingBar = findViewById(R.id.addReviewRatingBar);
         TextView reviewTextView = findViewById(R.id.addReviewReviewTextView);
@@ -61,12 +61,12 @@ public class AddReviewActivity extends AppCompatActivity {
             }
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        backButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
 
 
     }
