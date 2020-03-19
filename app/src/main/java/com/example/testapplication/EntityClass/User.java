@@ -15,7 +15,7 @@ public class User {
 
     //////////////////////////////////////////////////////////
     //Constructors
-    public User(String id, String name, String email, String password){
+    public User(String id, String name, String password, String email){
         this.id = id;
         this.name = name;
         this.email = email;
