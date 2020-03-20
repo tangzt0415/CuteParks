@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_margin="4dp"
+        android:background="#0000897B">
 
 
         <TextView
@@ -17,41 +18,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reviewer Name"
-            android:textStyle="bold"
-            android:textSize="25dp"/>
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
         <RatingBar
             android:id="@+id/reviewItemRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/reviewItemName"
+            android:layout_margin="10dp"
             android:layout_marginBottom="8dp"
-            android:numStars="5"
             android:isIndicator="true"
-            android:layout_margin="10dp"/>
+            android:numStars="5" />
 
         <TextView
             android:id="@+id/reviewItemRatingValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@android:color/transparent"
-            android:layout_toEndOf="@id/reviewItemRatingBar"
-            android:layout_below="@id/reviewItemName"
             android:layout_above="@id/reviewItemDescription"
-            android:textSize="20dp"
-            android:text="TextView" />
+            android:layout_below="@id/reviewItemName"
+            android:layout_toEndOf="@id/reviewItemRatingBar"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/reviewItemDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/reviewItemRatingBar"
-            android:padding="5dp"
             android:background="@android:color/transparent"
-            android:text="Review Description"
-            android:singleLine="false" />
-
+            android:padding="5dp"
+            android:singleLine="false"
+            android:text="Review Description" />
 
 
     </RelativeLayout>
