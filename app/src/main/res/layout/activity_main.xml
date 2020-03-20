@@ -39,7 +39,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.353" />
@@ -81,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postalAddress"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <ImageButton
         android:id="@+id/favouritesButton"
@@ -100,11 +100,12 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchButton" />
+        app:layout_constraintTop_toBottomOf="@+id/SearchButton"
+        app:layout_constraintVertical_bias="0.501" />
 
     <Button
         android:id="@+id/filterSignupButton"
@@ -114,7 +115,20 @@
         android:text="@string/complete_signup_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/filterLoginButton"
+        app:layout_constraintTop_toBottomOf="@+id/SearchButton"
+        app:layout_constraintVertical_bias="0.501" />
+
+    <Button
+        android:id="@+id/filterLogoutButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterLoginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/SearchButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

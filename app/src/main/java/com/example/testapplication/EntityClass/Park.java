@@ -16,7 +16,7 @@ public class Park implements Parcelable{
 	private String locationAddress;
 	private String website;
 	private double overallRating;
-	private ArrayList<String> Amenities;
+	private ArrayList Amenities;
 //	private ArrayList<Carpark> NearbyCarparks;
 //	private ArrayList<Review> Reviews;
 	private double distance;
@@ -50,7 +50,7 @@ public class Park implements Parcelable{
         website = in.readString();
         overallRating = in.readDouble();
         distance = in.readDouble();
-        Amenities = in.readArrayList(null);
+        Amenities = in.readArrayList(String.class.getClassLoader());
     }
 
     public static final Creator<Park> CREATOR = new Creator<Park>() {
@@ -161,6 +161,7 @@ public class Park implements Parcelable{
         dest.writeString(website);
         dest.writeDouble(overallRating);
         dest.writeDouble(distance);
+        dest.writeList(Amenities);
     }
 }
 

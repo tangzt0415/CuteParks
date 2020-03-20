@@ -217,6 +217,22 @@ class Database {
     }
 
     // Favourite Functions
+    CompletableFuture<List<Park>> loadFavouriteParksByUserId(String uid) {
+        return loadFavouritesByUserId(uid).thenCompose(favourites -> {
+            List<CompletableFuture<Park>> parks = favourites
+                    .stream()
+                    .map(favourite -> loadPark(favourite.getParkId()))
+                    .collect(Collectors.toList());
+            CompletableFuture<Void> done = CompletableFuture
+                    .allOf(parks.toArray(new CompletableFuture[0]));
+            return done.thenApply(v -> parks
+                    .stream()
+                    .map(CompletionStage::toCompletableFuture)
+                    .map(CompletableFuture::join)
+                    .collect(Collectors.toList()));
+        });
+    }
+
     CompletableFuture<List<Favourite>> loadFavouritesByUserId(String uid) {
         final CompletableFuture<List<Favourite>> future = new CompletableFuture<>();
         db.collection("favourites")
@@ -262,6 +278,45 @@ class Database {
     }
 
     CompletableFuture<String> createFavourite(Favourite favourite) {
+        return loadFavouriteByParkAndUserId(favourite.getParkId(), favourite.getUserId()).thenCompose(fav -> {
+            if (fav == null ) {
+                return addFavourite(favourite);
+            } else {
+                return CompletableFuture.completedFuture("");
+            }
+        });
+    }
+
+    private CompletableFuture<Favourite> loadFavouriteByParkAndUserId(String parkId, String userId) {
+        final CompletableFuture<Favourite> future = new CompletableFuture<>();
+        db.collection("favourites")
+                .whereEqualTo("userId", userId)
+                .whereEqualTo("parkId", parkId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<Favourite> results = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                Favourite documentObj = document.toObject(Favourite.class);
+                                results.add(documentObj);
+                            }
+                            if(results.size() <= 0) {
+                                future.complete(null);
+                            } else {
+                                future.complete(results.get(0));
+                            }
+                        } else {
+                            Log.d("ERROR", "Error getting documents: ", task.getException());
+                            future.completeExceptionally(task.getException());
+                        }
+                    }
+                });
+        return future;
+    }
+
+    private CompletableFuture<String> addFavourite(Favourite favourite) {
         final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("favourites").document(favourite.getId())
                 .set(favourite)

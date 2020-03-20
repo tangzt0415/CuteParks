@@ -54,8 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    // TODO: Change to home page.
-                                    //startActivity(new Intent(LoginActivity.this, MapsActivity.class));
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Please try again.",
                                             Toast.LENGTH_SHORT).show();

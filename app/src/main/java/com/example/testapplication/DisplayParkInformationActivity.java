@@ -96,25 +96,25 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
         TextView parkActivities = findViewById(R.id.parkActivities);
 
         db.loadPark(park.getId()).whenComplete((park1, throwable) -> {
-                    if (throwable == null) {
-                        ArrayList<String> activities = new ArrayList<String>(park1.getAmenities());
+            if (throwable == null) {
+                ArrayList<String> activities = new ArrayList<String>(park1.getAmenities());
 
 
-                        String parkActivitiesString = "";
-                        if ((activities.size() == 0)) {
-                            parkActivitiesString = "No activities recorded.";
-                        } else {
-                            int i = 0;
-                            for (String activity : activities) {
-                                i++;
-                                parkActivitiesString = parkActivitiesString + i + ". "
-                                        + activity.substring(0,1).toUpperCase() + activity.substring(1) + "\n";
-                            }
-                        }
-                        String textToDisplay = parkActivitiesString;
-                        parkActivities.setText(parkActivitiesString);
-                        parkActivities.setMovementMethod(new ScrollingMovementMethod());
+                String parkActivitiesString = "";
+                if ((activities.size() == 0)) {
+                    parkActivitiesString = "No activities recorded.";
+                } else {
+                    int i = 0;
+                    for (String activity : activities) {
+                        i++;
+                        parkActivitiesString = parkActivitiesString + i + ". "
+                                + activity.substring(0,1).toUpperCase() + activity.substring(1) + "\n";
                     }
+                }
+                String textToDisplay = parkActivitiesString;
+                parkActivities.setText(parkActivitiesString);
+                parkActivities.setMovementMethod(new ScrollingMovementMethod());
+            }
         });
 
 
@@ -123,25 +123,33 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
         // Favourite park
         ImageButton favouritePark = findViewById(R.id.favouritePark);
-        favouritePark.setOnClickListener(new View.OnClickListener() {
+        if (mAuth.getCurrentUser() == null) {
+            favouritePark.setVisibility(View.GONE);
+        } else {
+            favouritePark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mAuth.getCurrentUser() != null) {
+                        String uid = mAuth.getCurrentUser().getUid();
+                        Favourite fav = new Favourite(uid, park);
+                        db.createFavourite(fav).whenComplete((favouriteId, error) -> {
+                            if (error == null) {
+                                if (favouriteId == "") {
+                                    Toast.makeText(DisplayParkInformationActivity.this, "You have successfully favourited this park!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(DisplayParkInformationActivity.this, "You have already favourited this park!", Toast.LENGTH_SHORT).show();
+                                }
 
-            @Override
-            public void onClick(View view) {
-                if (mAuth.getCurrentUser() != null) {
-                    String uid = mAuth.getCurrentUser().getUid();
-                    Favourite fav = new Favourite(uid, park);
-                    db.createFavourite(fav).whenComplete((favouriteId, error) -> {
-                        if (error == null) {
-                            Toast.makeText(DisplayParkInformationActivity.this, "An error has occurred and this park is not favourited!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(DisplayParkInformationActivity.this, "You have successfully favourited this park!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else{
-                    Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(DisplayParkInformationActivity.this, "An error has occurred and this park is not favourited!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else{
+                        Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Review park
         ImageButton reviewPark = findViewById(R.id.reviewPark);

@@ -14,15 +14,20 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.testapplication.EntityClass.Park;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FavouritesActivity extends AppCompatActivity {
 
     ArrayList<Park> parks = new ArrayList<Park>();
+    Database db = new Database();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     public void displayFavourites(ArrayList<Park> parks) {
 
@@ -125,7 +130,11 @@ public class FavouritesActivity extends AppCompatActivity {
         TextView emptyFavListTextView = findViewById(R.id.emptyFavListTextView);
         ////////////////////////////////////////////
 
-        // if favourite list is empty
+
+        this.parks = getIntent().getParcelableArrayListExtra("PARKS");
+
+        // if not empty
+        String userId = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         if (parks.isEmpty()) {
             // make all the 8 rows disappear, only show empty list message
             f1.setVisibility(View.GONE);
@@ -136,20 +145,17 @@ public class FavouritesActivity extends AppCompatActivity {
             f6.setVisibility(View.GONE);
             f7.setVisibility(View.GONE);
             f8.setVisibility(View.GONE);
-        }
-
-        // if not empty
-        if (!parks.isEmpty()) {
+        } else {
 
             // make empty list message disappear
             emptyFavListTextView.setVisibility(View.GONE);
 
             // display favourite parks
-            this.displayFavourites(parks);
-
+            this.displayFavourites(this.parks);
 
             ///// copy to clipboard
 
+            /// Hide parks if not present
 
 
             ///// remove from favourites
@@ -296,8 +302,6 @@ public class FavouritesActivity extends AppCompatActivity {
 
 
             ///// write review
-
-
         }
 
         // home button

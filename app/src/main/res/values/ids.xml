@@ -23,6 +23,7 @@
     <item name="filterButton" type="id"/>
     <item name="filterLoginButton" type="id"/>
     <item name="filterSignupButton" type="id"/>
+    <item name="filterLogoutButton" type="id"/>
 
     <item name="readReviewsTitle" type="id"/>
     <item name="readReviewsRecyclerView" type="id"/>
@@ -38,5 +39,12 @@
     <item name="addReviewBackButton" type="id"/>
     <item name="addReviewSaveButton" type="id"/>
     <item name="reviewItemRatingValue" type="id"/>
+
+    <item name="readFavouritesTitle" type="id"/>
+    <item name="readFavouritesRecyclerView" type="id"/>
+    <item name="favouriteItemShareButton" type="id"/>
+    <item name="favouriteItemParkNameTextView" type="id"/>
+    <item name="favouriteItemRemoveButton" type="id"/>
+    <item name="favouriteItemReviewButton" type="id"/>
 
 </resources>
