@@ -14,11 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapplication.EntityClass.Park;
-import com.example.testapplication.EntityClass.Review;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.example.testapplication.ControlClass.getCoordinateController;
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
