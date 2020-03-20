@@ -124,11 +124,11 @@ public class FavouritesActivity extends AppCompatActivity {
                 Park park = parks.get(position);
 
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("PARK_NAME", park.getName());
+                ClipData clip = ClipData.newPlainText("PARK_DETAILS", park.printParkInformation());
                 assert clipboard != null;
                 clipboard.setPrimaryClip(clip);
 
-                Toast.makeText(FavouritesActivity.this, "Park Name has been copied to clip board!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FavouritesActivity.this, "Park details has been copied to clip board!", Toast.LENGTH_SHORT).show();
             }
 
             @Override

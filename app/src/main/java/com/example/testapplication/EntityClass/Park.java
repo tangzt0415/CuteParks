@@ -1,6 +1,7 @@
 package com.example.testapplication.EntityClass;
 import com.google.firebase.firestore.DocumentId;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.ArrayList;
@@ -100,6 +101,23 @@ public class Park implements Parcelable{
 	public double getOverallRating() { return overallRating;}
 
     public void setOverallRating(double overallRating) { this.overallRating = overallRating; }
+
+    @SuppressLint("DefaultLocale")
+	public String printParkInformation() {
+//		private String name;
+//		private String description;
+//		private double locationX;
+//		private double locationY;
+//		private String locationAddress;
+//		private String website;
+//		private double overallRating;
+//		private ArrayList Amenities;
+////	private ArrayList<Carpark> NearbyCarparks;
+////	private ArrayList<Review> Reviews;
+//		private double distance;
+		String amenities = String.join(",", this.getAmenities());
+		return String.format("Park Name: %s\n Park Location: %f %f \n Website: %s\n Overall Rating: %f\n Amenities: %s", name, locationX, locationY, website, overallRating, amenities);
+	}
 
 //	public double getOverallRating() {
 //		this.setOverallRating();
