@@ -277,6 +277,34 @@ class Database {
         return future;
     }
 
+    CompletableFuture<Boolean> deleteFavouriteByParkUserId(String parkId, String userId) {
+        final CompletableFuture<Boolean> future = new CompletableFuture<>();
+        CollectionReference colRef = db.collection("favourites");
+        colRef.whereEqualTo("userId", userId)
+                .whereEqualTo("parkId", parkId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                colRef.document(document.getId()).delete();
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error getting document", e);
+                        future.completeExceptionally(e);
+                    }
+                });
+        return future;
+    }
+
+
     CompletableFuture<String> createFavourite(Favourite favourite) {
         return loadFavouriteByParkAndUserId(favourite.getParkId(), favourite.getUserId()).thenCompose(fav -> {
             if (fav == null ) {

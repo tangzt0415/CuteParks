@@ -7,406 +7,427 @@
     tools:context=".FavouritesActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="127dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
-        android:text="Favourites"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:id="@+id/readFavouritesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favourite Parks"
+        android:textSize="30sp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/readFavouritesRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/backToHomeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="12dp"
-        android:text="Home"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/readFavouritesRecyclerView"
+        android:layout_width="414dp"
+        android:layout_height="633dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/emptyFavListTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favourites list is currently empty. Select a favourite park to get started!"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/backToHomeBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="127dp"-->
+<!--        android:layout_height="38dp"-->
+<!--        android:layout_marginStart="40dp"-->
+<!--        android:layout_marginTop="36dp"-->
+<!--        android:text="Favourites"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="402dp"
-        android:layout_height="566dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="1dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <Button-->
+<!--        android:id="@+id/backToHomeBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="162dp"-->
+<!--        android:layout_marginEnd="162dp"-->
+<!--        android:layout_marginBottom="12dp"-->
+<!--        android:text="Home"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
-        <ScrollView
-            android:id="@+id/favouritesScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<!--    <TextView-->
+<!--        android:id="@+id/emptyFavListTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Favourites list is currently empty. Select a favourite park to get started!"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/backToHomeBtn"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-            <LinearLayout
-                android:id="@+id/favouritesLinearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="402dp"-->
+<!--        android:layout_height="566dp"-->
+<!--        android:layout_marginStart="1dp"-->
+<!--        android:layout_marginTop="19dp"-->
+<!--        android:layout_marginEnd="1dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.428"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-                <LinearLayout
-                    android:id="@+id/f1"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--        <ScrollView-->
+<!--            android:id="@+id/favouritesScrollView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
-                    <TextView
-                        android:id="@+id/f1Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--            <LinearLayout-->
+<!--                android:id="@+id/favouritesLinearLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                    <ImageButton
-                        android:id="@+id/f1ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f1FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f1Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f1ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f1ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-                <LinearLayout
-                    android:id="@+id/f2"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f1FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
-                    <TextView
-                        android:id="@+id/f2Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f1ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
+<!--                </LinearLayout>-->
 
-                    <ImageButton
-                        android:id="@+id/f2ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f2FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f2Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f2ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f2ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-                <LinearLayout
-                    android:id="@+id/f3"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f2FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
-                    <TextView
-                        android:id="@+id/f3Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f2ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
+<!--                </LinearLayout>-->
 
-                    <ImageButton
-                        android:id="@+id/f3ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f3"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f3FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f3Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f3ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f3ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-                <LinearLayout
-                    android:id="@+id/f4"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f3FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
-                    <TextView
-                        android:id="@+id/f4Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f3ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
+<!--                </LinearLayout>-->
 
-                    <ImageButton
-                        android:id="@+id/f4ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f4"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f4FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f4Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f4ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f4ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f4FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
-                <LinearLayout
-                    android:id="@+id/f5"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f4ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
 
-                    <TextView
-                        android:id="@+id/f5Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--                </LinearLayout>-->
 
-                    <ImageButton
-                        android:id="@+id/f5ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f5"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f5FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f5Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f5ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f5ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-                <LinearLayout
-                    android:id="@+id/f6"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f5FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
-                    <TextView
-                        android:id="@+id/f6Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f5ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
+<!--                </LinearLayout>-->
 
-                    <ImageButton
-                        android:id="@+id/f6ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f6"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f6FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f6Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f6ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f6ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-                <LinearLayout
-                    android:id="@+id/f7"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f6FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
-                    <TextView
-                        android:id="@+id/f7Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f6ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
+<!--                </LinearLayout>-->
 
-                    <ImageButton
-                        android:id="@+id/f7ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f7"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f7FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f7Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f7ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f7ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-                <LinearLayout
-                    android:id="@+id/f8"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:orientation="horizontal">
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f7FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
-                    <TextView
-                        android:id="@+id/f8Name"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        android:textSize="24sp" />
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f7ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
+<!--                </LinearLayout>-->
 
-                    <ImageButton
-                        android:id="@+id/f8ShareButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#FFFFFF"
-                        android:contentDescription="@string/share"
-                        app:srcCompat="?attr/actionModeShareDrawable" />
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/f8"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <ImageButton
-                        android:id="@+id/f8FavouriteButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/favourite"
-                        app:srcCompat="@android:drawable/btn_star_big_on" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/f8Name"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="5"-->
+<!--                        android:textSize="24sp" />-->
 
-                    <ImageButton
-                        android:id="@+id/f8ReviewButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/review"
-                        android:tint="#00FFFFFF"
-                        app:srcCompat="@android:drawable/ic_menu_edit" />
-                </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f8ShareButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#FFFFFF"-->
+<!--                        android:contentDescription="@string/share"-->
+<!--                        app:srcCompat="?attr/actionModeShareDrawable" />-->
 
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f8FavouriteButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/favourite"-->
+<!--                        app:srcCompat="@android:drawable/btn_star_big_on" />-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/f8ReviewButton"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:backgroundTint="#FFFFFF"-->
+<!--                        android:contentDescription="@string/review"-->
+<!--                        android:tint="#00FFFFFF"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_edit" />-->
+<!--                </LinearLayout>-->
+
+<!--            </LinearLayout>-->
+<!--        </ScrollView>-->
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

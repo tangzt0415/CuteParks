@@ -134,7 +134,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
                         Favourite fav = new Favourite(uid, park);
                         db.createFavourite(fav).whenComplete((favouriteId, error) -> {
                             if (error == null) {
-                                if (favouriteId == "") {
+                                if (!favouriteId.equals("")) {
                                     Toast.makeText(DisplayParkInformationActivity.this, "You have successfully favourited this park!", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(DisplayParkInformationActivity.this, "You have already favourited this park!", Toast.LENGTH_SHORT).show();
@@ -159,7 +159,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             public void onClick(View view) {
                 if (mAuth.getCurrentUser() != null) {
                     Intent intent = new Intent(DisplayParkInformationActivity.this, AddReviewActivity.class);
-                    intent.putExtra("parkId", park.getId());
+                    intent.putExtra("PARK_ID", park.getId());
                     startActivity(intent);
                 } else {
                     Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
