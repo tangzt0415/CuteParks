@@ -22,8 +22,8 @@
 
     <EditText
         android:id="@+id/postalAddress"
-        android:layout_width="239dp"
-        android:layout_height="55dp"
+        android:layout_width="217dp"
+        android:layout_height="52dp"
         android:autoText="true"
         android:clickable="true"
         android:cursorVisible="true"
@@ -34,32 +34,32 @@
         android:focusedByDefault="true"
         android:fontFamily="sans-serif-thin"
         android:foregroundTint="#FFFFFF"
-        android:hint="Enter your postal code..."
+        android:hint="Enter your postal code"
         android:inputType="number"
         android:isScrollContainer="false"
         android:singleLine="true"
         android:textColor="#000000"
-        android:textColorHint="#01201D"
+        android:textColorHint="#000908"
         android:textSize="20sp"
         android:textStyle="bold|italic"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.598"
+        app:layout_constraintHorizontal_bias="0.721"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.508" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="64dp"
-        android:layout_height="66dp"
+        android:layout_width="92dp"
+        android:layout_height="104dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472"
+        app:layout_constraintVertical_bias="0.483"
         app:srcCompat="@drawable/park_icon" />
 
     <TextView
@@ -68,12 +68,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-thin"
         android:text="(Leave blank for GPS location)"
-        android:textColor="#4D5A59"
+        android:textColor="#272C2C"
         android:textSize="14sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/SearchButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postalAddress"
         app:layout_constraintVertical_bias="0.0" />
@@ -126,13 +126,13 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
         android:background="@android:drawable/screen_background_light_transparent"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchButton"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintTop_toBottomOf="@+id/SearchButton" />
 
     <Button
         android:id="@+id/filterSignupButton"
@@ -143,10 +143,9 @@
         android:text="@string/complete_signup_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.345"
         app:layout_constraintStart_toEndOf="@+id/filterLoginButton"
-        app:layout_constraintTop_toBottomOf="@+id/SearchButton"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintTop_toBottomOf="@+id/SearchButton" />
 
     <Button
         android:id="@+id/filterLogoutButton"
@@ -157,6 +156,7 @@
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SearchButton" />
 
