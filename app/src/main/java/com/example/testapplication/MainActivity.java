@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         /**
-         *
+         * sign up user
          */
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override

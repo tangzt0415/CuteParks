@@ -25,16 +25,27 @@ import static android.content.ContentValues.TAG;
 
 // Completable Futures are used to handle async requests, explained here https://www.callicoder.com/java-8-completablefuture-tutorial/
 
+/**
+ * The type Database.
+ */
 class Database {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    /**
+     * Instantiates a new Database.
+     */
     Database() {
 
     }
 
     // Park Functions
 
+    /**
+     * Load all parks and update overall ratings completable future.
+     *
+     * @return the completable future
+     */
     CompletableFuture<List<Park>> loadAllParksAndUpdateOverallRatings() {
         CompletableFuture<List<Park>> parksFutures = loadAllParks();
         CompletableFuture<List<Review>> reviewsFutures = loadAllReviews();
@@ -55,6 +66,11 @@ class Database {
         });
     }
 
+    /**
+     * Load all parks reviews and update user name completable future.
+     *
+     * @return the completable future
+     */
     CompletableFuture<Void> loadAllParksReviewsAndUpdateUserName() {
         return loadAllParks().thenCompose(parks -> CompletableFuture
                 .allOf(parks
@@ -63,6 +79,12 @@ class Database {
                         .toArray(CompletableFuture[]::new)));
     }
 
+    /**
+     * Load park completable future.
+     *
+     * @param id the id
+     * @return the completable future
+     */
     CompletableFuture<Park> loadPark(String id) {
         final CompletableFuture<Park> future = new CompletableFuture<>();
         DocumentReference docRef = db.collection("parks").document(id);
@@ -88,7 +110,13 @@ class Database {
         return future;
     }
 
-    // Review Functions
+    /**
+     * Load all reviews and update user name completable future.
+     *
+     * @param parkId the park id
+     * @return the completable future
+     */
+// Review Functions
     CompletableFuture<List<Review>> loadAllReviewsAndUpdateUserName(String parkId) {
         CompletableFuture<List<Review>> reviewFutures = loadReviewsByParkId(parkId);
 
@@ -106,6 +134,12 @@ class Database {
         });
     }
 
+    /**
+     * Load reviews by park id completable future.
+     *
+     * @param parkId the park id
+     * @return the completable future
+     */
     CompletableFuture<List<Review>> loadReviewsByParkId(String parkId) {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
@@ -129,6 +163,12 @@ class Database {
         return future;
     }
 
+    /**
+     * Create review completable future.
+     *
+     * @param review the review
+     * @return the completable future
+     */
     CompletableFuture<String> createReview(Review review) {
         final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("reviews").document(review.getId())
@@ -150,6 +190,12 @@ class Database {
         return future;
     }
 
+    /**
+     * Update review completable future.
+     *
+     * @param review the review
+     * @return the completable future
+     */
     CompletableFuture<Review> updateReview(Review review) {
         final CompletableFuture<Review> future = new CompletableFuture<>();
         db.collection("reviews").document(review.getId())
@@ -179,7 +225,13 @@ class Database {
         });
     }
 
-    // Favourite Funfctions
+    /**
+     * Load favourite parks by user id completable future.
+     *
+     * @param uid the uid
+     * @return the completable future
+     */
+    // Favourite Functions
     CompletableFuture<List<Park>> loadFavouriteParksByUserId(String uid) {
         return loadFavouritesByUserId(uid).thenCompose(favourites -> {
             List<CompletableFuture<Park>> parks = favourites
@@ -196,6 +248,12 @@ class Database {
         });
     }
 
+    /**
+     * Load favourites by user id completable future.
+     *
+     * @param uid the uid
+     * @return the completable future
+     */
     CompletableFuture<List<Favourite>> loadFavouritesByUserId(String uid) {
         final CompletableFuture<List<Favourite>> future = new CompletableFuture<>();
         db.collection("favourites")
@@ -219,6 +277,13 @@ class Database {
         return future;
     }
 
+    /**
+     * Delete favourite by park user id completable future.
+     *
+     * @param parkId the park id
+     * @param userId the user id
+     * @return the completable future
+     */
     CompletableFuture<Boolean> deleteFavouriteByParkUserId(String parkId, String userId) {
         final CompletableFuture<Boolean> future = new CompletableFuture<>();
         CollectionReference colRef = db.collection("favourites");
@@ -247,6 +312,12 @@ class Database {
     }
 
 
+    /**
+     * Create favourite completable future.
+     *
+     * @param favourite the favourite
+     * @return the completable future
+     */
     CompletableFuture<String> createFavourite(Favourite favourite) {
         return loadFavouriteByParkAndUserId(favourite.getParkId(), favourite.getUserId()).thenCompose(fav -> {
             if (fav == null ) {
@@ -307,7 +378,13 @@ class Database {
         return future;
     }
 
-    // User Functions
+    /**
+     * Create user completable future.
+     *
+     * @param user the user
+     * @return the completable future
+     */
+// User Functions
     CompletableFuture<String> createUser(User user) {
         final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("users").document(user.getId())
@@ -329,6 +406,12 @@ class Database {
         return future;
     }
 
+    /**
+     * Load user by user id completable future.
+     *
+     * @param userId the user id
+     * @return the completable future
+     */
     CompletableFuture<User> loadUserByUserId(String userId) {
         final CompletableFuture<User> future = new CompletableFuture<>();
         DocumentReference docRef = db.collection("users").document(userId);
@@ -408,6 +491,11 @@ class Database {
         return future;
     }
 
+    /**
+     * Load all reviews completable future.
+     *
+     * @return the completable future
+     */
     public CompletableFuture<List<Review>> loadAllReviews() {
         final CompletableFuture<List<Review>> future = new CompletableFuture<>();
         db.collection("reviews")
@@ -430,6 +518,12 @@ class Database {
         return future;
     }
 
+    /**
+     * Gets park id avg ratings from reviews.
+     *
+     * @param reviews the reviews
+     * @return the park id avg ratings from reviews
+     */
     public HashMap<String, Double> getParkIdAvgRatingsFromReviews(List<Review> reviews) {
         HashMap<String, List<Double>> parkIdToRatings = new HashMap<>();
         for (Review review : reviews) {
@@ -555,7 +649,12 @@ class Database {
         return future;
     }
 
-    // Context context = getApplicationContext();
+    /**
+     * Delete all parks completable future.
+     *
+     * @return the completable future
+     */
+// Context context = getApplicationContext();
     CompletableFuture<List<Boolean>> deleteAllParks() {
         return loadAllParks().thenCompose(parks -> {
             List<CompletableFuture<Boolean>> deletedParks = parks

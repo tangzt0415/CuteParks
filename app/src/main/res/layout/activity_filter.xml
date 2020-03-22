@@ -7,8 +7,8 @@
     tools:context=".FilterActivity">
 
     <TextView
-        android:layout_width="239dp"
-        android:layout_height="52dp"
+        android:layout_width="303dp"
+        android:layout_height="41dp"
         android:layout_marginTop="32dp"
         android:text="@string/filter_parks"
         android:textColor="@color/colorPrimary"
