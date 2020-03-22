@@ -29,6 +29,10 @@
             android:textAlignment="center"
             android:textSize="30sp" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="28dp" />
+
         <TextView
             android:id="@+id/addReviewRatingTitle"
             android:layout_width="match_parent"
@@ -88,13 +92,13 @@
 
         <Button
             android:id="@+id/addReviewSaveButton"
-            android:textColor="@color/colorPrimaryDark"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginRight="20dp"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="Save Review" />
+            android:layout_weight="1"
+            android:text="Submit Review"
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
