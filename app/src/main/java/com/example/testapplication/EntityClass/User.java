@@ -67,7 +67,7 @@ public class User {
 
     public String getEmail() { return name; }
 
-    public void setEmail(String email) { this.name = email; }
+    public void setEmail(String email) { this.email = email; }
 
 
     public String getPassword() {

@@ -27,9 +27,21 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Display parks activity.
+ */
 public class DisplayParksActivity extends AppCompatActivity {
 
+    /**
+     * The constant postal.
+     */
     public static int postal;
+
+    /**
+     * Display parks.
+     *
+     * @param parks the parks
+     */
     public void displayParks(ArrayList<Park> parks){
 
 
