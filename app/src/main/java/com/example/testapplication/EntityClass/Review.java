@@ -8,6 +8,11 @@ import com.google.firebase.firestore.DocumentId;
 
 import java.util.UUID;
 
+/**
+ * This class implements review entity with the attributes:
+ * review id, name and id of user who posted the review, id of the park linked to the review
+ * rating the user gave, and his/her comments.
+ */
 public class Review implements Parcelable {
     @DocumentId
     private String id;

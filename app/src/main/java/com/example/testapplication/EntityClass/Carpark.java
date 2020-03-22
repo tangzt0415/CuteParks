@@ -1,13 +1,15 @@
 package com.example.testapplication.EntityClass;
 
+/**
+ * The type Carpark  Carparks that are nearby a park
+ */
+//Entity not implemented yet due to time constrain for lab submission (Lab 4 cancelled)
 public class Carpark {
 	private int id;
 	private String name;
 	private double locationX;
 	private double locationY;
-	
-	
-	//////////////////////////////////////////////////////////
+
 	//Constructor
 	public Carpark() {
 		
@@ -19,8 +21,7 @@ public class Carpark {
 		this.locationX = locationX;
 		this.locationY = locationY;
 	}
-	
-	//////////////////////////////////////////////////////////
+
 	//Getters and setters
 	public int getId() {
 		return id;

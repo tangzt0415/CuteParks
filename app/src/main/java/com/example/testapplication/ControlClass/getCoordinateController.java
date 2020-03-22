@@ -3,7 +3,7 @@ package com.example.testapplication.ControlClass;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.testapplication.BoundaryClass.getCoordinateUI;
+//import com.example.testapplication.BoundaryClass.getCoordinateUI;
 import com.example.testapplication.MainActivity;
 
 import org.json.JSONArray;
@@ -17,8 +17,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-//boundary class to fetch LongLat coordinates from oneMap API given a postalCode
-//Is a background class incorporating oneMap API
+
+/**
+ * The type Get coordinate controller.
+ * background boundary class to fetch LongLat coordinates from oneMap API given a postalCode and convert
+ * it into (x,y) coordinates.
+ */
+
 public class getCoordinateController extends AsyncTask<Void,Void,Void> {
     private String data = "";
     JSONObject locationObj;

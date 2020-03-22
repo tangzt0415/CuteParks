@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * The type Filter.
+ * This class creates an Filter Object that calculates distance,rating and search keywords
+ * and sets an ArrayList of Parks which satisfies the filter options.
+ * Implements Parcelable to parse  from one activity to another.
+ */
 public class Filter implements Parcelable {
     String keywordF;
     int distanceF;
@@ -23,9 +29,18 @@ public class Filter implements Parcelable {
 
     //Constructors
     public Filter(){
-
     }
 
+
+    /**
+     * Instantiates a new Filter.
+     *
+     * @param keywordF      the keyword in search
+     * @param distanceF     the distance selected in filter
+     * @param ratingF       the rating seleected in filter
+     * @param UserLocationX the user location x (latitude)
+     * @param UserLocationY the user location y (Longitude)
+     */
     public Filter(String keywordF, int distanceF, double ratingF, double UserLocationX, double UserLocationY){
         this.distanceF = distanceF;
         this.keywordF = keywordF;
@@ -54,8 +69,12 @@ public class Filter implements Parcelable {
         }
     };
 
-
-    //Filter Parks
+    /**
+     * Filter parks  into an array list.
+     * distance is calculated based on x,y coordinate using 	1° ≈ 111 km
+     * @param Parks the parks
+     * @return the array list
+     */
     public ArrayList<Park> filterParks(ArrayList<Park> Parks){
 
         ArrayList <Park> FilterResults = new ArrayList<Park>();

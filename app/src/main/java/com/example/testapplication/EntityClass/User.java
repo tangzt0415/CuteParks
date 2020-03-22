@@ -4,6 +4,11 @@ import com.google.firebase.firestore.DocumentId;
 
 import java.util.UUID;
 
+/**
+ * The class User implements the user entity which stores information about
+ * user's id, name, email and password. LocationX and Y are the current coordinate of USER, or
+ * the location he searches.
+ */
 public class User {
     @DocumentId
     private String id;
@@ -27,27 +32,7 @@ public class User {
         this.locationX = 0;
         this.locationY = 0;
     }
-//
-//    //for new user sign-up
-//    public User(String name, String password){
-//        this.id = UUID.randomUUID().toString();
-//        this.name = name;
-//        this.password = password;
-//        this.locationX = 0;
-//        this.locationY = 0;
-//    }
-//
-//    //for existing user log-in
-//    public User(String id, String name, String password){
-//        this.id = id;
-//        this.name = name;
-//        this.password = password;
-//        this.locationX = 0;
-//        this.locationY = 0;
-//    }
 
-
-    //////////////////////////////////////////////////////////
     //getters and setters
     public String getId() {
         return id;
@@ -56,10 +41,6 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
-
-//    public void setId() {
-//        this.id = UUID.randomUUID().toString();
-//    }
 
     public String getName() { return name; }
 
