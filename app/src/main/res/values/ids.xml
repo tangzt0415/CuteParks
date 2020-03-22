@@ -11,6 +11,7 @@
     <item name="loginPasswordEditText" type="id"/>
     <item name="loginButton" type="id"/>
     <item name="loginHeader" type="id"/>
+    <item name="loginSignupButton" type="id"/>
 
     <item name="searchKeywordTitle" type="id"/>
     <item name="filterKeywordEditText" type="id"/>

@@ -71,7 +71,7 @@ public class SignupActivity extends AppCompatActivity {
                                     try {
                                         User newUser = new User(task.getResult().getUser().getUid(), name, password, email);
                                         db.createUser(newUser).whenComplete((uid, error) -> {
-                                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                            finish();
                                             Toast.makeText(SignupActivity.this, "You have successfully signed in!",
                                                     Toast.LENGTH_SHORT).show();
                                         });

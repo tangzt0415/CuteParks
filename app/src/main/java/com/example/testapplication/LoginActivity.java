@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         Button loginButton = findViewById(R.id.loginButton);
-
+        Button signupButton = findViewById(R.id.loginSignupButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -54,7 +54,8 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Please try again.",
                                             Toast.LENGTH_SHORT).show();
@@ -66,5 +67,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

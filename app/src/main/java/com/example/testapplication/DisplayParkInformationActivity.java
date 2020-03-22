@@ -144,33 +144,31 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
         // Favourite park
         ImageButton favouritePark = findViewById(R.id.favouritePark);
-        if (mAuth.getCurrentUser() == null) {
-            favouritePark.setVisibility(View.GONE);
-        } else {
-            favouritePark.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mAuth.getCurrentUser() != null) {
-                        String uid = mAuth.getCurrentUser().getUid();
-                        Favourite fav = new Favourite(uid, park);
-                        db.createFavourite(fav).whenComplete((favouriteId, error) -> {
-                            if (error == null) {
-                                if (!favouriteId.equals("")) {
-                                    Toast.makeText(DisplayParkInformationActivity.this, "You have successfully favourited this park!", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(DisplayParkInformationActivity.this, "You have already favourited this park!", Toast.LENGTH_SHORT).show();
-                                }
-
+        favouritePark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mAuth.getCurrentUser() != null) {
+                    String uid = mAuth.getCurrentUser().getUid();
+                    Favourite fav = new Favourite(uid, park);
+                    db.createFavourite(fav).whenComplete((favouriteId, error) -> {
+                        if (error == null) {
+                            if (!favouriteId.equals("")) {
+                                Toast.makeText(DisplayParkInformationActivity.this, "You have successfully favourited this park!", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(DisplayParkInformationActivity.this, "An error has occurred and this park is not favourited!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DisplayParkInformationActivity.this, "You have already favourited this park!", Toast.LENGTH_SHORT).show();
                             }
-                        });
-                    } else{
-                        Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
-                    }
+
+                        } else {
+                            Toast.makeText(DisplayParkInformationActivity.this, "An error has occurred and this park is not favourited!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else{
+                    Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DisplayParkInformationActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
-            });
-        }
+            }
+        });
 
         // Review park
         ImageButton reviewPark = findViewById(R.id.reviewPark);
@@ -184,6 +182,8 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
                     startActivity(intent);
                 } else {
                     Toast.makeText(DisplayParkInformationActivity.this, "Please sign in first to use this feature!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DisplayParkInformationActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
             }
         });
