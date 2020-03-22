@@ -3,6 +3,9 @@ package com.example.testapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -126,6 +129,18 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
 
      // Share park
         ImageButton sharePark = findViewById(R.id.sharePark);
+        sharePark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("PARK_DETAILS", park.printParkInformation());
+                assert clipboard != null;
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(DisplayParkInformationActivity.this, "Park details has been copied to clip board!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Favourite park
         ImageButton favouritePark = findViewById(R.id.favouritePark);
