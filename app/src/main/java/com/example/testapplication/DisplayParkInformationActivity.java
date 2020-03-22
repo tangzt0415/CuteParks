@@ -23,11 +23,17 @@ import com.google.android.gms.maps.MapView;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * The type Display park information activity.
+ *
+ * @param <ParkName> the type parameter
+ */
 public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_park_information);
+
         Database db = new Database();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         Park park = Objects.requireNonNull(getIntent().getExtras()).getParcelable("PARK");
