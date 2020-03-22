@@ -9,97 +9,122 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="417dp"
-        android:layout_height="595dp"
+        android:layout_width="404dp"
+        android:layout_height="348dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13999999">
 
         <TextView
             android:id="@+id/addReviewTitle"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="20dp"
-            android:text="Add A Review"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Add A Review"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="28dp" />
+            android:layout_height="48dp" />
 
         <TextView
             android:id="@+id/addReviewRatingTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/rating"
             android:textSize="24sp"
-            android:layout_marginEnd="20dp"
             android:textStyle="bold" />
 
         <RatingBar
             android:id="@+id/addReviewRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="20dp"
-            android:stepSize="0.1"
             android:layout_marginEnd="20dp"
-            android:numStars="5" />
+            android:layout_marginBottom="10dp"
+            android:numStars="5"
+            android:stepSize="0.1" />
 
         <TextView
             android:id="@+id/addReviewReviewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/review"
             android:textSize="24sp"
-            android:layout_marginEnd="20dp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/addReviewReviewTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_width="358dp"
+            android:layout_height="59dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:minLines="1"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter your review of this park"
             android:inputType="textMultiLine"
-            android:hint="Enter your review of this park" />
+            android:minLines="1" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="401dp"
-        android:layout_height="75dp"
-        android:layout_margin="10dp"
+        android:layout_width="360dp"
+        android:layout_height="77dp"
+        android:layout_margin="0dp"
         android:orientation="horizontal"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <Button
             android:id="@+id/addReviewSaveButton"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
+            android:background="#00897B"
+            android:gravity="center|center_horizontal|center_vertical"
             android:text="Submit Review"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="230dp"
+        android:layout_height="260dp"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/review_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
