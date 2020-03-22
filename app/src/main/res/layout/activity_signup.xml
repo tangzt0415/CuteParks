@@ -7,35 +7,29 @@
     tools:context=".SignupActivity">
 
     <LinearLayout
-        android:layout_width="357dp"
-        android:layout_height="327dp"
+        android:layout_width="317dp"
+        android:layout_height="364dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39">
 
         <TextView
             android:id="@+id/signupHeading"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cuteparks"
+            android:layout_height="79dp"
+            android:text="Sign-Up"
             android:textAlignment="center"
-            android:textSize="20pt" />
-
-        <TextView
-            android:id="@+id/signupSubheading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10pt"
-            android:text="@string/sign_up"
-            android:textAlignment="center"
-            android:textSize="10pt" />
+            android:textColor="#00897B"
+            android:textSize="20pt"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/signupNameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:ems="10"
             android:hint="@string/enter_your_name"
             android:importantForAutofill="no"
@@ -44,7 +38,7 @@
         <EditText
             android:id="@+id/signupEmailEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:ems="10"
             android:hint="@string/signup_enter_your_email"
             android:importantForAutofill="no"
@@ -53,16 +47,22 @@
         <EditText
             android:id="@+id/signupPasswordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:ems="10"
             android:hint="@string/signup_enter_your_password"
             android:importantForAutofill="no"
             android:inputType="textPassword" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
         <Button
             android:id="@+id/completeSignupButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/complete_signup_button" />
+            android:layout_height="50dp"
+            android:text="@string/complete_signup_button"
+            android:textAllCaps="true"
+            android:textSize="18sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

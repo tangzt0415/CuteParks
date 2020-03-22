@@ -7,41 +7,42 @@
     tools:context=".LoginActivity">
 
     <LinearLayout
-        android:layout_width="319dp"
-        android:layout_height="331dp"
+        android:layout_width="317dp"
+        android:layout_height="391dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498">
+        app:layout_constraintVertical_bias="0.39">
 
         <TextView
             android:id="@+id/loginHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20pt"
+            android:layout_marginBottom="10pt"
             android:text="Log-In"
             android:textAlignment="center"
+            android:textColor="#00897B"
             android:textSize="20pt"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginBottom="5pt"
             android:autofillHints=""
             android:ems="10"
-            android:hint="Username"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             tools:targetApi="o" />
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20pt"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10pt"
             android:ems="10"
             android:hint="@string/password"
             android:importantForAutofill="no"
@@ -50,16 +51,18 @@
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login" />
+            android:layout_height="50dp"
+            android:text="@string/login"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/loginSignupButton"
-            android:textAllCaps="false"
-            android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? Signup here" />
+            android:background="@android:color/transparent"
+            android:text="Don't have an account? Signup here"
+            android:textAllCaps="false"
+            android:textColor="#146058" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
