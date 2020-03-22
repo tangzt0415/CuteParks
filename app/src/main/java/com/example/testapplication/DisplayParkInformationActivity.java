@@ -92,7 +92,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             }
         });
 
-        // Display park activities - GOT PROBLEM - Amenities list of all parks are empty(?)
+        // Display park activities
         TextView parkActivities = findViewById(R.id.parkActivities);
 
         db.loadPark(park.getId()).whenComplete((park1, throwable) -> {
@@ -118,7 +118,7 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
         });
 
 
-     // Share park
+        // Share park
         ImageButton sharePark = findViewById(R.id.sharePark);
 
         // Favourite park
