@@ -8,6 +8,18 @@
     android:fitsSystemWindows="true"
     tools:context=".AddReviewActivity">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="123dp"
+        android:layout_height="124dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.943"
+        app:srcCompat="@drawable/leaf" />
+
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="404dp"
@@ -34,7 +46,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="41dp" />
 
         <TextView
             android:id="@+id/addReviewRatingTitle"
@@ -56,6 +68,10 @@
             android:layout_marginBottom="10dp"
             android:numStars="5"
             android:stepSize="0.1" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
 
         <TextView
             android:id="@+id/addReviewReviewTitle"
@@ -90,10 +106,10 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintHorizontal_bias="0.686"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.079">
 
 
         <Button
