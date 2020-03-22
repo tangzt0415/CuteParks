@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6EFEE"
+    android:background="@drawable/reviews_background"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ReadReviewActivity">
 
@@ -16,6 +16,7 @@
         android:layout_margin="20dp"
         android:text="@string/reviews"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/readReviewsRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -25,8 +26,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/readReviewsRecyclerView"
-        android:layout_width="399dp"
-        android:layout_height="566dp"
+        android:layout_width="374dp"
+        android:layout_height="564dp"
         android:scrollIndicators="right"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
