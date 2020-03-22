@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/log_in"
     tools:context=".SignupActivity">
 
     <LinearLayout
@@ -14,23 +15,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39">
+        app:layout_constraintVertical_bias="0.42000002">
 
         <TextView
             android:id="@+id/signupHeading"
             android:layout_width="match_parent"
-            android:layout_height="79dp"
+            android:layout_height="86dp"
+            android:ems="50"
             android:text="Sign-Up"
             android:textAlignment="center"
-            android:textColor="#00897B"
+            android:textColor="#5E0B28"
             android:textSize="20pt"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/signupNameEditText"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
+            android:layout_height="55dp"
+            android:ems="20"
             android:hint="@string/enter_your_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName" />
@@ -38,8 +40,8 @@
         <EditText
             android:id="@+id/signupEmailEditText"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
+            android:layout_height="55dp"
+            android:ems="20"
             android:hint="@string/signup_enter_your_email"
             android:importantForAutofill="no"
             android:inputType="textPersonName|textEmailAddress" />
@@ -47,15 +49,15 @@
         <EditText
             android:id="@+id/signupPasswordEditText"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
+            android:layout_height="55dp"
+            android:ems="20"
             android:hint="@string/signup_enter_your_password"
             android:importantForAutofill="no"
             android:inputType="textPassword" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15dp" />
+            android:layout_height="33dp" />
 
         <Button
             android:id="@+id/completeSignupButton"
