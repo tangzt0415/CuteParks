@@ -28,19 +28,19 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The type Display parks activity.
+ * Displays a list of parks after filtering and attributes of park such as
+ * rating and distance from user. This list of parks is also sorted by distance.
  */
 public class DisplayParksActivity extends AppCompatActivity {
 
     /**
-     * The constant postal.
+     * The postal code of current user.
      */
     public static int postal;
 
     /**
-     * Display parks.
-     *
-     * @param parks the parks
+     * Display parks the parks onto UI
+     * @param parks List of parks
      */
     public void displayParks(ArrayList<Park> parks){
 
@@ -179,7 +179,9 @@ public class DisplayParksActivity extends AppCompatActivity {
                     tv.setText(String.valueOf(postal));
 
                 }
-
+                /**
+                 * button to view all nearby filtered parks in map view
+                 */
                 mapViewButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -203,7 +205,9 @@ public class DisplayParksActivity extends AppCompatActivity {
                     }
                 });
 
-                //Back to Filter
+                /**
+                 * button to go back to changing filter settings and refilter.
+                 */
                 Button backToFilterButton = findViewById(R.id.backToFilterButton);
                 backToFilterButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -272,8 +276,9 @@ public class DisplayParksActivity extends AppCompatActivity {
                     TextView r8Rating = findViewById(R.id.r8Rating);
 
 
-
-
+                    /**
+                     * clicking on a selected park brings user to park information UI to show more information about the park.
+                     */
                     View.OnClickListener clickListener = new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

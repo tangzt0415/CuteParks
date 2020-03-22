@@ -12,10 +12,16 @@ import com.example.testapplication.EntityClass.Review;
 
 import java.util.ArrayList;
 
+/**
+ * Review UI to allow user to read review
+ */
 public class ReadReviewActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    /**
+     * List of reviews
+     */
     public ArrayList<Review> reviews = new ArrayList<>();
 
 

@@ -20,6 +20,11 @@ import com.google.firebase.firestore.auth.User;
 
 import java.util.UUID;
 
+/**
+ * The type Add review activity UI that allows user to add a review to a
+ * park, with ratings out of 5 and a small description of park.
+ * Reviews are stored into database directly
+ */
 public class AddReviewActivity extends AppCompatActivity {
 
     @Override
@@ -36,7 +41,9 @@ public class AddReviewActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.addReviewSaveButton);
         RatingBar ratingBar = findViewById(R.id.addReviewRatingBar);
         TextView reviewTextView = findViewById(R.id.addReviewReviewTextView);
-
+        /**
+         * Save rating and description of current park into database
+         */
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

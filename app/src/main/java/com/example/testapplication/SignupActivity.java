@@ -20,6 +20,9 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Sign up UI to allow users to sign up and store account credentials into database
+ */
 public class SignupActivity extends AppCompatActivity {
 
     @Override
@@ -35,6 +38,9 @@ public class SignupActivity extends AppCompatActivity {
         final EditText signupEmailEditText = findViewById(R.id.signupEmailEditText);
         final EditText signupPasswordTextEdit = findViewById(R.id.signupPasswordEditText);
 
+        /**
+         * Sign up button to send username, email,password into database.
+         */
         completeSignupButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

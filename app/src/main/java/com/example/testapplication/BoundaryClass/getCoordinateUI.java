@@ -1,3 +1,4 @@
+/*
 package com.example.testapplication.BoundaryClass;
 
 import android.content.Intent;
@@ -50,4 +51,4 @@ public class getCoordinateUI extends AppCompatActivity {
     public int getPostal(){
         return postal;
     }
-}
+}*/
