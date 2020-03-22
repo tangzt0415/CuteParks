@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "PostalCode is 6 digits only", Toast.LENGTH_SHORT).show();
                 }
                 else if(postalcode.length() == 6) {
+                    hasCurrentLocation = false;
+
                     postalAdd = Integer.parseInt(postalcode.getText().toString());
                     getCoordinateController process = new getCoordinateController();
                     process.execute();
