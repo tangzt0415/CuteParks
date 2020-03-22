@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/add_review"
     android:fitsSystemWindows="true"
     tools:context=".AddReviewActivity">
 
@@ -112,19 +113,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="230dp"
-        android:layout_height="260dp"
-        android:cropToPadding="false"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/review_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
