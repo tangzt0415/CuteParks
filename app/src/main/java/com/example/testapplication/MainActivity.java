@@ -133,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, FavouritesActivity.class);
                 db.loadFavouriteParksByUserId(mAuth.getCurrentUser().getUid()).whenComplete((parks, throwable) -> {
                     if (throwable == null) {
-                        ArrayList<Park> reviewsArrayList = new ArrayList<>(parks);
-                        intent.putParcelableArrayListExtra("PARKS", reviewsArrayList);
+                        ArrayList<Park> favouriteArrayList = new ArrayList<>(parks);
+                        intent.putParcelableArrayListExtra("PARKS", favouriteArrayList);
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
