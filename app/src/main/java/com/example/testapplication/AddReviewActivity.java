@@ -28,7 +28,7 @@ public class AddReviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_review);
 
         Intent intent = getIntent();
-        String parkId = intent.getStringExtra("parkId");
+        String parkId = intent.getStringExtra("PARK_ID");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         Database db = new Database();
 

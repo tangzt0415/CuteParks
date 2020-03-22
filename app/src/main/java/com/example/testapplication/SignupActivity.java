@@ -70,10 +70,12 @@ public class SignupActivity extends AppCompatActivity {
 
                                     try {
                                         User newUser = new User(task.getResult().getUser().getUid(), name, password, email);
-                                        String userId = db.createUser(newUser).get();
-                                        // TODO: Sign in success, update UI with the signed-in user's information
-//                                        startActivity(new Intent(SignupActivity.this, MapsActivity.class));
-                                    } catch (ExecutionException | InterruptedException e) {
+                                        db.createUser(newUser).whenComplete((uid, error) -> {
+                                            startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                            Toast.makeText(SignupActivity.this, "You have successfully signed in!",
+                                                    Toast.LENGTH_SHORT).show();
+                                        });
+                                    } catch (Exception e) {
                                         e.printStackTrace();
                                         // If sign in fails, display a message to the user.
                                         Toast.makeText(SignupActivity.this, "An error has occurred while creating the user.",

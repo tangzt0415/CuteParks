@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+
+
+        <TextView
+            android:id="@+id/favouriteItemParkNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Park Name"
+            android:textStyle="bold"
+            android:textSize="25dp"/>
+
+        <ImageButton
+            android:id="@+id/favouriteItemShareButton"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="67dp"
+            android:layout_toLeftOf="@id/favouriteItemRemoveButton"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/share"
+            android:paddingRight="5dp"
+            app:srcCompat="?attr/actionModeShareDrawable" />
+
+        <ImageButton
+            android:id="@+id/favouriteItemRemoveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="34dp"
+            android:layout_toLeftOf="@+id/favouriteItemReviewButton"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/share"
+            android:paddingRight="0dp"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+
+        <ImageButton
+            android:id="@+id/favouriteItemReviewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="0dp"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/share"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

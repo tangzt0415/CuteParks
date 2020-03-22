@@ -28,7 +28,7 @@ public class Favourite {
 	//////////////////////////////////////////////////////////
 	//getters and setters
 	public String getId() {
-		return userId;
+		return id;
 	}
 	public String getUserId() {
 		return userId;

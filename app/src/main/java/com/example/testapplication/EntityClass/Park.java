@@ -1,6 +1,7 @@
 package com.example.testapplication.EntityClass;
 import com.google.firebase.firestore.DocumentId;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Park implements Parcelable{
 	private String locationAddress;
 	private String website;
 	private double overallRating;
-	private ArrayList<String> Amenities;
+	private ArrayList Amenities;
 //	private ArrayList<Carpark> NearbyCarparks;
 //	private ArrayList<Review> Reviews;
 	private double distance;
@@ -50,7 +51,7 @@ public class Park implements Parcelable{
         website = in.readString();
         overallRating = in.readDouble();
         distance = in.readDouble();
-        Amenities = in.readArrayList(null);
+        Amenities = in.readArrayList(String.class.getClassLoader());
     }
 
     public static final Creator<Park> CREATOR = new Creator<Park>() {
@@ -100,6 +101,23 @@ public class Park implements Parcelable{
 	public double getOverallRating() { return overallRating;}
 
     public void setOverallRating(double overallRating) { this.overallRating = overallRating; }
+
+    @SuppressLint("DefaultLocale")
+	public String printParkInformation() {
+//		private String name;
+//		private String description;
+//		private double locationX;
+//		private double locationY;
+//		private String locationAddress;
+//		private String website;
+//		private double overallRating;
+//		private ArrayList Amenities;
+////	private ArrayList<Carpark> NearbyCarparks;
+////	private ArrayList<Review> Reviews;
+//		private double distance;
+		String amenities = String.join(",", this.getAmenities());
+		return String.format("Park Name: %s\n Park Location: %f %f \n Website: %s\n Overall Rating: %f\n Amenities: %s", name, locationX, locationY, website, overallRating, amenities);
+	}
 
 //	public double getOverallRating() {
 //		this.setOverallRating();
@@ -161,6 +179,7 @@ public class Park implements Parcelable{
         dest.writeString(website);
         dest.writeDouble(overallRating);
         dest.writeDouble(distance);
+        dest.writeList(Amenities);
     }
 }
 

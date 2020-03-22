@@ -1,6 +1,7 @@
 package com.example.testapplication.ControlClass;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.testapplication.BoundaryClass.getCoordinateUI;
 import com.example.testapplication.MainActivity;
@@ -47,8 +48,15 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
             Found = locationObj.getInt("found");
             jArray = locationObj.getJSONArray("results");
             locationObj = jArray.getJSONObject(0);
-            resultLat = locationObj.getString("LATITUDE");
-            resultLong = locationObj.getString("LONGITUDE");
+            if(MainActivity.hasCurrentLocation == false) {
+                resultLat = locationObj.getString("LATITUDE");
+                resultLong = locationObj.getString("LONGITUDE");
+            }else {
+                resultLat = Double.toString(MainActivity.currentLat);
+                resultLong = Double.toString(MainActivity.currentLong);
+                Log.d("lat =", resultLat);
+                Log.d("long =", resultLong);
+            }
             address = locationObj.getString("ADDRESS");
 
 
