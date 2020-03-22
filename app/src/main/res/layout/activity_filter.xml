@@ -4,21 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/filter_parks"
     tools:context=".FilterActivity">
 
     <TextView
-        android:layout_width="303dp"
-        android:layout_height="41dp"
+        android:layout_width="296dp"
+        android:layout_height="44dp"
         android:layout_marginTop="32dp"
-        android:text="@string/filter_parks"
+        android:text="Park Filters"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintHorizontal_bias="0.339"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.529" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -31,7 +33,7 @@
         app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286">
+        app:layout_constraintVertical_bias="0.43">
 
         <TextView
             android:id="@+id/searchKeywordTitle"
@@ -42,7 +44,7 @@
             android:contextClickable="false"
             android:cursorVisible="false"
             android:freezesText="true"
-            android:text="@string/search_keyword"
+            android:text="Search by Keyword:"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -58,7 +60,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="17dp" />
+            android:layout_height="36dp" />
 
         <TextView
             android:id="@+id/filterByDistanceTitle"
@@ -70,7 +72,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="67dp"
+            android:layout_height="78dp"
             android:backgroundTint="#8BC34A"
             android:orientation="horizontal">
 
