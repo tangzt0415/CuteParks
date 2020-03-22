@@ -17,6 +17,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Log in UI that authenticates user information with database
+ */
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -30,7 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
         Button loginButton = findViewById(R.id.loginButton);
 
-
+        /**
+         * log in button to send both username and password into database for authentication.
+         */
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -47,7 +52,9 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEditText.setHintTextColor(Color.RED);
                     passwordEditText.requestFocus();
                 }
-
+                /**
+                 * returns the result of log in action.
+                 */
                 mAuth.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override

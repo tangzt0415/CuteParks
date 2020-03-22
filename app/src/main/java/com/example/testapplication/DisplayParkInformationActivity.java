@@ -24,8 +24,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * The type Display park information activity.
- *
+ * UI to display information of a single park and its attributes mainly
+ * name, description, rating, reviews, amenities, and website.
+ * Allows link to map display via map click
+ * Allows add review via review button
+ * Allows sharing of park info by share button
+ * Allows adding park to favourites by favourite button
  * @param <ParkName> the type parameter
  */
 public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity {
@@ -88,6 +92,9 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
         parkWebsite.setText(park.getWebsite());
 
         // Display park location on google map
+        /**
+         * Change display into a Map View, displaying current user and the park as markers
+         */
         MapView googleMap = findViewById(R.id.googleMap);
         googleMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +134,9 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
      // Share park
         ImageButton sharePark = findViewById(R.id.sharePark);
 
-        // Favourite park
+        /**
+         * Favourite button to add park into user's favourites, only available once logged in.
+         */
         ImageButton favouritePark = findViewById(R.id.favouritePark);
         if (mAuth.getCurrentUser() == null) {
             favouritePark.setVisibility(View.GONE);
@@ -157,7 +166,9 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             });
         }
 
-        // Review park
+        /**
+         * button to add review for a park
+         */
         ImageButton reviewPark = findViewById(R.id.reviewPark);
         reviewPark.setOnClickListener(new View.OnClickListener() {
 

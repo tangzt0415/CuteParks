@@ -25,6 +25,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
 
+/**
+ * Main Entry UI of application. Allow users to log in or sign up
+ * Takes in user current location(if address is left blank) or searches
+ * a postal code address
+ */
 public class MainActivity extends AppCompatActivity {
     public static TextView result;
     public static int postalAdd;
@@ -36,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     public static double currentLong;
 
 
+    /**
+     * creating UI, also loading current gps location.
+     * @param savedInstanceState
+     */
 
 
     @Override
@@ -77,24 +86,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(mLocationRequest, mLocationCallback, null);
-/*
-        FusedLocationProviderClient fusedLocationClient;
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            // Logic to handle location object
-                            currentLat = location.getLatitude();
-                            currentLong = location.getLongitude();
-                        }
-                    }
-                });
-*/
         postalcode = findViewById(R.id.postalAddress);
         Button SearchButton = findViewById(R.id.SearchButton);
+        /**
+         * Search button sends location being searched into filterActivity.
+         * also checks for validity of postal code entry.
+         */
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ImageButton favouritesButton = findViewById(R.id.favouritesButton);
+        /**
+         * Button to go manage favourites, only avaliable after successful log in.
+         */
         favouritesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
         Button loginButton = findViewById(R.id.filterLoginButton);
         Button signupButton = findViewById(R.id.filterSignupButton);
         Button logoutButton = findViewById(R.id.filterLogoutButton);
@@ -152,7 +151,9 @@ public class MainActivity extends AppCompatActivity {
             loginButton.setVisibility(View.GONE);
             signupButton.setVisibility(View.GONE);
         }
-
+        /**
+         * log out user
+         */
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,7 +164,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        /**
+         * log in user
+         */
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,7 +174,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        /**
+         *
+         */
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

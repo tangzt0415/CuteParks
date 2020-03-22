@@ -19,6 +19,9 @@ import com.example.testapplication.ControlClass.getCoordinateController;
 
 import java.util.Objects;
 
+/**
+ * Filtering park UI, allows user to select his/her filters.
+ */
 public class FilterActivity extends FragmentActivity {
     public static int postal;
 
@@ -32,11 +35,11 @@ public class FilterActivity extends FragmentActivity {
 
         }
 
-
-        //////////////////////////////////////////////////////////
-        /////display distance input
         SeekBar filterDistanceSeekBar = findViewById(R.id.filterDistanceSeekBar);
-
+        /**
+         * Distance slider on UI to let user select max distance of parks he wants to search.
+         * Shows the distance selected as the user slides.
+         */
         filterDistanceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -55,6 +58,9 @@ public class FilterActivity extends FragmentActivity {
 
         //////////////////////////////////////////////////////////
         //display rating input
+        /**
+         * Rating slider to allow user to select minimum ratings he wants to filter for a park.
+         */
         RatingBar filterRatingBar = findViewById(R.id.filterRatingBar);
         filterRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -68,8 +74,12 @@ public class FilterActivity extends FragmentActivity {
 
         //////////////////////////////////////////////////////////
         //finalise keyword, distance and rating filters input
-        Button filterButton = findViewById(R.id.filterButton);
 
+        Button filterButton = findViewById(R.id.filterButton);
+        /**
+         * filter button, on click sends the filtered information to filter entity.
+         * also checks for validity of postal code entered on OneMap API.
+         */
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,8 +104,6 @@ public class FilterActivity extends FragmentActivity {
                     ratingTextView.setText(String.format("%.1f", ratingF));
 
                     //generate filter
-//                getCoordinateController process = new getCoordinateController();
-//                process.execute();
                     Filter filter = new Filter(keywordF, distanceF, ratingF, Double.parseDouble(getCoordinateController.resultLong), Double.parseDouble(getCoordinateController.resultLat));
 
                     //pass the filtered parks for display

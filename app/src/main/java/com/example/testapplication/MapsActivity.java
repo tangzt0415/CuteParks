@@ -28,6 +28,9 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Maps activity UI that implements Google Maps API
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -35,7 +38,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<Park> Parks = null;
     boolean displayParkInfo = false;
 
-
+    /**
+     * calls google maps api to load map fragment
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +82,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        // Add a marker for current location and move the camera
+        /**
+         *         Add a marker for current location and move the camera
+         */
         LatLng bob = new LatLng(Double.parseDouble(getCoordinateController.resultLat), Double.parseDouble(getCoordinateController.resultLong));
         mMap.setMinZoomPreference(10);
         mMap.addMarker(new MarkerOptions().position(bob).title("Your Location"));
@@ -100,7 +108,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        // Retrieve all parks
+        /**
+         * calls database for list of parks and plot them as clickable markers on MAP
+         */
         Filter filter = getIntent().getExtras().getParcelable("FILTER");
         Database db = new Database();
         db.loadAllParksAndUpdateOverallRatings().whenComplete((parks, throwable) ->{

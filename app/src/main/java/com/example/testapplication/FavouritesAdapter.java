@@ -17,6 +17,9 @@ import com.example.testapplication.EntityClass.Park;
 
 import java.util.ArrayList;
 
+/**
+ * Dynamically generating favourite item on UI
+ */
 public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.FavouritesViewHolder> {
     private ArrayList<Park> mParkList;
     private OnItemClickListener mListener;
