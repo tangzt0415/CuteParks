@@ -1,6 +1,7 @@
 package com.example.testapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +12,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapplication.EntityClass.Park;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.example.testapplication.ControlClass.getCoordinateController;
@@ -22,6 +27,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -40,16 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public static double currentLat;
     public static double currentLong;
 
-
-    /**
-     * creating UI, also loading current gps location.
-     * @param savedInstanceState
-     */
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private void setUp() {
         setContentView(R.layout.activity_main);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         Database db = new Database();
@@ -190,9 +187,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
 
+    /**
+     * creating UI, also loading current gps location.
+     * @param savedInstanceState
+     */
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setUp();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setUp();
     }
 }
