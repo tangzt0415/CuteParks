@@ -174,6 +174,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
+                loginButton.setVisibility(View.GONE);
+                signupButton.setVisibility(View.GONE);
+                logoutButton.setVisibility(View.VISIBLE);
+                favouritesButton.setVisibility(View.VISIBLE);
             }
         });
         /**
