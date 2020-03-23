@@ -59,15 +59,30 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <RatingBar
-            android:id="@+id/addReviewRatingBar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="385dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="10dp"
-            android:numStars="5"
-            android:stepSize="0.1" />
+            android:orientation="horizontal">
+
+            <RatingBar
+                android:id="@+id/addReviewRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:numStars="5"
+                android:stepSize="0.1" />
+
+            <TextView
+                android:id="@+id/ratingTrace"
+                android:layout_width="116dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
