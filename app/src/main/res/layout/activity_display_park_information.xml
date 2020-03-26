@@ -207,6 +207,7 @@
         android:id="@+id/ratingtextView"
         android:layout_width="81dp"
         android:layout_height="32dp"
+        android:layout_marginEnd="184dp"
         android:contentDescription="@string/rating"
         android:gravity="left|center_vertical"
         android:text="/5.0"
@@ -214,7 +215,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/parkRating"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.336" />
 
@@ -227,19 +229,19 @@
 
     <TextView
         android:id="@+id/parkRating"
-        android:layout_width="58dp"
+        android:layout_width="47dp"
         android:layout_height="33dp"
-        android:gravity="center_horizontal"
+        android:gravity="center|right"
         android:text="4.7"
         android:textColor="#516764"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ratingtextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/RatingtextView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.333" />
 
     <ImageView
         android:id="@+id/parkImage1"

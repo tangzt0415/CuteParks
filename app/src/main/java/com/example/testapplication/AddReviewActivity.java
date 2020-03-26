@@ -41,6 +41,18 @@ public class AddReviewActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.addReviewSaveButton);
         RatingBar ratingBar = findViewById(R.id.addReviewRatingBar);
         TextView reviewTextView = findViewById(R.id.addReviewReviewTextView);
+
+        TextView ratingTrace= findViewById(R.id.ratingTrace);
+        ratingTrace.setText("0.0");
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                TextView ratingTrace = findViewById(R.id.ratingTrace);
+                ratingTrace.setText(rating + "");
+            }
+        });
+
         /**
          * Save rating and description of current park into database
          */

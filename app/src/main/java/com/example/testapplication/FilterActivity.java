@@ -40,6 +40,8 @@ public class FilterActivity extends FragmentActivity {
          * Distance slider on UI to let user select max distance of parks he wants to search.
          * Shows the distance selected as the user slides.
          */
+        TextView distanceTextView = findViewById(R.id.distanceTextView);
+        distanceTextView.setText("Within\n" + 40 + " km");
         filterDistanceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -62,6 +64,9 @@ public class FilterActivity extends FragmentActivity {
          * Rating slider to allow user to select minimum ratings he wants to filter for a park.
          */
         RatingBar filterRatingBar = findViewById(R.id.filterRatingBar);
+
+        TextView ratingTextView = findViewById(R.id.ratingTextView);
+        ratingTextView.setText("0.0");
         filterRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
