@@ -36,9 +36,7 @@ import java.util.Objects;
  * @param <ParkName> the type parameter
  */
 public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private void setUp() {
         setContentView(R.layout.activity_display_park_information);
 
         Database db = new Database();
@@ -198,5 +196,17 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
                 }
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setUp();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setUp();
     }
 }
