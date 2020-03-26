@@ -151,18 +151,40 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
          * Favourite button to add park into user's favourites, only available once logged in.
          */
         ImageButton favouritePark = findViewById(R.id.favouritePark);
+        if (mAuth.getCurrentUser() == null) {
+            favouritePark.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        } else {
+            String uid = mAuth.getCurrentUser().getUid();
+            db.loadFavouriteByParkAndUserId(park.getId(), uid).whenComplete((fav, err) -> {
+                if (err != null) {
+                    Toast.makeText(DisplayParkInformationActivity.this, "An error has occurred when loading your favourites!", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (fav != null) {
+                        favouritePark.setImageResource(R.drawable.ic_favorite_filled_24dp);
+                    } else {
+                        favouritePark.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                    }
+                }
+            });
+        }
+
+
+
         favouritePark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mAuth.getCurrentUser() != null) {
                     String uid = mAuth.getCurrentUser().getUid();
                     Favourite fav = new Favourite(uid, park);
-                    db.createFavourite(fav).whenComplete((favouriteId, error) -> {
+                    db.createFavouriteElseDelete(fav).whenComplete((favouriteId, error) -> {
                         if (error == null) {
+                            // "" means that the object is deleted
                             if (!favouriteId.equals("")) {
                                 Toast.makeText(DisplayParkInformationActivity.this, "You have successfully favourited this park!", Toast.LENGTH_SHORT).show();
+                                favouritePark.setImageResource(R.drawable.ic_favorite_filled_24dp);
                             } else {
-                                Toast.makeText(DisplayParkInformationActivity.this, "You have already favourited this park!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DisplayParkInformationActivity.this, "You have successfully unfavourited this park!", Toast.LENGTH_SHORT).show();
+                                favouritePark.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                             }
 
                         } else {

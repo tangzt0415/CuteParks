@@ -318,17 +318,17 @@ class Database {
      * @param favourite the favourite
      * @return the completable future
      */
-    CompletableFuture<String> createFavourite(Favourite favourite) {
+    CompletableFuture<String> createFavouriteElseDelete(Favourite favourite) {
         return loadFavouriteByParkAndUserId(favourite.getParkId(), favourite.getUserId()).thenCompose(fav -> {
             if (fav == null ) {
                 return addFavourite(favourite);
             } else {
-                return CompletableFuture.completedFuture("");
+                return deleteFavourite(fav.getId());
             }
         });
     }
 
-    private CompletableFuture<Favourite> loadFavouriteByParkAndUserId(String parkId, String userId) {
+    CompletableFuture<Favourite> loadFavouriteByParkAndUserId(String parkId, String userId) {
         final CompletableFuture<Favourite> future = new CompletableFuture<>();
         db.collection("favourites")
                 .whereEqualTo("userId", userId)
@@ -795,15 +795,15 @@ class Database {
         return new Review(UUID.randomUUID().toString(), "Chiah Soon", userId, parkId, rating, description);
     }
 
-    private CompletableFuture<Boolean> deleteFavourite(String favouriteId) {
-        final CompletableFuture<Boolean> future = new CompletableFuture<>();
+    private CompletableFuture<String> deleteFavourite(String favouriteId) {
+        final CompletableFuture<String> future = new CompletableFuture<>();
         db.collection("favourites").document(favouriteId)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                        future.complete(true);
+                        future.complete("");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
