@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.BlendMode;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Layout;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -149,6 +151,8 @@ public class DisplayParksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_parks);
+        final ProgressBar progressBar = (ProgressBar)findViewById(R.id.indeterminateBar);
+        progressBar.setVisibility(View.VISIBLE);
         final ColorStateList darkColor = ColorStateList.valueOf(Color.parseColor("#425C59"));
         final ColorStateList lightColor = ColorStateList.valueOf(Color.parseColor("#D2E5E3"));
 
@@ -226,12 +230,12 @@ public class DisplayParksActivity extends AppCompatActivity {
                 if (Parks.isEmpty()){
                     noParksTextView.setVisibility(noParksTextView.VISIBLE);
                 } else {
-
                     noParksTextView.setVisibility(noParksTextView.GONE);
 
                     //display parks
                     Parks.sort(Comparator.comparingDouble(Park::getDistance));
                     this.displayParks(Parks);
+                    progressBar.setVisibility(View.GONE);
 
                     //select a park
                     LinearLayout r1 = findViewById(R.id.r1);
