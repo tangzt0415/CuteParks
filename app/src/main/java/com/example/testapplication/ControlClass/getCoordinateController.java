@@ -59,6 +59,10 @@ public class getCoordinateController extends AsyncTask<Void,Void,Void> {
             }else {
                 resultLat = Double.toString(MainActivity.currentLat);
                 resultLong = Double.toString(MainActivity.currentLong);
+                if(resultLat.equals("0.0")||resultLong.equals("0.0")){
+                    resultLat = "1.290270";
+                    resultLong = "103.851959";
+                }
                 Log.d("lat =", resultLat);
                 Log.d("long =", resultLong);
             }
