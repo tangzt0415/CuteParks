@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
-        android:text="GoGreens"
+        android:text="@string/cuteparks"
         android:textColor="#FFFFFF"
         android:textSize="88sp"
         android:textStyle="bold"
