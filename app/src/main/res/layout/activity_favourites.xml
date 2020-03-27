@@ -7,11 +7,12 @@
     android:background="@drawable/favourite_icon"
     tools:context=".FavouritesActivity">
 
+
     <TextView
         android:id="@+id/readFavouritesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:text="My Favourites"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -24,8 +25,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/readFavouritesRecyclerView"
-        android:layout_width="383dp"
-        android:layout_height="632dp"
+        android:layout_width="380dp"
+        android:layout_height="605dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

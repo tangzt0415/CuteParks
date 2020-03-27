@@ -36,10 +36,10 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="68dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="14dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="13dp"
             android:layout_toLeftOf="@id/favouriteItemRemoveButton"
             android:background="#FFFFFF"
             android:contentDescription="@string/share"
@@ -54,14 +54,14 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="14dp"
-            android:layout_marginEnd="34dp"
-            android:layout_marginRight="2dp"
+            android:layout_marginEnd="46dp"
+            android:layout_marginRight="12dp"
             android:layout_marginBottom="14dp"
             android:layout_toLeftOf="@+id/favouriteItemReviewButton"
             android:background="#FFFFFF"
             android:contentDescription="@string/share"
             android:paddingRight="0dp"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
+            app:srcCompat="@drawable/ic_favorite_filled_24dp" />
 
         <ImageButton
             android:id="@+id/favouriteItemReviewButton"
@@ -71,12 +71,12 @@
             android:layout_alignParentEnd="true"
 
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="13dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="14dp"
             android:background="#FFFFFF"
             android:contentDescription="@string/share"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            app:srcCompat="@drawable/ic_rate_review_black_24dp" />
 
 
     </RelativeLayout>
