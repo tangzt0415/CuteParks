@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/display_parks"
-    tools:context=".DisplayParksActivity">
+    tools:context=".BoundaryClass.DisplayParksActivity">
 
     <Button
         android:id="@+id/backToFilterButton"

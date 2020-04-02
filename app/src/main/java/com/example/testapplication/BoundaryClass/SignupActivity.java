@@ -1,24 +1,20 @@
-package com.example.testapplication;
+package com.example.testapplication.BoundaryClass;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.testapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.example.testapplication.EntityClass.User;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Sign up UI to allow users to sign up and store account credentials into database
@@ -31,7 +27,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        final Database db = new Database();
+        Database db = new Database();
 
         Button completeSignupButton = findViewById(R.id.completeSignupButton);
         final EditText signupNameEditText = findViewById(R.id.signupNameEditText);

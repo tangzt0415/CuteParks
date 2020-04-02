@@ -1,6 +1,4 @@
-package com.example.testapplication;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.testapplication.BoundaryClass;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,12 +9,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testapplication.EntityClass.Review;
-import com.google.firebase.firestore.auth.User;
+import com.example.testapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.UUID;
 

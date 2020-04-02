@@ -1,4 +1,4 @@
-package com.example.testapplication;
+package com.example.testapplication.BoundaryClass;
 
 /**
  *Custom exceptions.

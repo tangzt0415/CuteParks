@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 //import com.example.testapplication.BoundaryClass.getCoordinateUI;
-import com.example.testapplication.MainActivity;
+import com.example.testapplication.BoundaryClass.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

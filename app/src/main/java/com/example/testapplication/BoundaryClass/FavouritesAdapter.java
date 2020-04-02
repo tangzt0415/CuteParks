@@ -1,19 +1,17 @@
-package com.example.testapplication;
+package com.example.testapplication.BoundaryClass;
 
 import android.annotation.SuppressLint;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.testapplication.EntityClass.Favourite;
 import com.example.testapplication.EntityClass.Park;
+import com.example.testapplication.R;
 
 import java.util.ArrayList;
 

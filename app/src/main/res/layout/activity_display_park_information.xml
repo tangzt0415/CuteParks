@@ -8,7 +8,7 @@
     android:backgroundTint="@android:color/background_light"
     android:foregroundTint="@android:color/darker_gray"
     android:textAlignment="center"
-    tools:context=".DisplayParkInformationActivity">
+    tools:context=".BoundaryClass.DisplayParkInformationActivity">
 
     <TextView
         android:id="@+id/parkWebsite"
