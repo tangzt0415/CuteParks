@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/add_review"
     android:fitsSystemWindows="true"
-    tools:context=".AddReviewActivity">
+    tools:context=".BoundaryClass.AddReviewActivity">
 
     <ImageView
         android:id="@+id/imageView4"

@@ -1,7 +1,6 @@
-package com.example.testapplication;
+package com.example.testapplication.BoundaryClass;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testapplication.EntityClass.Review;
+import com.example.testapplication.R;
 
 import java.util.ArrayList;
 

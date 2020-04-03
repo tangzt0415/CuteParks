@@ -1,8 +1,7 @@
-package com.example.testapplication;
+package com.example.testapplication.BoundaryClass;
 import android.content.Context;
 import android.util.Log;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.testapplication.EntityClass.Favourite;
 import com.example.testapplication.EntityClass.Park;
@@ -10,12 +9,10 @@ import com.example.testapplication.EntityClass.Review;
 import com.example.testapplication.EntityClass.User;
 import com.google.android.gms.tasks.*;
 import com.google.firebase.firestore.*;
-import com.google.firebase.firestore.EventListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.Ref;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;

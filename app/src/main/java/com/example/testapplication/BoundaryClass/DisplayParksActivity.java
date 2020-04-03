@@ -1,32 +1,24 @@
-package com.example.testapplication;
+package com.example.testapplication.BoundaryClass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.BlendMode;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RatingBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.testapplication.ControlClass.Filter;
-import com.example.testapplication.ControlClass.getCoordinateController;
+import com.example.testapplication.BoundaryClass.Database;
 import com.example.testapplication.EntityClass.Park;
+import com.example.testapplication.R;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Objects;
 
 /**

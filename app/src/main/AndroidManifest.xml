@@ -18,15 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddReviewActivity"></activity>
-        <activity android:name=".ReadReviewActivity" />
-        <activity android:name=".FavouritesActivity" />
-        <activity android:name=".DisplayParksActivity" />
-        <activity android:name=".DisplayParkInformationActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".FilterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".BoundaryClass.getCoordinateUI" />
+        <activity android:name=".BoundaryClass.AddReviewActivity"></activity>
+        <activity android:name=".BoundaryClass.ReadReviewActivity" />
+        <activity android:name=".BoundaryClass.FavouritesActivity" />
+        <activity android:name=".BoundaryClass.DisplayParksActivity" />
+        <activity android:name=".BoundaryClass.DisplayParkInformationActivity" />
+        <activity android:name=".BoundaryClass.SignupActivity" />
+        <activity android:name=".BoundaryClass.FilterActivity" />
+        <activity android:name=".BoundaryClass.LoginActivity" />
+<!--        <activity android:name=".BoundaryClass.getCoordinateUI" />-->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,9 +40,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".BoundaryClass.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".BoundaryClass.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
