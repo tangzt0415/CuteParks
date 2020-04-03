@@ -36,65 +36,8 @@ import java.util.Objects;
  * @param <ParkName> the type parameter
  */
 public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity {
-    private void setUp() {
-        setContentView(R.layout.activity_display_park_information);
 
-        Park park = Objects.requireNonNull(getIntent().getExtras()).getParcelable("PARK");
-
-        // Display park name
-        displayParkName(park);
-
-        // Display park description
-        displayParkDescription(park);
-
-        // Display park rating
-        displayParkRating(park);
-
-        //Read Reviews
-        Button readReviewsButton = findViewById(R.id.readReviewsButton);
-        readReviewsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                displayParkReviews(park);
-            }
-        });
-
-        // Display park address
-        displayParkAddress(park);
-
-        // Display park website
-        displayParkWebsite(park);
-
-        // Display park location on google map
-        /**
-         * Change display into a Map View, displaying current user and the park as markers
-         */
-        MapView googleMap = findViewById(R.id.googleMap);
-        googleMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                displayParkLocation(park);
-            }
-        });
-
-        // Display park activities
-        displayParkActivities(park);
-
-        // Share park
-        ImageButton sharePark = findViewById(R.id.sharePark);
-        sharePark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareParkInfo(park);
-            }
-        });
-
-        //Favourite button to add park into user's favourites, only available once logged in.
-        favouritePark(park);
-
-        //button to add review for a park
-         addParkReview(park);
-    }
+    Database db = new Database();
 
     public void displayParkName(Park park){
         TextView parkName = findViewById(R.id.parkName);
@@ -124,7 +67,6 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
             startActivity(intent);
         });
     }
-
 
     public void displayParkAddress(Park park) {
         TextView parkAddress = findViewById(R.id.parkAddress);
@@ -250,16 +192,81 @@ public class DisplayParkInformationActivity<ParkName> extends AppCompatActivity 
     }
 
 
+    private void setUp() {
+
+        Park p = Objects.requireNonNull(getIntent().getExtras()).getParcelable("PARK");
+        String pid = p.getId();
+        db.loadPark(pid).whenComplete((park, error) -> {
+            // Display park name
+            displayParkName(park);
+
+            // Display park description
+            displayParkDescription(park);
+
+            // Display park rating
+            displayParkRating(park);
+
+            //Read Reviews
+            Button readReviewsButton = findViewById(R.id.readReviewsButton);
+            readReviewsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    displayParkReviews(park);
+                }
+            });
+
+            // Display park address
+            displayParkAddress(park);
+
+            // Display park website
+            displayParkWebsite(park);
+
+            // Display park location on google map
+            /**
+             * Change display into a Map View, displaying current user and the park as markers
+             */
+            MapView googleMap = findViewById(R.id.googleMap);
+            googleMap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    displayParkLocation(park);
+                }
+            });
+
+            // Display park activities
+            displayParkActivities(park);
+
+            // Share park
+            ImageButton sharePark = findViewById(R.id.sharePark);
+            sharePark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    shareParkInfo(park);
+                }
+            });
+
+            //Favourite button to add park into user's favourites, only available once logged in.
+            favouritePark(park);
+
+            //button to add review for a park
+            addParkReview(park);
+
+        });
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_display_park_information);
         super.onCreate(savedInstanceState);
         setUp();
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        setContentView(R.layout.activity_display_park_information);
+        super.onResume();
         setUp();
     }
 }
