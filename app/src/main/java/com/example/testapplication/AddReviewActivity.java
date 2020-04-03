@@ -70,8 +70,11 @@ public class AddReviewActivity extends AppCompatActivity {
                         if (error != null) {
                             Toast.makeText(AddReviewActivity.this, "An error has occurred and the review is not saved.", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(AddReviewActivity.this, "The review has been saved successfully!", Toast.LENGTH_SHORT).show();
-                            finish();
+                            db.loadAllParksAndUpdateOverallRatings().whenComplete((p, err) -> {
+                                Toast.makeText(AddReviewActivity.this, "The review has been saved successfully!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            });
+
                         }
                     });
                 } else {

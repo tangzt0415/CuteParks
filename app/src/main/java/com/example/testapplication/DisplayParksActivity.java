@@ -144,13 +144,7 @@ public class DisplayParksActivity extends AppCompatActivity {
         }
     }
 
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_parks);
+    public void setUp(){
         final ProgressBar progressBar = (ProgressBar)findViewById(R.id.indeterminateBar);
         progressBar.setVisibility(View.VISIBLE);
         final ColorStateList darkColor = ColorStateList.valueOf(Color.parseColor("#425C59"));
@@ -398,12 +392,19 @@ public class DisplayParksActivity extends AppCompatActivity {
 
             }
         });
-
-        //////////////////////////////////////////////////////////
-
+    }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_display_parks);
+        setUp();
+    }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUp();
     }
 }
