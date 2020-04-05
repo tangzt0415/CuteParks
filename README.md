@@ -1,4 +1,4 @@
-# TestApplication
+# CuteParks
 
 Park recommendation application for CZ2006 Software Engineering, built on Android and Firebase.
 
